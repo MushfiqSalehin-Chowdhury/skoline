@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="id.co.skoline">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/app_icon"
@@ -15,10 +17,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.activities.SplashActivity" />
-        <activity android:name=".view.activities.SignInActivity" />
-        <activity android:name=".view.activities.SignUpActivity" />
-        <activity android:name=".view.activities.OtpActivity"></activity>
+        <activity android:name=".view.activities.SplashActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activities.SignInActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activities.SignUpActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activities.OtpActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
