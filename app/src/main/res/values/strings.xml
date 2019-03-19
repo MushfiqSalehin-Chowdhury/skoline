@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Skoline</string>
+
+    <!--network error string-->
+    <string name="network_error">Network connection cannot be established</string>
+    <string name="invalid_json_response">Invalid response</string>
+    <string name="application_update_required">Application update required</string>
+    <string name="application_id_invalid">Application ID is not valid</string>
+    <string name="invalid_request">Invalid request</string>
+    <string name="connectivity_error">Connection error</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="access_deny">Access deny</string>
+    <string name="insecure_internet_connection">Internet connection is not secure</string>
+    <string name="something_went_wrong">Something went wrong</string>
+
+
+</resources>
