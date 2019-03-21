@@ -1,8 +1,10 @@
 package id.co.skoline.view.activities;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -21,19 +23,24 @@ public class SignUpActivity extends BaseActivity {
 
     }
 
+
     @Override
     protected void viewRelatedTask() {
-        signUpBinding.sampleText.setText("helooooooooooooooooo"+"\n" +"oooooooooooooooooooo");
+        signUpBinding.sampleText.setText(R.string.name_info);
         signUpBinding.sampleText.setTextColor(Color.WHITE);
-        signUpBinding.name.setHint("Enter Name");
-        signUpBinding.email.setHint("example@abc.com");
-        signUpBinding.lastname.setHint("Last Name");
-        signUpBinding.location.setHint("your location");
-        signUpBinding.sampleText1.setText("helooooooooooooooooo"+"\n" +"oooooooooooooooooooo");
-        signUpBinding.sampleText2.setText("Hellooooooooooooooooooooooooooooooooooooooooooooooooo");
-        signUpBinding.news.setText("helooooooooooooo ?");
-        signUpBinding.newss.setText("helooooooooooooooooo"+"\n" +"oooooooooooooooooooo");
-        signUpBinding.signup.setText("Dafter");
+        signUpBinding.uname.setHint(R.string.name_hint);
+        signUpBinding.email.setHint(R.string.email_hint);
+        signUpBinding.childName.setHint(R.string.childName_hint);
+        signUpBinding.location.setHint(R.string.location_hint);
+        signUpBinding.sampleText1.setText(R.string.childName_info);
+        signUpBinding.sampleText2.setText(R.string.dob);
+        signUpBinding.news.setText(R.string.newspaper_text);
+        signUpBinding.terms.setText(R.string.terms_text);
+        signUpBinding.signup.setText(R.string.signUpBackButton_text);
 
+    }
+
+    public void verify(View view) {
+        startActivity(new Intent(this,OtpActivity.class));
     }
 }

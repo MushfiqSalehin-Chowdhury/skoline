@@ -12,6 +12,28 @@
     <string name="access_deny">Access deny</string>
     <string name="insecure_internet_connection">Internet connection is not secure</string>
     <string name="something_went_wrong">Something went wrong</string>
+    <string name="sms_varification_text">Sms varication</string>
+    <string name="forgot_Uname_text">Forgot Unique Name ?</string>
+    <string name="name_info">Enter Unique Name?</string>
+    <string name="childName_info">Child Full Name?</string>
+    <string name="dob">Date of Birth</string>
+    <string name="name_hint">Enter Name</string>
+    <string name="childName_hint">Child Full Name ?</string>
+    <string name="number_hint">+12345678.. ?</string>
+    <string name="location_hint">Your Location</string>
+    <string name="email_hint">example@abc.com</string>
+    <string name="newspaper_text">News ?</string>
+    <string name="terms_text">Agree Terms and Condition?</string>
+    <string name="signin_button">Sign In</string>
+    <string name="smsVarification_hint">Enter Varification Code</string>
+    <string name="varificationButton_text">Check Varification</string>
+    <string name="resendCode_text">Resend Code</string>
+    <string name="signUpBackButton_text">Back To SignUp Page</string>
+
+
+
+
+
 
     <string-array name="Day">
         <item>dd</item>
