@@ -143,7 +143,9 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/box_shape"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:inputType="phone"
+                    />
 
             </LinearLayout>
 
