@@ -51,7 +51,7 @@
                 />
 
             <id.co.skoline.view.custom.CustomEditText
-                android:id="@+id/Name"
+                android:id="@+id/uname"
                 android:layout_width="300dp"
                 android:layout_height="45dp"
                 android:layout_weight="1"
@@ -59,6 +59,14 @@
                  />
 
         </LinearLayout>
+
+        <id.co.skoline.view.custom.CustomTextView
+            android:id="@+id/uname_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:visibility="gone"
+            />
 
 
 
@@ -79,38 +87,50 @@
                 />
 
             <id.co.skoline.view.custom.CustomEditText
-                android:id="@+id/Dob"
+                android:id="@+id/dob"
                 android:layout_width="300dp"
                 android:layout_height="45dp"
                 android:layout_weight="1"
                 android:background="@drawable/boxshape_right"
-                android:padding="10dp" />
+                android:inputType="date"
+                />
 
         </LinearLayout>
 
         <id.co.skoline.view.custom.CustomTextView
-            android:id="@+id/sampleText"
+            android:id="@+id/sampleText5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:padding="10dp"
+            android:padding="5dp"
             android:textColor="@color/colorWhite" />
+        <id.co.skoline.view.custom.CustomTextView
+            android:id="@+id/dob_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:textColor="@color/colorAccent"
+            android:visibility="gone"
+            />
 
         <Button
-            android:id="@+id/Vbutton"
+            android:id="@+id/signin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/boxbutton"
+            android:onClick="signIn"
             android:padding="5dp" />
 
         <id.co.skoline.view.custom.CustomTextView
-            android:id="@+id/ForgotUname"
+            android:id="@+id/forgotUname"
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorWhite"
+            android:onClick="resendUname"
             />
 
     </LinearLayout>

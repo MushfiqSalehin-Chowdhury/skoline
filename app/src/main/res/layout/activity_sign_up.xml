@@ -36,7 +36,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:padding="10dp"
-                android:src="@drawable/app_icon" />
+                android:src="@drawable/ui_iconsignin" />
 
 
             <id.co.skoline.view.custom.CustomTextView
@@ -167,7 +167,7 @@
 
                 <id.co.skoline.view.custom.CustomEditText
                     android:id="@+id/location"
-                    android:layout_width="278dp"
+                    android:layout_width="270dp"
                     android:layout_height="45dp"
                     android:layout_weight="1"
                     android:background="@color/colorWhite"
@@ -175,13 +175,22 @@
 
                 <ImageView
                     android:layout_weight="1"
-                    android:layout_width="25dp"
+                    android:layout_width="30dp"
                     android:layout_height="45dp"
+                    android:layout_gravity="left"
+                    android:layout_marginRight="10dp"
                     android:src="@drawable/current_location"
                     android:background="@drawable/boxshape_right"
                     android:padding="5dp"
                     />
             </LinearLayout>
+            <id.co.skoline.view.custom.CustomTextView
+                android:id="@+id/locationInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textColor="@color/colorWhite"
+                />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -231,6 +240,8 @@
 
                 <id.co.skoline.view.custom.CustomTextView
                     android:id="@+id/terms"
+                    android:clickable="true"
+                    android:linksClickable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -238,6 +249,7 @@
                     android:textColor="@color/colorWhite" />
 
                 <android.support.v7.widget.SwitchCompat
+                    android:layout_marginTop="24dp"
                     style="@style/SwitchTheme"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -251,7 +263,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@color/colorAccent"
+                android:background="@drawable/boxbutton"
                 android:padding="10dp"
                 android:onClick="verify"
                 />
