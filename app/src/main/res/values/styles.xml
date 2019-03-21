@@ -21,4 +21,9 @@
     </style>
 
     <color name="colorBlack">#000000</color>
+
+
+    <style name="SwitchTheme" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">#148E13</item>
+    </style>
 </resources>
