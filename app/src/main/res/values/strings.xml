@@ -28,6 +28,8 @@
     <string name="agree_terms_privacy">By continuing, you agree to our &lt;a href=https://google.com>Terms of Use
         &lt;/a> and read the
         &lt;a href=http://google.com>Privacy Policy&lt;/a></string>
+    <string name="app_website"> &lt;a href=https://www.skoline.co.id>www.skoline.co.id
+        &lt;/a></string>
     <string name="signin_button">Sign In</string>
     <string name="signup_button">Sign Up</string>
     <string name="smsVarification_hint">Enter Varification Code</string>
@@ -37,7 +39,11 @@
     <string name="resend_uname">Send</string>
     <string name="unameError">Invalid Username</string>
     <string name="dobError">Invalid Date of Birth</string>
-
+    <string name="app_version">App version goes here</string>
+    <string name="welcomenote">welcome "\n" note "\n" goes "\n" here "\n" and "\n" here</string>
+    <string name="subscriptionTxt">Some "\n" Text "\n" Here</string>
+    <string name="subButton1">Rp  15.000/bulan</string>
+    <string name="subButton2">Rp  180.000/12 bulan</string>
 
     <string-array name="Day">
         <item>dd</item>

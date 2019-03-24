@@ -14,23 +14,30 @@
         android:weightSum="15"
         tools:context=".view.activities.ResendUnamese">
 
-        <ImageView
-            android:id="@+id/appLogo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="1"
-            android:padding="10dp"
-            android:src="@drawable/app_icon" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="2"
+            >
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:padding="10dp"
-            android:src="@drawable/app_icon" />
+            <ImageView
+                android:id="@+id/appLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="84dp"
+                android:layout_marginRight="170dp"
+                android:layout_weight="1"
+                android:src="@drawable/logo_skoline" />
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/welcomeLogo"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/fajar" />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

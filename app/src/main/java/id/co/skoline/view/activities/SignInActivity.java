@@ -17,6 +17,7 @@ public class SignInActivity extends BaseActivity {
 
     ActivitySignInBinding signInBinding;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +52,8 @@ public class SignInActivity extends BaseActivity {
             signInBinding.unameError.setVisibility(View.VISIBLE);
         }
         else {
+
+            startActivity(new Intent(this,MainMenuActivity.class));
             Toast.makeText(this, "SignIn Process", Toast.LENGTH_SHORT).show();
         }
     }

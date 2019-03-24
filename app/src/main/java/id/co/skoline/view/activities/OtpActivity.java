@@ -41,4 +41,8 @@ public class OtpActivity extends BaseActivity {
     public void signIn(View view) {
         startActivity(new Intent(this,SignInActivity.class));
     }
+
+    public void subs(View view) {
+        startActivity(new Intent(this,SubscriptionActivity.class));
+    }
 }

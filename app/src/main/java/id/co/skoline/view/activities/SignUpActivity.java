@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.bumptech.glide.Glide;
+
 import id.co.skoline.R;
 import id.co.skoline.databinding.ActivitySignUpBinding;
 
@@ -43,6 +45,8 @@ public class SignUpActivity extends BaseActivity {
         signUpBinding.signup.setText(getString(R.string.signup_button));
         signUpBinding.signup.setTextColor(Color.WHITE);
         signUpBinding.locationInfo.setText(getString(R.string.location_info));
+
+
 
     }
 
