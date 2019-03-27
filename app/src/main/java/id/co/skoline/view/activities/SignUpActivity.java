@@ -13,7 +13,6 @@ public class SignUpActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         signUpBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up);
-
     }
 
     @Override
