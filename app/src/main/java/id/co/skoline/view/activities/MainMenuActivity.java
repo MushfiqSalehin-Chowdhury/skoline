@@ -2,17 +2,12 @@ package id.co.skoline.view.activities;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.GridView;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
 import id.co.skoline.R;
 import id.co.skoline.databinding.ActivityMainMenuBinding;
-import id.co.skoline.databinding.ToolbarBinding;
-import id.co.skoline.view.adapters.homepageAdatpter;
+import id.co.skoline.view.adapters.HomepageAdapter;
 
 public class MainMenuActivity extends BaseActivity {
 
@@ -22,7 +17,7 @@ public class MainMenuActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainMenuBinding = DataBindingUtil.setContentView(this,R.layout.activity_main_menu);
-        mainMenuBinding.gridView.setAdapter(new homepageAdatpter(this));
+        mainMenuBinding.gridView.setAdapter(new HomepageAdapter(this));
 
     }
 

@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,8 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:weightSum="2"
-            >
+            android:weightSum="2">
 
             <ImageView
                 android:id="@+id/appLogo"
@@ -39,9 +37,6 @@
                 android:src="@drawable/fajar" />
         </LinearLayout>
 
-
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,17 +50,14 @@
                 android:layout_height="45dp"
                 android:src="@drawable/man"
                 android:background="@drawable/boxshape_left"
-                android:padding="5dp"
-
-                />
+                android:padding="5dp" />
 
             <id.co.skoline.view.custom.CustomEditText
                 android:id="@+id/uname"
                 android:layout_width="300dp"
                 android:layout_height="45dp"
                 android:layout_weight="1"
-                android:background="@drawable/boxshape_right"
-                 />
+                android:background="@drawable/boxshape_right" />
 
         </LinearLayout>
 
@@ -74,10 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorAccent"
-            android:visibility="gone"
-            />
-
-
+            android:visibility="gone" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -92,8 +81,7 @@
                 android:layout_height="45dp"
                 android:src="@drawable/locked"
                 android:background="@drawable/boxshape_left"
-                android:padding="5dp"
-                />
+                android:padding="5dp" />
 
             <id.co.skoline.view.custom.CustomEditText
                 android:id="@+id/dob"
@@ -101,8 +89,7 @@
                 android:layout_height="45dp"
                 android:layout_weight="1"
                 android:background="@drawable/boxshape_right"
-                android:inputType="date"
-                />
+                android:inputType="date" />
 
         </LinearLayout>
 
@@ -113,6 +100,7 @@
             android:layout_weight="1"
             android:padding="5dp"
             android:textColor="@color/colorWhite" />
+
         <id.co.skoline.view.custom.CustomTextView
             android:id="@+id/dob_error"
             android:layout_width="match_parent"
@@ -120,8 +108,7 @@
             android:layout_weight="1"
             android:padding="5dp"
             android:textColor="@color/colorAccent"
-            android:visibility="gone"
-            />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/signin"
@@ -139,8 +126,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/colorWhite"
-            android:onClick="resendUname"
-            />
+            android:onClick="resendUname" />
 
     </LinearLayout>
 

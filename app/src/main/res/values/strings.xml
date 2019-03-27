@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Skoline</string>
 
     <!--network error string-->
@@ -12,8 +12,8 @@
     <string name="access_deny">Access deny</string>
     <string name="insecure_internet_connection">Internet connection is not secure</string>
     <string name="something_went_wrong">Something went wrong</string>
-    <string name="sms_varification_text">Sms varication</string>
-    <string name="forgot_Uname_text">Forgot Unique Name ?</string>
+    <string name="sms_varification_text">Sms verification</string>
+    <string name="forgot_Uname_text">Forgot Unique Name?</string>
     <string name="name_info">Enter Unique Name</string>
     <string name="childName_info">Child Full Name</string>
     <string name="dob">Date of Birth</string>

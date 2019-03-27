@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import id.co.skoline.R;
 import id.co.skoline.view.activities.BaseActivity;
 
-public class homepageAdatpter extends BaseAdapter {
+public class HomepageAdapter extends BaseAdapter {
     private Context mContext;
 
 
@@ -26,7 +26,7 @@ public class homepageAdatpter extends BaseAdapter {
     };
 
     // Constructor
-    public homepageAdatpter(Context c){
+    public HomepageAdapter(Context c){
         mContext = c;
     }
 
