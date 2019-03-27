@@ -18,7 +18,7 @@ public class SignInActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        signInBinding= DataBindingUtil.setContentView(this, R.layout.activity_sign_in);
+        signInBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class SignInActivity extends BaseActivity {
             signInBinding.dobError.setText(getText(R.string.dobError));
             signInBinding.dobError.setVisibility(View.VISIBLE);
         } else {
-            startActivity(new Intent(this,MainMenuActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
             Toast.makeText(this, "SignIn Process", Toast.LENGTH_SHORT).show();
         }
     }

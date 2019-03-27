@@ -32,8 +32,8 @@
         &lt;/a></string>
     <string name="signin_button">Sign In</string>
     <string name="signup_button">Sign Up</string>
-    <string name="smsVarification_hint">Enter Varification Code</string>
-    <string name="varificationButton_text">Check Varification</string>
+    <string name="smsVarification_hint">Enter Verification Code</string>
+    <string name="varificationButton_text">Check Verification</string>
     <string name="resendCode_text">Resend Code</string>
     <string name="signUpBackButton_text">Back To SignUp Page</string>
     <string name="resend_uname">Send</string>
@@ -44,6 +44,7 @@
     <string name="subscriptionTxt">Some "\n" Text "\n" Here</string>
     <string name="subButton1">Rp  15.000/bulan</string>
     <string name="subButton2">Rp  180.000/12 bulan</string>
+    <string name="app_version_text">Skoline App Mode Online (version: 1.0.1)</string>
 
     <string-array name="Day">
         <item>dd</item>

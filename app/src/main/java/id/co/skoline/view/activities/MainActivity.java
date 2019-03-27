@@ -1,39 +1,35 @@
 package id.co.skoline.view.activities;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import id.co.skoline.R;
+import id.co.skoline.databinding.ActivityMainBinding;
+import id.co.skoline.view.adapters.HomepageAdapter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+
+    ActivityMainBinding mainBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        welcome();
-        // Example of a call to a native method
+        mainBinding = DataBindingUtil.setContentView(this,R.layout.activity_main);
 
     }
 
-
-    public void welcome() {
-
-        new CountDownTimer(5000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-
-            }
-
-            @Override
-            public void onFinish() {
-                startActivity(new Intent(MainActivity.this,WelcomeVideoActivity.class));
-                finish();
-            }
-        }.start();
+    @Override
+    protected void viewRelatedTask() {
+        mainBinding.gridView.setAdapter(new HomepageAdapter(this));
+    }
 
 
+    public void search(View view) {
+        Intent i= new Intent(this,ResultActivity.class);
+        i.putExtra("key" ,mainBinding.searchEditFrame.getText().toString());
+        // Toast.makeText(this, mainMenuBinding.searchEditFrame.getText(), Toast.LENGTH_SHORT).show();
+        startActivity(i);
     }
 }

@@ -1,38 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.activities.WelcomeVideoActivity"
-    android:orientation="vertical"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <VideoView
-        android:id="@+id/videoView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="600dp"
-        />
+        android:layout_height="match_parent"
+        tools:context=".view.activities.WelcomeVideoActivity"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:background="@color/colorBlack"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <VideoView
+                android:id="@+id/videoView"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:onClick="stream"
+                android:layout_margin="10dp"
+                android:text="skip" />
+
+        </FrameLayout>
 
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    </LinearLayout>
 
-
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:onClick="stream"
-            android:layout_marginLeft="300dp"
-            android:layout_marginBottom="30dp"
-            android:text="skip"
-            />
-
-    </FrameLayout>
-
-
-</LinearLayout>
+</layout>

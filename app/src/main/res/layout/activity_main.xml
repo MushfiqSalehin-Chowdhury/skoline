@@ -1,31 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/primary_gradient_bg"
+        android:background="@color/allMenuBackgroung"
         android:orientation="vertical"
-        android:padding="25dp"
         android:weightSum="15"
-        tools:context=".view.activities.MainActivity">
+        tools:context=".view.activities.MainMenuActivity">
 
-        <pl.droidsonroids.gif.GifImageView
-            android:layout_marginTop="100dp"
+        <include
+            android:id="@+id/toolbarBinding"
+            layout="@layout/toolbar"/>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/loading_icon"/>
-        <pl.droidsonroids.gif.GifImageView
-            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:weightSum="3">
+
+            <id.co.skoline.view.custom.CustomEditText
+                android:id="@+id/search_edit_frame"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/box_shape"
+                android:padding="10dp" />
+
+            <ImageView
+                android:id="@+id/search_mag_icon"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/boxshape_right"
+                android:onClick="search"
+                android:padding="10dp"
+                android:src="@drawable/search_mag" />
+
+            <ImageView
+                android:id="@+id/profile_img"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:src="@drawable/profile_img"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/loading"/>
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:weightSum="2">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/boxshape_top"
+                android:src="@drawable/logo_skoline" />
+
+            <id.co.skoline.view.custom.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/boxshape_bottom"
+                android:gravity="center_horizontal"
+                android:text="Some Text Here"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:weightSum="2"
+
+            >
+
+            <GridView
+                android:layout_weight="1"
+                android:id="@+id/grid_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="6dp"
+                android:numColumns="2"
+                android:verticalSpacing="10dp">
+
+            </GridView>
+        </LinearLayout>
+
 
     </LinearLayout>
 </layout>

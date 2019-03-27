@@ -3,6 +3,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -11,29 +12,33 @@
         android:padding="25dp"
         android:weightSum="15"
         tools:context=".view.activities.SigninSignupActivity">
-       <id.co.skoline.view.custom.CustomTextView
-           android:id="@+id/appVersion"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:textColor="@color/colorWhite"
-           android:padding="10dp"
-           android:layout_weight="1"
-           android:textSize="15dp"
-           />
+
+        <id.co.skoline.view.custom.CustomTextView
+            android:id="@+id/appVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:gravity="center"
+            android:text="@string/app_version_text"
+            android:layout_weight="1"
+            android:textSize="15dp" />
+
         <ImageView
             android:id="@+id/appLogo"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             android:src="@drawable/logo_skoline"/>
+
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/welcomeLogo"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             android:src="@drawable/welcomecharacter"/>
+
         <id.co.skoline.view.custom.CustomTextView
             android:layout_marginTop="2dp"
             android:id="@+id/welcomeNote"
@@ -41,9 +46,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/colorWhite"
-            android:textSize="20dp"
+            android:textSize="20dp" />
 
-            />
         <Button
             android:layout_marginTop="10dp"
             android:id="@+id/signIn"
@@ -52,9 +56,10 @@
             android:padding="10dp"
             android:layout_weight="1"
             android:onClick="signIn"
+            android:text="@string/signin_button"
             android:background="@drawable/box_bluebutton"
-            android:textColor="@color/colorWhite"
-            />
+            android:textColor="@color/colorWhite" />
+
         <Button
             android:layout_marginTop="15dp"
             android:id="@+id/signUp"
@@ -63,9 +68,9 @@
             android:layout_weight="1"
             android:padding="10dp"
             android:onClick="signUp"
+            android:text="@string/signup_button"
             android:textColor="@color/colorWhite"
-            android:background="@drawable/box_bluebutton"
-            />
+            android:background="@drawable/box_bluebutton" />
 
         <id.co.skoline.view.custom.CustomTextView
             android:id="@+id/appweb"
@@ -78,5 +83,7 @@
             android:linksClickable="true"
             android:padding="10dp"
             android:textColorLink="@color/colorWhite" />
+
     </LinearLayout>
+
 </layout>
