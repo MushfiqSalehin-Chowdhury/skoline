@@ -1,9 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.activities.OtpActivity">
+    >
 
-</android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/orange_gradient_bg"
+            android:orientation="vertical"
+            android:padding="25dp"
+            android:weightSum="15"
+            tools:context=".view.activities.OtpActivity">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                >
+
+                <ImageView
+                    android:id="@+id/appLogo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="84dp"
+                    android:layout_marginRight="170dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/logo_skoline" />
+
+                <pl.droidsonroids.gif.GifImageView
+                    android:id="@+id/welcomeLogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/fajar" />
+            </LinearLayout>
+
+
+            <id.co.skoline.view.custom.CustomTextView
+                android:id="@+id/sampleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:padding="10dp"
+                android:textColor="@color/colorWhite" />
+
+            <id.co.skoline.view.custom.CustomEditText
+                android:id="@+id/vCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/box_shape"
+                android:padding="5dp" />
+
+            <Button
+                android:id="@+id/vButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/boxbutton"
+                android:padding="5dp"
+                android:onClick="signIn"
+                />
+
+            <Button
+                android:id="@+id/resendCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/boxbutton"
+                android:padding="5dp"
+                android:onClick="subs"
+                />
+
+            <Button
+                android:id="@+id/backSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/boxbutton"
+                android:padding="5dp"
+                android:onClick="backToSignUp"
+                />
+
+
+        </LinearLayout>
+
+
+
+</layout>
+
+

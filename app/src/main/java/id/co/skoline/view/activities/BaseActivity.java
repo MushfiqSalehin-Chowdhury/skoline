@@ -197,6 +197,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     public Toolbar setToolbar(String title, boolean hasBackButton, ToolbarBinding toolbarBinding) {
         setSupportActionBar(toolbarBinding.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbarBinding.toolbarTitle.setText(title);
         /*if (hasBackButton) {
             toolbarBinding.toolbarTitle.setVisibility(View.VISIBLE);
             toolbarBinding.toolbarTitle.setText(title);

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/magenta_gradient_bg"
+        android:orientation="vertical"
+        android:padding="25dp"
+        android:weightSum="15"
+        tools:context=".view.activities.SubscriptionActivity">
+
+
+            <ImageView
+                android:id="@+id/appLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="84dp"
+                android:layout_marginRight="170dp"
+                android:layout_weight="1"
+                android:src="@drawable/logo_skoline" />
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/subsCriptionLogo"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/bela_benar" />
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_marginTop="250dp"
+            android:id="@+id/subsCriptionLogo1"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:src="@drawable/bela_benar"
+            android:visibility="gone"
+            />
+
+            <id.co.skoline.view.custom.CustomTextView
+                android:id="@+id/subscription_Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textSize="20dp"
+                android:textColor="@color/colorWhite"
+                />
+
+            <Button
+                android:layout_marginTop="10dp"
+                android:id="@+id/subs1"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:padding="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/box_purplebutton"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                android:onClick="sucess"
+                />
+            <Button
+                android:layout_marginTop="10dp"
+                android:id="@+id/subs2"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:padding="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/box_purplebutton"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                android:onClick="failed"
+                />
+
+
+
+        </LinearLayout>
+
+</layout>
+
+

@@ -12,6 +12,102 @@
     <string name="access_deny">Access deny</string>
     <string name="insecure_internet_connection">Internet connection is not secure</string>
     <string name="something_went_wrong">Something went wrong</string>
+    <string name="sms_varification_text">Sms varication</string>
+    <string name="forgot_Uname_text">Forgot Unique Name ?</string>
+    <string name="name_info">Enter Unique Name</string>
+    <string name="childName_info">Child Full Name</string>
+    <string name="dob">Date of Birth</string>
+    <string name="dob_hint">dd/mm</string>
+    <string name="name_hint">Enter Unique Name</string>
+    <string name="childName_hint">Child Full Name</string>
+    <string name="number_hint">+12345678.. </string>
+    <string name="location_hint">Your Location</string>
+    <string name="location_info">Your Location / info</string>
+    <string name="email_hint">example@abc.com</string>
+    <string name="newspaper_text">News ?</string>
+    <string name="agree_terms_privacy">By continuing, you agree to our &lt;a href=https://google.com>Terms of Use
+        &lt;/a> and read the
+        &lt;a href=http://google.com>Privacy Policy&lt;/a></string>
+    <string name="app_website"> &lt;a href=https://www.skoline.co.id>www.skoline.co.id
+        &lt;/a></string>
+    <string name="signin_button">Sign In</string>
+    <string name="signup_button">Sign Up</string>
+    <string name="smsVarification_hint">Enter Varification Code</string>
+    <string name="varificationButton_text">Check Varification</string>
+    <string name="resendCode_text">Resend Code</string>
+    <string name="signUpBackButton_text">Back To SignUp Page</string>
+    <string name="resend_uname">Send</string>
+    <string name="unameError">Invalid Username</string>
+    <string name="dobError">Invalid Date of Birth</string>
+    <string name="app_version">App version goes here</string>
+    <string name="welcomenote">welcome "\n" note "\n" goes "\n" here "\n" and "\n" here</string>
+    <string name="subscriptionTxt">Some "\n" Text "\n" Here</string>
+    <string name="subButton1">Rp  15.000/bulan</string>
+    <string name="subButton2">Rp  180.000/12 bulan</string>
 
+    <string-array name="Day">
+        <item>dd</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+    </string-array>
+    <string-array name="Months">
+        <item>mm</item>
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+
+    </string-array>
+    <string-array name="Year">
+        <item>yyyy</item>
+        <item>2000</item>
+        <item>2001</item>
+        <item>2002</item>
+        <item>2004</item>
+    </string-array>
+    <string-array name="code">
+        <item>+88</item>
+        <item>+64</item>
+        <item>+65</item>
+        <item>+67</item>
+        <item>+68</item>
+    </string-array>
 
 </resources>

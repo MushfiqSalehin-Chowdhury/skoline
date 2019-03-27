@@ -3,6 +3,10 @@
     <color name="colorPrimary">#35BCB3</color>
     <color name="colorPrimaryDark">#158782</color>
     <color name="colorAccent">#E75643</color>
-    <color name="colorOrange">#E58E25</color>
-    <color name="colorWhite">#ffffff</color>
+    <color name="colorOrange">#F19B37</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name ="blueButton">#2167bb</color>
+    <color name ="magenta">#F74980</color>
+    <color name ="purple">#7e2b63</color>
+    <color name="allMenuBackgroung">#f1f1f3</color>
 </resources>
