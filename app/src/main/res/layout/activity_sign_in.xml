@@ -57,7 +57,9 @@
                 android:layout_width="300dp"
                 android:layout_height="45dp"
                 android:layout_weight="1"
-                android:background="@drawable/boxshape_right" />
+                android:background="@drawable/boxshape_right"
+                android:hint="@string/name_hint"
+                />
 
         </LinearLayout>
 
@@ -66,7 +68,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorAccent"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:text="@string/unameError"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -89,17 +93,20 @@
                 android:layout_height="45dp"
                 android:layout_weight="1"
                 android:background="@drawable/boxshape_right"
-                android:inputType="date" />
+                android:inputType="date"
+                android:hint="@string/dob_hint"
+                />
 
         </LinearLayout>
 
         <id.co.skoline.view.custom.CustomTextView
-            android:id="@+id/sampleText5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="5dp"
-            android:textColor="@color/colorWhite" />
+            android:textColor="@color/colorWhite"
+            android:text="@string/dob"
+            />
 
         <id.co.skoline.view.custom.CustomTextView
             android:id="@+id/dob_error"
@@ -108,7 +115,9 @@
             android:layout_weight="1"
             android:padding="5dp"
             android:textColor="@color/colorAccent"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:text="@string/dobError"
+            />
 
         <Button
             android:id="@+id/signin"
@@ -117,7 +126,10 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/boxbutton"
             android:onClick="signIn"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:text="@string/signin_button"
+            android:textColor="@color/colorWhite"
+            />
 
         <id.co.skoline.view.custom.CustomTextView
             android:id="@+id/forgotUname"
@@ -126,7 +138,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/colorWhite"
-            android:onClick="resendUname" />
+            android:onClick="resendUname"
+            android:text="@string/forgot_Uname_text"
+            />
 
     </LinearLayout>
 

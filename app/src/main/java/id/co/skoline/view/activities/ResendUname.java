@@ -21,8 +21,6 @@ public class ResendUname extends BaseActivity{
 
     @Override
     protected void viewRelatedTask() {
-        resendUnameBinding.number.setHint(getString(R.string.number_hint));
-        resendUnameBinding.resendUname.setText(getText(R.string.resend_uname));
     }
 
     public void resendUname(View view) {

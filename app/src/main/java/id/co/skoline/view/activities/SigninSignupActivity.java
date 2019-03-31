@@ -23,12 +23,8 @@ public class SigninSignupActivity extends BaseActivity {
 
     @Override
     protected void viewRelatedTask() {
-        signinSignupBinding.appVersion.setText(getText(R.string.app_version));
-        signinSignupBinding.welcomeNote.setText(getText(R.string.welcomenote));
         signinSignupBinding.appweb.setText(Html.fromHtml(getString(R.string.app_website)));
         signinSignupBinding.appweb.setMovementMethod(LinkMovementMethod.getInstance());
-        signinSignupBinding.signIn.setText(getText(R.string.signin_button));
-        signinSignupBinding.signUp.setText(getText(R.string.signup_button));
 
     }
 

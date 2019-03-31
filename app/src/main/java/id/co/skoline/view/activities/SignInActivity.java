@@ -23,12 +23,6 @@ public class SignInActivity extends BaseActivity {
 
     @Override
     protected void viewRelatedTask() {
-        signInBinding.sampleText5.setText(getText(R.string.dob));
-        signInBinding.uname.setHint(getString(R.string.name_hint));
-        signInBinding.signin.setText(getText(R.string.signin_button));
-        signInBinding.signin.setTextColor(Color.WHITE);
-        signInBinding.forgotUname.setText(getText(R.string.forgot_Uname_text));
-        signInBinding.dob.setHint(getString(R.string.dob_hint));
 
     }
 
@@ -39,10 +33,8 @@ public class SignInActivity extends BaseActivity {
 
     public void signIn(View view) {
         if(TextUtils.isEmpty(signInBinding.uname.getText().toString())){
-            signInBinding.unameError.setText(getText(R.string.unameError));
             signInBinding.unameError.setVisibility(View.VISIBLE);
         } else if(TextUtils.isEmpty(signInBinding.dob.getText().toString())){
-            signInBinding.dobError.setText(getText(R.string.dobError));
             signInBinding.dobError.setVisibility(View.VISIBLE);
         } else {
             startActivity(new Intent(this, MainActivity.class));

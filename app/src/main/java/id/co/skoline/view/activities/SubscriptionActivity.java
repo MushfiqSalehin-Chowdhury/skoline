@@ -20,10 +20,6 @@ public class SubscriptionActivity extends BaseActivity{
 
     @Override
     protected void viewRelatedTask() {
-        subscriptionBinding.subscriptionText.setText(getText(R.string.subscriptionTxt));
-        subscriptionBinding.subs1.setText(getText(R.string.subButton1));
-        subscriptionBinding.subs2.setText(getText(R.string.subButton2));
-
     }
 
     public void sucess(View view) {

@@ -66,6 +66,7 @@
                 android:background="@drawable/box_shape"
                 android:padding="10dp"
                 android:inputType="phone"
+                android:hint="@string/number_hint"
                 />
 
         </LinearLayout>
@@ -80,6 +81,7 @@
             android:padding="5dp"
             android:onClick="resendUname"
             android:textColor="@color/colorWhite"
+            android:text="@string/resend_uname"
             />
 
     </LinearLayout>

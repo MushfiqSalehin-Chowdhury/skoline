@@ -42,43 +42,50 @@
             </LinearLayout>
 
             <id.co.skoline.view.custom.CustomTextView
-                android:id="@+id/sampleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:padding="10dp"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorWhite"
+                android:text="@string/name_info"
+                />
             <id.co.skoline.view.custom.CustomEditText
                 android:id="@+id/uname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/box_shape"
-                android:padding="10dp"/>
+                android:padding="10dp"
+                android:hint="@string/name_hint"
+                />
             <id.co.skoline.view.custom.CustomTextView
-                android:id="@+id/sampleText1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:padding="5dp"
-                android:textColor="@color/colorWhite"/>
+                android:textColor="@color/colorWhite"
+                android:text="@string/childName_info"
+                />
             <id.co.skoline.view.custom.CustomEditText
                 android:id="@+id/childName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/box_shape"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:hint="@string/childName_hint"
+                />
             <id.co.skoline.view.custom.CustomTextView
-                android:id="@+id/sampleText2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:padding="10dp"
-                android:textColor="@color/colorWhite"/>
+                android:textColor="@color/colorWhite"
+                android:text="@string/dob"
+                />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -119,7 +126,7 @@
                 <Spinner
                     android:id="@+id/country"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginRight="2dp"
                     android:background="@drawable/box_shape"
                     android:entries="@array/code"
@@ -133,7 +140,9 @@
                     android:layout_weight="1"
                     android:background="@drawable/box_shape"
                     android:padding="10dp"
-                    android:inputType="phone"/>
+                    android:inputType="phone"
+                    android:hint="@string/number_hint"
+                    />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -154,7 +163,9 @@
                     android:layout_height="45dp"
                     android:layout_weight="1"
                     android:background="@color/colorWhite"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:hint="@string/location_hint"
+                    />
                 <ImageView
                     android:layout_weight="1"
                     android:layout_width="30dp"
@@ -170,19 +181,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorWhite"
+                android:text="@string/location_info"
+                />
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1">
                 <id.co.skoline.view.custom.CustomTextView
-                    android:id="@+id/news"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:padding="10dp"
-                    android:textColor="@color/colorWhite"/>
+                    android:textColor="@color/colorWhite"
+                    android:text="@string/newspaper_text"/>
                 <android.support.v7.widget.SwitchCompat
                     style="@style/SwitchTheme"
                     android:layout_width="wrap_content"
@@ -203,7 +216,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/box_shape"
-                    android:padding="10dp"/>
+                    android:padding="10dp"
+                    android:hint="@string/email_hint"/>
             </LinearLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -234,7 +248,10 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/boxbutton"
                 android:padding="10dp"
-                android:onClick="verify" />
+                android:onClick="verify"
+                android:text="@string/signup_button"
+                android:textColor="@color/colorWhite"
+                />
         </LinearLayout>
     </ScrollView>
 </layout>

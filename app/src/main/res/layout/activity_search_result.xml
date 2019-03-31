@@ -10,7 +10,7 @@
         android:background="@color/allMenuBackgroung"
         android:orientation="vertical"
         android:weightSum="15"
-        tools:context=".view.activities.ResultActivity">
+        tools:context=".view.activities.SearchResultActivity">
 
         <include
             android:id="@+id/toolbarBinding"

@@ -27,7 +27,7 @@ public class MainActivity extends BaseActivity {
 
 
     public void search(View view) {
-        Intent i= new Intent(this,ResultActivity.class);
+        Intent i= new Intent(this, SearchResultActivity.class);
         i.putExtra("key" ,mainBinding.searchEditFrame.getText().toString());
         // Toast.makeText(this, mainMenuBinding.searchEditFrame.getText(), Toast.LENGTH_SHORT).show();
         startActivity(i);

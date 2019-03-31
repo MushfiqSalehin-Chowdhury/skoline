@@ -34,7 +34,7 @@
             android:name=".view.activities.OtpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.activities.ResultActivity"
+            android:name=".view.activities.SearchResultActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".view.activities.WelcomeVideoActivity"

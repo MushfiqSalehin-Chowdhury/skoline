@@ -41,12 +41,13 @@
 
         <id.co.skoline.view.custom.CustomTextView
             android:layout_marginTop="2dp"
-            android:id="@+id/welcomeNote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/colorWhite"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:text="@string/welcomenote"
+            />
 
         <Button
             android:layout_marginTop="10dp"
@@ -82,7 +83,8 @@
             android:clickable="true"
             android:linksClickable="true"
             android:padding="10dp"
-            android:textColorLink="@color/colorWhite" />
+            android:textColorLink="@color/colorWhite"
+            />
 
     </LinearLayout>
 

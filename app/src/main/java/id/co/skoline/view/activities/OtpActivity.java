@@ -22,16 +22,6 @@ public class OtpActivity extends BaseActivity {
 
     @Override
     protected void viewRelatedTask(){
-
-        otpBinding.sampleText.setText(getString(R.string.sms_varification_text));
-        otpBinding.sampleText.setTextColor(Color.WHITE);
-        otpBinding.vCode.setHint(getString(R.string.smsVarification_hint));
-        otpBinding.vButton.setText(getString(R.string.varificationButton_text));
-        otpBinding.vButton.setTextColor(Color.WHITE);
-        otpBinding.resendCode.setText(getString(R.string.resendCode_text));
-        otpBinding.resendCode.setTextColor(Color.WHITE);
-        otpBinding.backSignup.setText(getString(R.string.signUpBackButton_text));
-        otpBinding.backSignup.setTextColor(Color.WHITE);
     }
 
     public void backToSignUp(View view) {
@@ -42,7 +32,7 @@ public class OtpActivity extends BaseActivity {
         startActivity(new Intent(this,SignInActivity.class));
     }
 
-    public void subs(View view) {
+    public void subscriptionProcess(View view)  {
         startActivity(new Intent(this,SubscriptionActivity.class));
     }
 }

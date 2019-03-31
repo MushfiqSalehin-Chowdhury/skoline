@@ -45,6 +45,8 @@
     <string name="subButton1">Rp  15.000/bulan</string>
     <string name="subButton2">Rp  180.000/12 bulan</string>
     <string name="app_version_text">Skoline App Mode Online (version: 1.0.1)</string>
+    <string name="bonusVideo">Bonus Video Skoline </string>
+    <string name="mainmenu_txt">Some Text Here</string>
 
     <string-array name="Day">
         <item>dd</item>
