@@ -9,26 +9,23 @@
         android:layout_height="match_parent"
         android:background="@drawable/primary_gradient_bg"
         android:orientation="vertical"
-        android:padding="25dp"
-        android:weightSum="15"
+        android:padding="30dp"
         tools:context=".view.activities.SigninSignupActivity">
 
         <id.co.skoline.view.custom.CustomTextView
             android:id="@+id/appVersion"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorWhite"
-            android:gravity="center"
+            android:layout_gravity="center_horizontal"
             android:text="@string/app_version_text"
-            android:layout_weight="1"
-            android:textSize="15dp" />
+             />
 
         <ImageView
             android:id="@+id/appLogo"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="100dp"com
             android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
             android:src="@drawable/logo_skoline"/>
 
         <pl.droidsonroids.gif.GifImageView
@@ -36,7 +33,6 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
             android:src="@drawable/welcomecharacter"/>
 
         <id.co.skoline.view.custom.CustomTextView
@@ -45,7 +41,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/colorWhite"
-            android:textSize="20dp"
             android:text="@string/welcomenote"
             />
 
@@ -55,7 +50,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:layout_weight="1"
             android:onClick="signIn"
             android:text="@string/signin_button"
             android:background="@drawable/box_bluebutton"
@@ -66,7 +60,6 @@
             android:id="@+id/signUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:padding="10dp"
             android:onClick="signUp"
             android:text="@string/signup_button"
@@ -79,8 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:clickable="true"
+            android:focusable="true"
             android:linksClickable="true"
             android:padding="10dp"
             android:textColorLink="@color/colorWhite"

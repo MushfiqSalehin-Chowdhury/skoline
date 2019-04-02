@@ -10,59 +10,58 @@
         android:layout_height="match_parent"
         android:background="@drawable/orange_gradient_bg"
         android:orientation="vertical"
-        android:padding="25dp"
-        android:weightSum="15"
+        android:padding="30dp"
         tools:context=".view.activities.ResendUnamese">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:weightSum="2"
             >
 
             <ImageView
                 android:id="@+id/appLogo"
-                android:layout_width="wrap_content"
-                android:layout_height="84dp"
-                android:layout_marginRight="170dp"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:src="@drawable/logo_skoline"
+                android:gravity="start"
                 android:layout_weight="1"
-                android:src="@drawable/logo_skoline" />
+                />
 
             <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/welcomeLogo"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="20dp"
+                android:src="@drawable/fajar"
                 android:layout_weight="1"
-                android:src="@drawable/fajar" />
+                />
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="2">
 
             <Spinner
                 android:id="@+id/country"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginRight="2dp"
+                android:layout_height="48dp"
                 android:background="@drawable/box_shape"
                 android:entries="@array/code"
-                android:padding="5dp">
+                android:padding="5dp"
+                >
 
             </Spinner>
 
             <id.co.skoline.view.custom.CustomEditText
                 android:id="@+id/number"
-                android:layout_width="240dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
+                android:layout_marginStart="10dp"
                 android:background="@drawable/box_shape"
                 android:padding="10dp"
                 android:inputType="phone"

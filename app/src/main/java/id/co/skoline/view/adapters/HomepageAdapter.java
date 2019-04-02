@@ -22,6 +22,7 @@ public class HomepageAdapter extends BaseAdapter {
             R.drawable.class3,
             R.drawable.class4,
             R.drawable.class5,
+            R.drawable.class6,
             R.drawable.class6
     };
 
@@ -56,8 +57,8 @@ public class HomepageAdapter extends BaseAdapter {
 
         ImageView imageView =(ImageView) gridView.findViewById(R.id.grid_image);
         imageView.setImageResource(mThumbIds[position]);
-       /* imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        imageView.setLayoutParams(new GridView.LayoutParams(600, 300));*/
+        imageView.setAdjustViewBounds(true);
+      //  imageView.setLayoutParams(new GridView.LayoutParams(500,200));
         return imageView;
     }
 }

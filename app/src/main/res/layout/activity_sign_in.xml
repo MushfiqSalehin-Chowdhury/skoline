@@ -9,41 +9,40 @@
         android:layout_height="match_parent"
         android:background="@drawable/orange_gradient_bg"
         android:orientation="vertical"
-        android:padding="25dp"
-        android:weightSum="15"
+        android:padding="30dp"
         tools:context=".view.activities.OtpActivity">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:weightSum="2">
+            >
 
             <ImageView
                 android:id="@+id/appLogo"
-                android:layout_width="wrap_content"
-                android:layout_height="84dp"
-                android:layout_marginRight="170dp"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:src="@drawable/logo_skoline"
+                android:gravity="start"
                 android:layout_weight="1"
-                android:src="@drawable/logo_skoline" />
+                />
 
             <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/welcomeLogo"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="20dp"
+                android:src="@drawable/fajar"
                 android:layout_weight="1"
-                android:src="@drawable/fajar" />
+                />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="2">
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="40dp"
@@ -54,7 +53,7 @@
 
             <id.co.skoline.view.custom.CustomEditText
                 android:id="@+id/uname"
-                android:layout_width="300dp"
+                android:layout_width="0dp"
                 android:layout_height="45dp"
                 android:layout_weight="1"
                 android:background="@drawable/boxshape_right"
@@ -70,15 +69,14 @@
             android:textColor="@color/colorAccent"
             android:visibility="gone"
             android:text="@string/unameError"
+            android:layout_weight="1"
             />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="2">
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="40dp"
@@ -89,11 +87,10 @@
 
             <id.co.skoline.view.custom.CustomEditText
                 android:id="@+id/dob"
-                android:layout_width="300dp"
+                android:layout_width="0dp"
                 android:layout_height="45dp"
                 android:layout_weight="1"
                 android:background="@drawable/boxshape_right"
-                android:inputType="date"
                 android:hint="@string/dob_hint"
                 />
 
@@ -102,7 +99,6 @@
         <id.co.skoline.view.custom.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:padding="5dp"
             android:textColor="@color/colorWhite"
             android:text="@string/dob"
@@ -112,7 +108,6 @@
             android:id="@+id/dob_error"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:padding="5dp"
             android:textColor="@color/colorAccent"
             android:visibility="gone"
@@ -140,6 +135,7 @@
             android:textColor="@color/colorWhite"
             android:onClick="resendUname"
             android:text="@string/forgot_Uname_text"
+
             />
 
     </LinearLayout>

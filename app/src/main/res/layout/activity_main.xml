@@ -9,7 +9,6 @@
         android:layout_height="match_parent"
         android:background="@color/allMenuBackgroung"
         android:orientation="vertical"
-        android:weightSum="15"
         tools:context=".view.activities.MainMenuActivity">
 
         <include
@@ -19,114 +18,114 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="?attr/actionBarSize"
             android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp"
-            android:weightSum="3">
+            android:padding="10dp">
 
-            <id.co.skoline.view.custom.CustomEditText
-                android:id="@+id/search_edit_frame"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/box_shape"
-                android:padding="10dp" />
+                android:orientation="horizontal"
+                >
 
-            <ImageView
-                android:id="@+id/search_mag_icon"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/boxshape_right"
-                android:onClick="search"
-                android:padding="10dp"
-                android:src="@drawable/search_mag" />
+                <id.co.skoline.view.custom.CustomEditText
+                    android:id="@+id/search_edit_frame"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/box_shape" />
+
+                <ImageView
+                    android:id="@+id/search_mag_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/boxshape_right"
+                    android:onClick="search"
+                    android:padding="5dp"
+                    android:src="@drawable/search_mag" />
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/profile_img"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_weight="1"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
                 android:src="@drawable/profile_img"
+                />
+                </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_weight="1"
+            android:weightSum="3"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/boxshape_top"
+                android:src="@drawable/logo_skoline"
+                android:layout_weight="2"
+
+                />
+            <id.co.skoline.view.custom.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/boxshape_bottom"
+                android:gravity="center_horizontal"
+                android:text="@string/mainmenu_txt"
+                android:textColor="@android:color/white"
+                android:layout_weight="1"
                 />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp"
-            android:weightSum="2">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_weight="1"
-                android:background="@drawable/boxshape_top"
-                android:src="@drawable/logo_skoline" />
-            activity_result
-            <id.co.skoline.view.custom.CustomTextView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:background="@drawable/boxshape_bottom"
-                android:gravity="center_horizontal"
-                android:text="@string/mainmenu_txt"
-                android:textColor="@android:color/white" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/grid"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:weightSum="2">
-
-            <GridView
-                android:id="@+id/grid_view"
+                android:id="@+id/grid"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="6dp"
-                android:layout_weight="1"
-                android:numColumns="2"
-                android:verticalSpacing="10dp">
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:layout_weight="2"
+                >
 
-            </GridView>
+                <GridView
+                    android:id="@+id/grid_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numColumns="2"
+                    android:verticalSpacing="8dp"
+                    android:horizontalSpacing="10dp"
+                    >
+                </GridView>
+            </LinearLayout>
 
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:padding="10dp"
+                android:layout_weight="1"
+                >
+
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:paddingBottom="9dp"
-                    android:src="@drawable/class7" />
-
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/class7"
+                    />
                 <id.co.skoline.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center_horizontal"
-                    android:layout_marginBottom="18dp"
-                    android:textColor="@android:color/white"
-                    android:text="@string/bonusVideo"
+                    android:text="Bonus video"
+                    android:textColor="@color/colorWhite"
                     />
-
 
             </FrameLayout>
 
 
-        </LinearLayout>
+
+
     </LinearLayout>
 </layout>
