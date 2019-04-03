@@ -45,7 +45,7 @@
             android:name=".view.activities.SubscriptionActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.activities.SigninSignupActivity"
+            android:name=".view.activities.WelcomePageActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.activities.ResendUname"

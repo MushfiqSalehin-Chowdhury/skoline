@@ -10,138 +10,136 @@
         android:background="@drawable/orange_gradient_bg"
         android:orientation="vertical"
         android:padding="25dp"
-        android:weightSum="15"
         tools:context=".view.activities.OtpActivity">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:weightSum="2">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/appLogo"
-                android:layout_width="wrap_content"
-                android:layout_height="84dp"
-                android:layout_marginRight="170dp"
-                android:layout_weight="1"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
                 android:src="@drawable/logo_skoline" />
 
             <pl.droidsonroids.gif.GifImageView
+                android:layout_below="@id/appLogo"
                 android:id="@+id/welcomeLogo"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="1"
                 android:src="@drawable/fajar" />
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="2">
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="2"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="45dp"
-                android:src="@drawable/man"
-                android:background="@drawable/boxshape_left"
-                android:padding="5dp" />
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/man"
+                    android:background="@drawable/boxshape_left"
+                    android:padding="5dp" />
 
-            <id.co.skoline.view.custom.CustomEditText
-                android:id="@+id/uname"
-                android:layout_width="300dp"
-                android:layout_height="45dp"
-                android:layout_weight="1"
-                android:background="@drawable/boxshape_right"
-                android:hint="@string/name_hint"
+                <id.co.skoline.view.custom.CustomEditText
+                    android:id="@+id/uname"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/boxshape_right"
+                    android:hint="@string/name_hint"
+                    />
+
+            </LinearLayout>
+
+            <id.co.skoline.view.custom.CustomTextView
+                android:id="@+id/uname_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:visibility="gone"
+                android:text="@string/unameError"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/locked"
+                    android:background="@drawable/boxshape_left"
+                    android:padding="5dp" />
+
+                <id.co.skoline.view.custom.CustomEditText
+                    android:id="@+id/dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/boxshape_right"
+                    android:inputType="date"
+                    android:hint="@string/dob_hint"
+                    />
+
+            </LinearLayout>
+
+            <id.co.skoline.view.custom.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="@color/colorWhite"
+                android:text="@string/dob"
+                />
+
+            <id.co.skoline.view.custom.CustomTextView
+                android:id="@+id/dob_error"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="@color/colorAccent"
+                android:visibility="gone"
+                android:text="@string/dobError"
+                />
+
+            <Button
+                android:id="@+id/signin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/boxbutton"
+                android:onClick="signIn"
+                android:padding="5dp"
+                android:text="@string/signin_button"
+                android:textColor="@color/colorWhite"
+                />
+
+            <id.co.skoline.view.custom.CustomTextView
+                android:id="@+id/forgotUname"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorWhite"
+                android:onClick="resendUname"
+                android:text="@string/forgot_Uname_text"
                 />
 
         </LinearLayout>
-
-        <id.co.skoline.view.custom.CustomTextView
-            android:id="@+id/uname_error"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorAccent"
-            android:visibility="gone"
-            android:text="@string/unameError"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="45dp"
-                android:src="@drawable/locked"
-                android:background="@drawable/boxshape_left"
-                android:padding="5dp" />
-
-            <id.co.skoline.view.custom.CustomEditText
-                android:id="@+id/dob"
-                android:layout_width="300dp"
-                android:layout_height="45dp"
-                android:layout_weight="1"
-                android:background="@drawable/boxshape_right"
-                android:inputType="date"
-                android:hint="@string/dob_hint"
-                />
-
-        </LinearLayout>
-
-        <id.co.skoline.view.custom.CustomTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="5dp"
-            android:textColor="@color/colorWhite"
-            android:text="@string/dob"
-            />
-
-        <id.co.skoline.view.custom.CustomTextView
-            android:id="@+id/dob_error"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="5dp"
-            android:textColor="@color/colorAccent"
-            android:visibility="gone"
-            android:text="@string/dobError"
-            />
-
-        <Button
-            android:id="@+id/signin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/boxbutton"
-            android:onClick="signIn"
-            android:padding="5dp"
-            android:text="@string/signin_button"
-            android:textColor="@color/colorWhite"
-            />
-
-        <id.co.skoline.view.custom.CustomTextView
-            android:id="@+id/forgotUname"
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/colorWhite"
-            android:onClick="resendUname"
-            android:text="@string/forgot_Uname_text"
-            />
 
     </LinearLayout>
+
 
 </layout>

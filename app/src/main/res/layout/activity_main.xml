@@ -32,7 +32,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/box_shape" />
+                    android:background="@drawable/box_shape"
+                   />
 
                 <ImageView
                     android:id="@+id/search_mag_icon"
@@ -43,14 +44,13 @@
                     android:padding="5dp"
                     android:src="@drawable/search_mag" />
             </LinearLayout>
-
             <ImageView
                 android:id="@+id/profile_img"
                 android:layout_width="50dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:src="@drawable/profile_img"
-                android:onClick="profile" />
-
+                android:onClick="profile"
+               />
         </LinearLayout>
 
         <LinearLayout
@@ -67,7 +67,6 @@
                 android:background="@drawable/boxshape_top"
                 android:src="@drawable/logo_skoline"
                 android:layout_weight="2" />
-
             <id.co.skoline.view.custom.CustomTextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -75,37 +74,29 @@
                 android:gravity="center_horizontal"
                 android:text="@string/mainmenu_txt"
                 android:textColor="@android:color/white"
-                android:layout_weight="1"
-                />
+                android:layout_weight="1" />
         </LinearLayout>
-
         <LinearLayout
                 android:id="@+id/grid"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:orientation="vertical"
                 android:padding="10dp"
-                android:layout_weight="2"
-                >
-
+                android:layout_weight="2">
                 <GridView
                     android:id="@+id/grid_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:numColumns="2"
                     android:verticalSpacing="8dp"
-                    android:horizontalSpacing="10dp"
-                    >
+                    android:horizontalSpacing="10dp">
                 </GridView>
             </LinearLayout>
-
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:padding="10dp"
-                android:layout_weight="1"
-                >
-
+                android:layout_weight="1">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -118,11 +109,6 @@
                     android:text="Bonus video"
                     android:textColor="@color/colorWhite"
                     />
-
             </FrameLayout>
-
-
-
-
     </LinearLayout>
 </layout>

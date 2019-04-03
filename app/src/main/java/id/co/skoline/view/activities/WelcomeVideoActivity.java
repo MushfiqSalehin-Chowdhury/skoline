@@ -5,7 +5,6 @@ import android.databinding.DataBindingUtil;
 import android.os.CountDownTimer;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.VideoView;
 
 import id.co.skoline.R;
 import id.co.skoline.databinding.ActivityWelcomeVideoBinding;
@@ -37,7 +36,7 @@ public class WelcomeVideoActivity extends BaseActivity{
     }
 
     public void stream(View view) {
-        startActivity(new Intent(WelcomeVideoActivity.this,SigninSignupActivity.class));
+        startActivity(new Intent(WelcomeVideoActivity.this, WelcomePageActivity.class));
         finish();
     }
 }

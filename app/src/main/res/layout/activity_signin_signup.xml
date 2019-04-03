@@ -9,82 +9,82 @@
         android:layout_height="match_parent"
         android:background="@drawable/primary_gradient_bg"
         android:orientation="vertical"
-        android:padding="25dp"
-        android:weightSum="15"
-        tools:context=".view.activities.SigninSignupActivity">
+        android:padding="30dp"
+        tools:context=".view.activities.WelcomePageActivity">
 
-        <id.co.skoline.view.custom.CustomTextView
-            android:id="@+id/appVersion"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
-            android:gravity="center"
-            android:text="@string/app_version_text"
-            android:layout_weight="1"
-            android:textSize="15dp" />
+            android:orientation="vertical"
 
-        <ImageView
-            android:id="@+id/appLogo"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:src="@drawable/logo_skoline"/>
+            >
+            <id.co.skoline.view.custom.CustomTextView
+                android:id="@+id/appVersion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:gravity="start"
+                android:text="@string/app_version_text"
+                android:textSize="15sp"
+                />
+            <ImageView
+                android:id="@+id/appLogo"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/logo_skoline"
+               />
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/welcomeLogo"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/welcomecharacter"/>
+            <id.co.skoline.view.custom.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                android:text="@string/welcomenote"
 
-        <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/welcomeLogo"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:src="@drawable/welcomecharacter"/>
+                />
+            <Button
+                android:layout_marginTop="10dp"
+                android:id="@+id/signIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:onClick="signIn"
+                android:text="@string/signin_button"
+                android:background="@drawable/box_bluebutton"
+                android:textColor="@color/colorWhite"
+                />
 
-        <id.co.skoline.view.custom.CustomTextView
-            android:layout_marginTop="2dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/colorWhite"
-            android:textSize="20dp"
-            android:text="@string/welcomenote"
-            />
+            <Button
+                android:layout_marginTop="10dp"
+                android:id="@+id/signUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:onClick="signUp"
+                android:text="@string/signup_button"
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/box_bluebutton"
+                />
 
-        <Button
-            android:layout_marginTop="10dp"
-            android:id="@+id/signIn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:onClick="signIn"
-            android:text="@string/signin_button"
-            android:background="@drawable/box_bluebutton"
-            android:textColor="@color/colorWhite" />
+            <id.co.skoline.view.custom.CustomTextView
+                android:id="@+id/appweb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:linksClickable="true"
+                android:padding="10dp"
+                android:textColorLink="@color/colorWhite"/>
+        </LinearLayout>
 
-        <Button
-            android:layout_marginTop="15dp"
-            android:id="@+id/signUp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="10dp"
-            android:onClick="signUp"
-            android:text="@string/signup_button"
-            android:textColor="@color/colorWhite"
-            android:background="@drawable/box_bluebutton" />
-
-        <id.co.skoline.view.custom.CustomTextView
-            android:id="@+id/appweb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:linksClickable="true"
-            android:padding="10dp"
-            android:textColorLink="@color/colorWhite"
-            />
 
     </LinearLayout>
 

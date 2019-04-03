@@ -23,7 +23,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="20dp"
                 >
 
                 <FrameLayout
@@ -69,15 +68,25 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="350dp"
                 android:orientation="vertical"
-                android:layout_gravity="center
-"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
                 >
+                <id.co.skoline.view.custom.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Activities"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:background="@drawable/box_shape"
+                    />
 
                 <lecho.lib.hellocharts.view.PieChartView
                     android:id="@+id/chart"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -92,34 +101,187 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp"
-                >
+                android:padding="20dp">
+                <id.co.skoline.view.custom.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Progress"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:background="@drawable/box_shape"
+                    />
 
-               <id.co.skoline.view.custom.CustomTextView
+                <id.co.skoline.view.custom.CustomTextView
+                   android:layout_marginTop="20dp"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="ksbdksb"
                    />
-
                 <FrameLayout
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
-
+                    android:layout_height="wrap_content">
                     <ProgressBar
                         android:id="@+id/progress"
                         style="@android:style/Widget.ProgressBar.Horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:progressDrawable="@drawable/greenprogress"
-                        android:progress="45"
-                        />
-
+                        android:progress="45" />
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        >
-
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="40%"
+                            android:layout_marginLeft="40dp"
+                            android:textSize="20sp"
+                            />
+                    </LinearLayout>
+                </FrameLayout>
+                <id.co.skoline.view.custom.CustomTextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ksbdksb"
+                    />
+                <FrameLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ProgressBar
+                        android:id="@+id/progress2"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:progressDrawable="@drawable/greenprogress"
+                        android:progress="45" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="40%"
+                            android:layout_marginLeft="40dp"
+                            android:textSize="20sp"
+                            />
+                    </LinearLayout>
+                </FrameLayout>
+                <id.co.skoline.view.custom.CustomTextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ksbdksb"
+                    />
+                <FrameLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ProgressBar
+                        android:id="@+id/progress3"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:progressDrawable="@drawable/greenprogress"
+                        android:progress="45" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="40%"
+                            android:layout_marginLeft="40dp"
+                            android:textSize="20sp"
+                            />
+                    </LinearLayout>
+                </FrameLayout>
+                <id.co.skoline.view.custom.CustomTextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ksbdksb"
+                    />
+                <FrameLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ProgressBar
+                        android:id="@+id/progress4"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:progressDrawable="@drawable/greenprogress"
+                        android:progress="45" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="40%"
+                            android:layout_marginLeft="40dp"
+                            android:textSize="20sp"
+                            />
+                    </LinearLayout>
+                </FrameLayout>
+                <id.co.skoline.view.custom.CustomTextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ksbdksb"
+                    />
+                <FrameLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ProgressBar
+                        android:id="@+id/progress5"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:progressDrawable="@drawable/greenprogress"
+                        android:progress="45" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="40%"
+                            android:layout_marginLeft="40dp"
+                            android:textSize="20sp"
+                            />
+                    </LinearLayout>
+                </FrameLayout>
+                <id.co.skoline.view.custom.CustomTextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ksbdksb"
+                    />
+                <FrameLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ProgressBar
+                        android:id="@+id/progress6"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:progressDrawable="@drawable/greenprogress"
+                        android:progress="45" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -131,7 +293,6 @@
                     </LinearLayout>
                 </FrameLayout>
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 
