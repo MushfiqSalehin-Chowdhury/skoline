@@ -10,74 +10,77 @@
         android:background="@drawable/primary_gradient_bg"
         android:orientation="vertical"
         android:padding="30dp"
-        tools:context=".view.activities.SigninSignupActivity">
+        tools:context=".view.activities.WelcomePageActivity">
 
-        <id.co.skoline.view.custom.CustomTextView
-            android:id="@+id/appVersion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/app_version_text"
-             />
-
-        <ImageView
-            android:id="@+id/appLogo"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/logo_skoline"/>
-
-        <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/welcomeLogo"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/welcomecharacter"/>
-
-        <id.co.skoline.view.custom.CustomTextView
-            android:layout_marginTop="2dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/colorWhite"
-            android:text="@string/welcomenote"
-            />
-
-        <Button
-            android:layout_marginTop="10dp"
-            android:id="@+id/signIn"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:onClick="signIn"
-            android:text="@string/signin_button"
-            android:background="@drawable/box_bluebutton"
-            android:textColor="@color/colorWhite" />
+            android:orientation="vertical" />
 
-        <Button
-            android:layout_marginTop="15dp"
-            android:id="@+id/signUp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:onClick="signUp"
-            android:text="@string/signup_button"
-            android:textColor="@color/colorWhite"
-            android:background="@drawable/box_bluebutton" />
+            <id.co.skoline.view.custom.CustomTextView
+                android:id="@+id/appVersion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:gravity="start"
+                android:text="@string/app_version_text"
+                android:textSize="15sp" />
 
-        <id.co.skoline.view.custom.CustomTextView
-            android:id="@+id/appweb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:focusable="true"
-            android:linksClickable="true"
-            android:padding="10dp"
-            android:textColorLink="@color/colorWhite"
-            />
+            <ImageView
+                android:id="@+id/appLogo"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/logo_skoline"
+               />
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/welcomeLogo"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/welcomecharacter"/>
+            <id.co.skoline.view.custom.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                android:text="@string/welcomenote"
 
-    </LinearLayout>
+                />
+            <Button
+                android:layout_marginTop="10dp"
+                android:id="@+id/signIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:onClick="signIn"
+                android:text="@string/signin_button"
+                android:background="@drawable/box_bluebutton"
+                android:textColor="@color/colorWhite"
+                />
+
+            <Button
+                android:layout_marginTop="10dp"
+                android:id="@+id/signUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:onClick="signUp"
+                android:text="@string/signup_button"
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/box_bluebutton"
+                />
+
+            <id.co.skoline.view.custom.CustomTextView
+                android:id="@+id/appweb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:linksClickable="true"
+                android:padding="10dp"
+                android:textColorLink="@color/colorWhite"/>
+        </LinearLayout>
 
 </layout>

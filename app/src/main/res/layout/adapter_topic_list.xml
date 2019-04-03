@@ -9,6 +9,7 @@
         android:layout_height="match_parent"
         android:background="@color/allMenuBackgroung"
         android:orientation="vertical"
+        tools:context=".view.activities.SearchResultActivity"
         >
 
         <include
@@ -35,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:text="Found items here"
                     android:layout_marginTop="20dp" />
-            </LinearLayout>
+                </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

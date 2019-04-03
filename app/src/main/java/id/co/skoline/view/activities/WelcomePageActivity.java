@@ -11,7 +11,7 @@ import android.view.View;
 import id.co.skoline.R;
 import id.co.skoline.databinding.ActivitySigninSignupBinding;
 
-public class SigninSignupActivity extends BaseActivity {
+public class WelcomePageActivity extends BaseActivity {
 
     ActivitySigninSignupBinding signinSignupBinding;
 

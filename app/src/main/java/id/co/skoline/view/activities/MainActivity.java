@@ -32,4 +32,8 @@ public class MainActivity extends BaseActivity {
         // Toast.makeText(this, mainMenuBinding.searchEditFrame.getText(), Toast.LENGTH_SHORT).show();
         startActivity(i);
     }
+
+    public void profile(View view) {
+        startActivity(new Intent(this,ProfileActivity.class));
+    }
 }
