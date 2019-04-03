@@ -47,6 +47,12 @@
     <string name="app_version_text">Skoline App Mode Online (version: 1.0.1)</string>
     <string name="bonusVideo">Bonus Video Skoline </string>
     <string name="mainmenu_txt">Some Text Here</string>
+    <string name="helpPage_title">Help Page Title</string>
+    <string name="faq">FAQ  goes "\n" here "\n" and "\n" here</string>
+    <string name="contacts">Contact</string>
+    <string name="address">Address goes "\n" here "\n" and "\n" here</string>
+    <string name="mail">Mail info here</string>
+
 
     <string-array name="Day">
         <item>dd</item>
