@@ -1,5 +1,6 @@
 package id.co.skoline.view.activities;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -40,22 +41,26 @@ public class ProfileActivity extends BaseActivity {
 
     @Override
     protected void viewRelatedTask() {
+        setToolbar("Profile",true,profileBinding.toolbarBinding);
 
     }
 
     public void showMenu(View view) {
         PopupMenu popup = new PopupMenu(ProfileActivity.this,profileBinding.menu);
-        //Inflating the Popup using xml file
         popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());
 
-        //registering popup with OnMenuItemClickListener
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            public boolean onMenuItemClick(MenuItem item) {
-                Toast.makeText(ProfileActivity.this,"You Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        });
+        popup.setOnMenuItemClickListener(item -> {
 
+            if(item.getTitle().equals("Help")){
+                Toast.makeText(ProfileActivity.this,"You Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+            else if(item.getTitle().equals("Logout")){
+
+                startActivity(new Intent(this,WelcomePageActivity.class));
+            }
+
+            return true;
+        });
         popup.show();//showing popup menu
     }
 }

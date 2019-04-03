@@ -32,8 +32,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/box_shape"
-                   />
+                    android:background="@drawable/box_shape" />
 
                 <ImageView
                     android:id="@+id/search_mag_icon"
@@ -49,8 +48,7 @@
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/profile_img"
-                android:onClick="profile"
-               />
+                android:onClick="profile" />
         </LinearLayout>
 
         <LinearLayout
@@ -100,15 +98,13 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/class7"
-                    />
+                    android:background="@drawable/class7" />
                 <id.co.skoline.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center_horizontal"
                     android:text="Bonus video"
-                    android:textColor="@color/colorWhite"
-                    />
+                    android:textColor="@color/colorWhite" />
             </FrameLayout>
     </LinearLayout>
 </layout>

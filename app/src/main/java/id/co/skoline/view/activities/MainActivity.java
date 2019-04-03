@@ -12,6 +12,7 @@ import id.co.skoline.view.adapters.HomepageAdapter;
 public class MainActivity extends BaseActivity {
 
     ActivityMainBinding mainBinding;
+    String titleToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,8 @@ public class MainActivity extends BaseActivity {
     }
 
     public void profile(View view) {
+
+
         startActivity(new Intent(this,ProfileActivity.class));
     }
 }

@@ -49,8 +49,7 @@
                 android:padding="10dp"
                 android:textColor="@color/colorWhite"
                 android:text="@string/sms_varification_text"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
 
             <id.co.skoline.view.custom.CustomEditText
                 android:id="@+id/varificationCode"
@@ -58,9 +57,7 @@
                 android:layout_height="60dp"
                 android:background="@drawable/box_shape"
                 android:padding="5dp"
-                android:hint="@string/smsVarification_hint"
-                />
-
+                android:hint="@string/smsVarification_hint" />
             <Button
                 android:id="@+id/varifyButton"
                 android:layout_width="match_parent"
@@ -70,8 +67,7 @@
                 android:padding="5dp"
                 android:onClick="signIn"
                 android:textColor="@color/colorWhite"
-                android:text="@string/varificationButton_text"
-                />
+                android:text="@string/varificationButton_text" />
 
             <Button
                 android:id="@+id/resendCodeButton"
@@ -82,8 +78,7 @@
                 android:padding="5dp"
                 android:onClick="subscriptionProcess"
                 android:text="@string/resendCode_text"
-                android:textColor="@color/colorWhite"
-                />
+                android:textColor="@color/colorWhite" />
 
             <Button
                 android:id="@+id/backSignupButton"
@@ -94,17 +89,8 @@
                 android:padding="5dp"
                 android:onClick="backToSignUp"
                 android:textColor="@color/colorWhite"
-                android:text="@string/signUpBackButton_text"
-                />
+                android:text="@string/signUpBackButton_text" />
 
         </LinearLayout>
-
-
-
-
-
     </LinearLayout>
-
-
-
 </layout>
