@@ -5,6 +5,7 @@
     <color name="colorAccent">#E75643</color>
     <color name="colorOrange">#F19B37</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorWhiteLight">#88FFFFFF</color>
     <color name ="blueButton">#2167bb</color>
     <color name ="magenta">#F74980</color>
     <color name ="purple">#7e2b63</color>

@@ -22,7 +22,6 @@ public class HomepageAdapter extends BaseAdapter {
             R.drawable.class3,
             R.drawable.class4,
             R.drawable.class5,
-            R.drawable.class6,
             R.drawable.class6
     };
 

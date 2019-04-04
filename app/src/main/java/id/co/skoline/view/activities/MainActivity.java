@@ -23,7 +23,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void viewRelatedTask() {
-        mainBinding.gridView.setAdapter(new HomepageAdapter(this));
+       /* mainBinding.gridView.setAdapter(new HomepageAdapter(this));*/
     }
 
 
@@ -35,8 +35,6 @@ public class MainActivity extends BaseActivity {
     }
 
     public void profile(View view) {
-
-
         startActivity(new Intent(this,ProfileActivity.class));
     }
 }

@@ -23,12 +23,12 @@ public class SubscriptionActivity extends BaseActivity{
     }
 
     public void sucess(View view) {
-        subscriptionBinding.appLogo.setVisibility(View.GONE);
+        /*subscriptionBinding.appLogo.setVisibility(View.GONE);
         subscriptionBinding.subs1.setVisibility(View.GONE);
         subscriptionBinding.subs2.setVisibility(View.GONE);
         subscriptionBinding.subscriptionText.setVisibility(View.GONE);
         subscriptionBinding.subsCriptionLogo1.setVisibility(View.VISIBLE);
-        subscriptionBinding.subsCriptionLogo.setVisibility(View.GONE);
+        subscriptionBinding.subsCriptionLogo.setVisibility(View.GONE);*/
     }
 
     public void failed(View view) {

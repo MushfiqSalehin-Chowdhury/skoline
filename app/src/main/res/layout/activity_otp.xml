@@ -3,9 +3,7 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    >
-
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,33 +13,29 @@
         android:padding="25dp"
         tools:context=".view.activities.OtpActivity">
 
-        <RelativeLayout
+        <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_weight="1"/>
 
-            <ImageView
-                android:id="@+id/appLogo"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:layout_alignParentStart="true"
-                android:src="@drawable/logo_skoline" />
+        <ImageView
+            android:id="@+id/appLogo"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:src="@drawable/logo_skoline" />
 
-            <pl.droidsonroids.gif.GifImageView
-                android:layout_below="@id/appLogo"
-                android:id="@+id/welcomeLogo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/fajar" />
-        </RelativeLayout>
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/welcomeLogo"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/fajar" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:orientation="vertical">
+
             <id.co.skoline.view.custom.CustomTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -54,17 +48,17 @@
             <id.co.skoline.view.custom.CustomEditText
                 android:id="@+id/varificationCode"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/box_shape"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:hint="@string/smsVarification_hint" />
             <Button
                 android:id="@+id/varifyButton"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/boxbutton"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:onClick="signIn"
                 android:textColor="@color/colorWhite"
                 android:text="@string/varificationButton_text" />
@@ -72,10 +66,10 @@
             <Button
                 android:id="@+id/resendCodeButton"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/boxbutton"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:onClick="subscriptionProcess"
                 android:text="@string/resendCode_text"
                 android:textColor="@color/colorWhite" />
@@ -83,14 +77,19 @@
             <Button
                 android:id="@+id/backSignupButton"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/boxbutton"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:onClick="backToSignUp"
                 android:textColor="@color/colorWhite"
                 android:text="@string/signUpBackButton_text" />
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
     </LinearLayout>
 </layout>
