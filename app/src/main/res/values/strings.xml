@@ -53,6 +53,7 @@
     <string name="address">Address goes "\n" here "\n" and "\n" here</string>
     <string name="mail">Mail info here</string>
     <string name="class_list">Class List</string>
+    <string name="loading_data">Loading data...</string>
 
 
     <string-array name="Day">

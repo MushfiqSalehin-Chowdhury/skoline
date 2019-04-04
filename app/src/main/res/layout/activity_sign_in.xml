@@ -50,7 +50,9 @@
                 android:layout_height="45dp"
                 android:background="@drawable/boxshape_right"
                 android:hint="@string/name_hint"
-                />
+                android:inputType="text"
+                android:maxLines="1"
+                android:imeOptions="actionNext"/>
 
         </LinearLayout>
 
@@ -61,7 +63,9 @@
             android:textColor="@color/colorAccent"
             android:visibility="gone"
             android:text="@string/unameError"
-            />
+            android:inputType="text"
+            android:maxLines="1"
+            android:imeOptions="actionDone"/>
 
         <LinearLayout
             android:layout_width="match_parent"
