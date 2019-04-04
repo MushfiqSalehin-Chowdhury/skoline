@@ -52,13 +52,13 @@ public class ProfileActivity extends BaseActivity {
         popup.setOnMenuItemClickListener(item -> {
 
             if(item.getTitle().equals("Help")){
-                Toast.makeText(ProfileActivity.this,"You Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this,HelpActivity.class));
             }
             else if(item.getTitle().equals("Logout")){
 
                 startActivity(new Intent(this,WelcomePageActivity.class));
+                finish();
             }
-
             return true;
         });
         popup.show();//showing popup menu
