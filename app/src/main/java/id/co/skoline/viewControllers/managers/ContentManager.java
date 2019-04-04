@@ -26,7 +26,7 @@ public class ContentManager {
     private Context context;
     private ApiHandler apiHandler;
     KlassesListener klassesListener;
-    String reqIdKlasses;
+    private String reqIdKlasses;
 
     public ContentManager(Context context){
         this.context = context;
