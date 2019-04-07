@@ -3,9 +3,9 @@
     android:shape="rectangle" >
 
     <gradient
-        android:endColor="@color/colorPrimary"
+        android:endColor="@color/colorPrimaryDark"
         android:gradientRadius="600"
-        android:startColor="#86d6d5"
+        android:startColor="@color/colorPrimaryLight"
         android:type="radial" >
     </gradient>
 

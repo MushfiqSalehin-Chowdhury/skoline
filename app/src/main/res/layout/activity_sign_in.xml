@@ -16,7 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"/>
-
         <ImageView
             android:id="@+id/appLogo"
             android:layout_width="150dp"
@@ -58,7 +57,7 @@
             android:id="@+id/uname_error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorAccent"
+            android:textColor="@android:color/holo_red_dark"
             android:visibility="gone"
             android:text="@string/unameError"
             />
@@ -101,7 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:textColor="@color/colorAccent"
+            android:textColor="@android:color/holo_red_dark"
             android:visibility="gone"
             android:text="@string/dobError"
             />
@@ -128,6 +127,7 @@
             android:onClick="resendUname"
             android:text="@string/forgot_Uname_text"
             />
+
 
         <View
             android:layout_width="match_parent"

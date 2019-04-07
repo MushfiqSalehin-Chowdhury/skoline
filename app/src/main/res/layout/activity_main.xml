@@ -75,13 +75,13 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
-                        android:background="@drawable/boxshape_top"
+                        android:background="@drawable/menu_boxtop"
                         android:src="@drawable/logo_skoline" />
 
                     <id.co.skoline.view.custom.CustomTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/boxshape_bottom"
+                        android:background="@drawable/menu_boxbottom"
                         android:gravity="center_horizontal"
                         android:text="@string/mainmenu_txt"
                         android:padding="10dp"
