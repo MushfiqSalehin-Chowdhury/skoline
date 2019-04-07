@@ -5,6 +5,7 @@ import android.content.Context;
 import android.util.Log;
 import java.io.IOException;
 import java.net.UnknownHostException;
+import java.util.HashMap;
 
 import id.co.skoline.R;
 import okhttp3.ResponseBody;
@@ -22,7 +23,7 @@ public abstract class ApiHandler {
         this.context = context;
     }
 
-    public void httpRequest(String baseUrl, String path, String requestType, String requestId, String requestBody) {
+    public void httpRequest(String baseUrl, String path, String requestType, String requestId, HashMap hashMap) {
         try {
             startApiCall(requestId);
             Call<ResponseBody> bodyToCall = null;
@@ -30,7 +31,7 @@ public abstract class ApiHandler {
             if (requestType.toLowerCase().equals("get"))
                 bodyToCall = ApiClient.callRetrofit(context, baseUrl, requestId).getRequest(path);
             else if (requestType.toLowerCase().equals("post"))
-                bodyToCall = ApiClient.callRetrofit(context, baseUrl, requestId).postRequest(path, requestBody);
+                bodyToCall = ApiClient.callRetrofit(context, baseUrl, requestId).postRequest(path, hashMap);
 
             bodyToCall.enqueue(new Callback<ResponseBody>() {
                 @Override

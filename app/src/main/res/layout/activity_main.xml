@@ -94,6 +94,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/klass1"
                         android:paddingStart="10dp"
                         android:paddingEnd="5dp"
                         android:paddingTop="0dp"
@@ -105,6 +106,7 @@
                         android:src="@drawable/class1"/>
 
                     <ImageView
+                        android:id="@+id/klass2"
                         android:paddingStart="5dp"
                         android:paddingEnd="10dp"
                         android:paddingTop="0dp"
@@ -123,6 +125,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/klass3"
                         android:paddingStart="10dp"
                         android:paddingEnd="5dp"
                         android:paddingTop="5dp"
@@ -134,6 +137,7 @@
                         android:src="@drawable/class3"/>
 
                     <ImageView
+                        android:id="@+id/klass4"
                         android:paddingStart="5dp"
                         android:paddingEnd="10dp"
                         android:paddingTop="5dp"
@@ -152,6 +156,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/klass5"
                         android:paddingStart="10dp"
                         android:paddingEnd="5dp"
                         android:paddingTop="5dp"
@@ -163,6 +168,7 @@
                         android:src="@drawable/class5"/>
 
                     <ImageView
+                        android:id="@+id/klass6"
                         android:paddingStart="5dp"
                         android:paddingEnd="10dp"
                         android:paddingTop="5dp"
@@ -176,6 +182,7 @@
                 </LinearLayout>
 
                 <FrameLayout
+                    android:id="@+id/bonusVideo"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:padding="10dp">

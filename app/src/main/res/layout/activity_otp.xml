@@ -51,6 +51,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/box_shape"
                 android:padding="10dp"
+                android:inputType="number"
+                android:maxLines="1"
+                android:imeOptions="actionDone"
                 android:hint="@string/smsVarification_hint" />
             <Button
                 android:id="@+id/varifyButton"
