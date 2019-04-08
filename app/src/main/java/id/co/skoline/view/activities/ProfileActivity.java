@@ -29,14 +29,32 @@ public class ProfileActivity extends BaseActivity {
         profileBinding= DataBindingUtil.setContentView(this,R.layout.activity_profile);
 
         List pieData = new ArrayList<>();
-        pieData.add(new SliceValue(15, Color.BLUE).setLabel("Q1: $10"));
-        pieData.add(new SliceValue(25, Color.GRAY).setLabel("Q2: $4"));
-        pieData.add(new SliceValue(10, Color.RED).setLabel("Q3: $18"));
-        pieData.add(new SliceValue(60, Color.MAGENTA).setLabel("Q4: $28"));
+        pieData.add(new SliceValue(2, getResources().getColor(R.color.GreenDark)).setLabel("IPS"+"\n"+"2%"));
+        pieData.add(new SliceValue(41, getResources().getColor(R.color.purple)).setLabel("IPA"+"\n"+"41%"));
+        pieData.add(new SliceValue(32, getResources().getColor(R.color.colorAccent)).setLabel("MTK"+"\n"+"32%"));
+        pieData.add(new SliceValue(15,getResources().getColor(R.color.colorPrimaryDark2)).setLabel("B.ENG"+"\n"+"15%"));
+        pieData.add(new SliceValue(10, getResources().getColor(R.color.colorPrimaryDark)).setLabel("B.IND"+"\n"+"10%"));
 
         PieChartData pieChartData = new PieChartData(pieData);
         pieChartData.setHasLabels(true).setValueLabelTextSize(14);
         profileBinding.chart.setPieChartData(pieChartData);
+
+
+        profileBinding.englishTitle.setText("English"+"(0/0 video)");
+        profileBinding.englishProgress.setProgress(30);
+        profileBinding.englishProgressPercent.setText("30%");
+        profileBinding.mathProgress.setProgress(50);
+        profileBinding.mathProgressPercent.setText("50%");
+        profileBinding.socialProgress.setProgress(50);
+        profileBinding.socialProgressPercent.setText("10%");
+        profileBinding.pendidicanProgress.setProgress(60);
+        profileBinding.pendidicanProgressPercent.setText("60%");
+        profileBinding.ilmuProgress.setProgress(40);
+        profileBinding.ilmuProgressPercent.setText("40%");
+        profileBinding.indonesiaProgress.setProgress(80);
+        profileBinding.indonesiaProgressPercent.setText("80%");
+
+
     }
 
     @Override
@@ -46,7 +64,7 @@ public class ProfileActivity extends BaseActivity {
     }
 
     public void showMenu(View view) {
-        PopupMenu popup = new PopupMenu(ProfileActivity.this,profileBinding.menu);
+        PopupMenu popup = new PopupMenu(ProfileActivity.this,profileBinding.option);
         popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());
 
         popup.setOnMenuItemClickListener(item -> {
