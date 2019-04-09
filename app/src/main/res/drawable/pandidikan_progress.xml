@@ -10,34 +10,15 @@
                 />
         </shape>
     </item>
-
-    <item android:id="@android:id/secondaryProgress">
-        <clip>
-            <shape>
-                <corners android:radius="5dip" />
-                <gradient
-                    android:startColor="#80ffd300"
-                    android:centerColor="#80ffb600"
-                    android:centerY="0.75"
-                    android:endColor="#a0ffcb00"
-                    android:angle="270"
-                    />
+    <item android:id="@android:id/progress"
+        android:gravity="center_vertical|fill_horizontal">
+        <scale android:scaleWidth="100%">
+            <shape android:shape="rectangle">
+                <corners android:radius="5dp"/>
+                <size android:height="30dp" />
+                <solid android:color="@color/colorOrangeDark" />
             </shape>
-        </clip>
-    </item>
-    <item
-        android:id="@android:id/progress"
-        >
-        <clip>
-            <shape>
-                <corners
-                    android:radius="5dip" />
-                <gradient
-                    android:startColor="@color/colorOrangeDark"
-                    android:endColor="@color/colorOrangeDark"
-                    android:angle="270" />
-            </shape>
-        </clip>
+        </scale>
     </item>
 
 </layer-list>

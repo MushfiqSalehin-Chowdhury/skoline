@@ -47,8 +47,8 @@ public class ProfileActivity extends BaseActivity {
         profileBinding.mathProgressPercent.setText("50%");
         profileBinding.socialProgress.setProgress(50);
         profileBinding.socialProgressPercent.setText("10%");
-        profileBinding.pendidicanProgress.setProgress(60);
-        profileBinding.pendidicanProgressPercent.setText("60%");
+        profileBinding.pendidicanProgress.setProgress(0);
+        profileBinding.pendidicanProgressPercent.setText("0%");
         profileBinding.ilmuProgress.setProgress(40);
         profileBinding.ilmuProgressPercent.setText("40%");
         profileBinding.indonesiaProgress.setProgress(80);

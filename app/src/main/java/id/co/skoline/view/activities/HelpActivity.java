@@ -18,9 +18,7 @@ public class HelpActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         helpBinding= DataBindingUtil.setContentView(this,R.layout.activity_help);
-
     }
-
     @Override
     protected void viewRelatedTask() {
 
