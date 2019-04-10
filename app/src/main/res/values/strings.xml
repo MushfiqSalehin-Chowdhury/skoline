@@ -25,9 +25,9 @@
     <string name="location_info">Your Location / info</string>
     <string name="email_hint">example@abc.com</string>
     <string name="newspaper_text">News ?</string>
-    <string name="agree_terms_privacy">By continuing, you agree to our &lt;a href=https://google.com>Terms of Use
+    <string name="agree_terms_privacy">By continuing, you agree to our &lt;a href=https://skoline.co.id/syarat-dan-ketentuan/>Terms of Use
         &lt;/a> and read the
-        &lt;a href=http://google.com>Privacy Policy&lt;/a></string>
+        &lt;a href=https://skoline.co.id/kebijakan-privasi/>Privacy Policy&lt;/a></string>
     <string name="app_website"> &lt;a href=https://www.skoline.co.id>www.skoline.co.id
         &lt;/a></string>
     <string name="signin_button">Sign In</string>

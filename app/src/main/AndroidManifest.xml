@@ -28,10 +28,12 @@
         </activity>
         <activity
             android:name=".view.activities.SignInActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".view.activities.SignUpActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".view.activities.OtpActivity"
             android:screenOrientation="portrait" />
@@ -55,7 +57,7 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".view.activities.TopicScreenActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.activities.HelpActivity"
             android:screenOrientation="portrait"/>

@@ -85,7 +85,7 @@
 
                 <Spinner
                     android:id="@+id/day"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/box_shape"
                     android:entries="@array/Day"
@@ -95,7 +95,7 @@
                     android:id="@+id/month"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:background="@drawable/box_shape"
                     android:dropDownSelector="@color/colorBlack"
                     android:entries="@array/Months"
@@ -105,7 +105,7 @@
                     android:id="@+id/year"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:background="@drawable/box_shape"
                     android:entries="@array/Year"
                     android:padding="5dp" />
@@ -117,21 +117,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:orientation="horizontal" >
-
-                <Spinner
-                    android:id="@+id/country"
-                    android:layout_width="5dp"
-                    android:layout_height="40dp"
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/ccp"
+                    android:layout_width="100dp"
+                    android:layout_height="44dp"
+                    app:ccp_showFullName="true"
+                    app:ccp_showPhoneCode="true"
+                    app:ccp_showNameCode="false"
+                    app:ccp_autoDetectCountry="true"
+                    app:ccp_countryAutoDetectionPref="SIM_NETWORK_LOCALE"
                     android:background="@drawable/box_shape"
-                    android:entries="@array/code"
-                    android:padding="5dp"
-                    android:layout_weight="1" />
+                    app:ccpDialog_showFastScroller="false"
+                    app:ccpDialog_keyboardAutoPopup="false"
+                    />
 
                 <id.co.skoline.view.custom.CustomEditText
                     android:id="@+id/number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/box_shape"
                     android:padding="10dp"
@@ -229,7 +233,6 @@
                     android:id="@+id/terms"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:clickable="true"
                     android:linksClickable="true"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorWhite"/>
@@ -245,7 +248,7 @@
                 android:id="@+id/signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/boxbutton"
                 android:padding="10dp"
                 android:onClick="verify"
