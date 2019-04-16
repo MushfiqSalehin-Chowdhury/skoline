@@ -85,30 +85,49 @@
 
                 <Spinner
                     android:id="@+id/day"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/box_shape"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/boxshape_left"
                     android:entries="@array/Day"
-                    android:padding="5dp"/>
+                    android:padding="5dp"
+                    />
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/drop_down_arrow"
+                    android:background="@drawable/boxshape_right"
+                    android:padding="1dp"/>
 
                 <Spinner
                     android:id="@+id/month"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
                     android:layout_marginStart="10dp"
-                    android:background="@drawable/box_shape"
+                    android:background="@drawable/boxshape_left"
                     android:dropDownSelector="@color/colorBlack"
                     android:entries="@array/Months"
-                    android:padding="5dp"/>
+                    android:padding="5dp" />
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/drop_down_arrow"
+                    android:background="@drawable/boxshape_right"
+                    android:padding="1dp"/>
 
                 <Spinner
                     android:id="@+id/year"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
                     android:layout_marginStart="10dp"
-                    android:background="@drawable/box_shape"
+                    android:background="@drawable/boxshape_left"
                     android:entries="@array/Year"
                     android:padding="5dp" />
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/drop_down_arrow"
+                    android:background="@drawable/boxshape_right"
+                    android:padding="1dp"/>
 
             </LinearLayout>
 
@@ -121,7 +140,6 @@
                     android:id="@+id/ccp"
                     android:layout_width="100dp"
                     android:layout_height="44dp"
-                    app:ccp_showFullName="true"
                     app:ccp_showPhoneCode="true"
                     app:ccp_showNameCode="false"
                     app:ccp_autoDetectCountry="true"
@@ -129,6 +147,7 @@
                     android:background="@drawable/box_shape"
                     app:ccpDialog_showFastScroller="false"
                     app:ccpDialog_keyboardAutoPopup="false"
+                    app:ccp_showFlag="true"
                     />
 
                 <id.co.skoline.view.custom.CustomEditText

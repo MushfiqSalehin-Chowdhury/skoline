@@ -54,6 +54,7 @@
     <string name="mail">Mail info here</string>
     <string name="class_list">Class List</string>
     <string name="loading_data">Loading data...</string>
+    <string name="skipButton">skip</string>
 
 
     <string-array name="Day">

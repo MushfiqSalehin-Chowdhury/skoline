@@ -11,32 +11,11 @@
         android:orientation="vertical"
         tools:context=".view.activities.SearchResultActivity"
         >
-
-        <include
-            android:id="@+id/toolbarBinding"
-            layout="@layout/toolbar"></include>
-
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="20dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:orientation="horizontal"
-                android:background="@drawable/box_shape">
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/colorWhite"
-                    android:src="@drawable/sub" />
-                <id.co.skoline.view.custom.CustomTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Found items here"
-                    android:layout_marginTop="20dp" />
-                </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -45,14 +24,14 @@
                 android:background="@drawable/box_shape"
                 android:layout_marginTop="20dp">
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/topicBanner"
+                    android:layout_width="300dp"
                     android:layout_height="200dp"
-                    android:src="@drawable/class1"
                      />
                 <id.co.skoline.view.custom.CustomTextView
+                    android:id="@+id/topicTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Found items here"
                      />
             </LinearLayout>
 

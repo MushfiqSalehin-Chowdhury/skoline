@@ -2,9 +2,17 @@ package id.co.skoline.view.activities;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
@@ -15,8 +23,11 @@ import java.util.List;
 import id.co.skoline.R;
 import id.co.skoline.databinding.ActivityMainBinding;
 import id.co.skoline.model.response.KlassesResponse;
-import id.co.skoline.view.adapters.HomepageAdapter;
+import id.co.skoline.model.response.SubjectResponse;
+import id.co.skoline.model.utils.ShareInfo;
+import id.co.skoline.view.adapters.SubjectsAdapter;
 import id.co.skoline.viewControllers.interfaces.KlassesListener;
+import id.co.skoline.viewControllers.interfaces.SubjectsListener;
 import id.co.skoline.viewControllers.managers.ContentManager;
 
 public class MainActivity extends BaseActivity {
@@ -24,7 +35,8 @@ public class MainActivity extends BaseActivity {
     ActivityMainBinding mainBinding;
     ContentManager contentManager;
     List<KlassesResponse> klassesResponseList = new ArrayList<>();
-
+    List<SubjectResponse> subjectResponseList= new ArrayList<>();
+    ShareInfo shareInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +45,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void viewRelatedTask() {
-       /* mainBinding.gridView.setAdapter(new HomepageAdapter(this));*/
+       /* mainBinding.gridView.setAdapter(new SubjectsAdapter(this));*/
         setToolbar(getString(R.string.class_list), true, mainBinding.toolbarBinding);
         contentManager = new ContentManager(this);
         contentManager.getKlasses(new KlassesListener() {
@@ -62,37 +74,55 @@ public class MainActivity extends BaseActivity {
         });
 
         mainBinding.klass1.setOnClickListener(v -> {
-           if(klassesResponseList!=null){
-
-           }
+            if(klassesResponseList!=null){
+                Intent intent = new Intent(this,SubjectsActivity.class);
+                intent.putExtra("classId",klassesResponseList.get(0).getId());
+                startActivity(intent);
+            }
         });
 
         mainBinding.klass2.setOnClickListener(v -> {
             if(klassesResponseList!=null){
-
+                Intent intent = new Intent(this,SubjectsActivity.class);
+                intent.putExtra("classId",klassesResponseList.get(1).getId());
+                startActivity(intent);
             }
         });
 
         mainBinding.klass3.setOnClickListener(v -> {
             if(klassesResponseList!=null){
-
+                Intent intent = new Intent(this,SubjectsActivity.class);
+                intent.putExtra("classId",klassesResponseList.get(2).getId());
+                startActivity(intent);
             }
         });
 
         mainBinding.klass4.setOnClickListener(v -> {
             if(klassesResponseList!=null){
-
+                Intent intent = new Intent(this,SubjectsActivity.class);
+                intent.putExtra("classId",klassesResponseList.get(3).getId());
+                startActivity(intent);
             }
         });
 
         mainBinding.klass5.setOnClickListener(v -> {
             if(klassesResponseList!=null){
-
+                Intent intent = new Intent(this,SubjectsActivity.class);
+                intent.putExtra("classId",klassesResponseList.get(4).getId());
+                startActivity(intent);
             }
         });
 
         mainBinding.klass6.setOnClickListener(v -> {
             if(klassesResponseList!=null){
+                Intent intent = new Intent(this,SubjectsActivity.class);
+                intent.putExtra("classId",klassesResponseList.get(5).getId());
+                startActivity(intent);
+            }
+        });
+
+        mainBinding.bonusImg.setOnClickListener(v -> {
+            if (klassesResponseList!=null){
 
             }
         });
@@ -100,9 +130,15 @@ public class MainActivity extends BaseActivity {
     }
 
     private void generateView(List<KlassesResponse> klassesResponseList) {
-        Picasso.with(this).load(klassesResponseList.get(0).getBannerUrl()).into(mainBinding.klass1);
-        Picasso.with(this).load(klassesResponseList.get(1).getBannerUrl()).into(mainBinding.klass2);
+        Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+klassesResponseList.get(0).getBannerUrl()).into(mainBinding.klass1);
+        Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+klassesResponseList.get(1).getBannerUrl()).into(mainBinding.klass2);
+        Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+klassesResponseList.get(2).getBannerUrl()).into(mainBinding.klass3);
+        Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+klassesResponseList.get(3).getBannerUrl()).into(mainBinding.klass4);
+        Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+klassesResponseList.get(4).getBannerUrl()).into(mainBinding.klass5);
+        Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+klassesResponseList.get(5).getBannerUrl()).into(mainBinding.klass6);
     }
+
+
 
 
     public void search(View view) {

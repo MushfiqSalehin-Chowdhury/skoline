@@ -32,13 +32,25 @@ public class SignInActivity extends BaseActivity {
     }
 
     public void signIn(View view) {
-      /*  if(TextUtils.isEmpty(signInBinding.uname.getText().toString())){
-            signInBinding.unameError.setVisibility(View.VISIBLE);
-        } else if(TextUtils.isEmpty(signInBinding.dob.getText().toString())){
-            signInBinding.dobError.setVisibility(View.VISIBLE);
-        } else {*/
+
+     /*   if (TextUtils.isEmpty(signInBinding.uname.getText().toString()) || TextUtils.isEmpty(signInBinding.dob.getText().toString()) )  {
+
+            if(TextUtils.isEmpty(signInBinding.uname.getText().toString())){
+                signInBinding.unameError.setVisibility(View.VISIBLE);
+            }
+            if(!TextUtils.isEmpty(signInBinding.uname.getText().toString())){
+                signInBinding.unameError.setVisibility(View.GONE);
+            }
+            if(TextUtils.isEmpty(signInBinding.dob.getText().toString())){
+                signInBinding.dobError.setVisibility(View.VISIBLE);
+            }
+            if(!TextUtils.isEmpty(signInBinding.dob.getText().toString())){
+                signInBinding.dobError.setVisibility(View.GONE);
+            }
+
+          //  Toast.makeText(this, "SignIn Process", Toast.LENGTH_SHORT).show();
+        }
+        else*/
             startActivity(new Intent(this, MainActivity.class));
-            Toast.makeText(this, "SignIn Process", Toast.LENGTH_SHORT).show();
-        //}
     }
 }

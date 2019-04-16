@@ -3,9 +3,7 @@ package id.co.skoline.model.response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-public class KlassesResponse {
+public class SubjectResponse {
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -15,12 +13,6 @@ public class KlassesResponse {
     @SerializedName("icon_url")
     @Expose
     private String iconUrl;
-    @SerializedName("banner_url")
-    @Expose
-    private String bannerUrl;
-    @SerializedName("color_code")
-    @Expose
-    private String colorCode;
 
     public Integer getId() {
         return id;
@@ -44,21 +36,5 @@ public class KlassesResponse {
 
     public void setIconUrl(String iconUrl) {
         this.iconUrl = iconUrl;
-    }
-
-    public String getBannerUrl() {
-        return bannerUrl;
-    }
-
-    public void setBannerUrl(String bannerUrl) {
-        this.bannerUrl = bannerUrl;
-    }
-
-    public String getColorCode() {
-        return colorCode;
-    }
-
-    public void setColorCode(String colorCode) {
-        this.colorCode = colorCode;
     }
 }

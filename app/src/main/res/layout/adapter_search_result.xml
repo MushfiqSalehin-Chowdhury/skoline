@@ -38,7 +38,7 @@
                 android:background="@drawable/boxshape_right"
                 android:padding="5dp"
                 android:src="@drawable/search_mag"
-                android:onClick="search" />
+               />
         </LinearLayout>
 
         <LinearLayout

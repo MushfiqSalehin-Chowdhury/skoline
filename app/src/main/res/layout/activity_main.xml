@@ -16,12 +16,14 @@
             layout="@layout/toolbar"/>
 
         <LinearLayout
+            android:id="@+id/topBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:orientation="horizontal"
             android:paddingTop="10dp"
             android:paddingStart="10dp"
-            android:paddingEnd="10dp">
+            android:paddingEnd="10dp"
+           >
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -58,6 +60,7 @@
         </LinearLayout>
 
         <ScrollView
+            android:id="@+id/menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -103,7 +106,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/class1"/>
+                      />
 
                     <ImageView
                         android:id="@+id/klass2"
@@ -114,8 +117,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/class2"/>
+                        android:adjustViewBounds="true" />
 
                 </LinearLayout>
 
@@ -133,8 +135,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/class3"/>
+                        android:adjustViewBounds="true" />
 
                     <ImageView
                         android:id="@+id/klass4"
@@ -145,8 +146,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/class4"/>
+                        android:adjustViewBounds="true" />
 
                 </LinearLayout>
 
@@ -164,8 +164,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/class5"/>
+                        android:adjustViewBounds="true" />
 
                     <ImageView
                         android:id="@+id/klass6"
@@ -176,8 +175,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/class6"/>
+                        android:adjustViewBounds="true"/>
 
                 </LinearLayout>
 
@@ -188,6 +186,7 @@
                     android:padding="10dp">
 
                     <ImageView
+                        android:id="@+id/bonusImg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/class7" />
@@ -203,6 +202,18 @@
             </LinearLayout>
 
         </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ListView
+                android:id="@+id/subList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+            </ListView>
+        </LinearLayout>
 
 
 

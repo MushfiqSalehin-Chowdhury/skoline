@@ -26,4 +26,6 @@
 
     <color name ="purple">#7e2b63</color>
     <color name="allMenuBackgroung">#f1f1f3</color>
+
+    <color name ="black">#EB000000</color>
 </resources>

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.CountDownTimer;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 
 import id.co.skoline.R;
@@ -30,7 +31,10 @@ public class WelcomeVideoActivity extends BaseActivity{
             public void onTick(long millisUntilFinished) { }
 
             @Override
-            public void onFinish() { }
+            public void onFinish() {
+               /* finish();
+                startActivity(new Intent(WelcomeVideoActivity.this,WelcomePageActivity.class));*/
+            }
         }.start();
 
     }

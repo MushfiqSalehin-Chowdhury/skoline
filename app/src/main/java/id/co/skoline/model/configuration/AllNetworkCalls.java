@@ -18,6 +18,8 @@ import retrofit2.http.QueryMap;
 
 public interface AllNetworkCalls {
 
+    String Base_url= "http://103.89.2.136/";
+
     @GET("{url}")
     Call<ResponseBody> getRequest(
             @Path(value = "url", encoded = true) String path,
