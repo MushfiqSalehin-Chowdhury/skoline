@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -51,6 +52,7 @@ public class MainActivity extends BaseActivity {
         contentManager.getKlasses(new KlassesListener() {
             @Override
             public void onSuccess(List<KlassesResponse> klassesResponseList) {
+
                 Log.e("MainActivity", new Gson().toJson(klassesResponseList));
                 MainActivity.this.klassesResponseList = klassesResponseList;
                 generateView(klassesResponseList);
@@ -58,6 +60,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onFailed(String message, int responseCode) {
+
                 Log.e("MainActivity", "message: "+message);
                 MainActivity.this.klassesResponseList = null;
             }
@@ -77,6 +80,9 @@ public class MainActivity extends BaseActivity {
             if(klassesResponseList!=null){
                 Intent intent = new Intent(this,SubjectsActivity.class);
                 intent.putExtra("classId",klassesResponseList.get(0).getId());
+                intent.putExtra("klassColor",klassesResponseList.get(0).getColorCode());
+                intent.putExtra("classIcon",klassesResponseList.get(0).getIconUrl());
+                intent.putExtra("classTitle",klassesResponseList.get(0).getName());
                 startActivity(intent);
             }
         });
@@ -85,6 +91,9 @@ public class MainActivity extends BaseActivity {
             if(klassesResponseList!=null){
                 Intent intent = new Intent(this,SubjectsActivity.class);
                 intent.putExtra("classId",klassesResponseList.get(1).getId());
+                intent.putExtra("klassColor",klassesResponseList.get(1).getColorCode());
+                intent.putExtra("classIcon",klassesResponseList.get(1).getIconUrl());
+                intent.putExtra("classTitle",klassesResponseList.get(1).getName());
                 startActivity(intent);
             }
         });
@@ -93,6 +102,9 @@ public class MainActivity extends BaseActivity {
             if(klassesResponseList!=null){
                 Intent intent = new Intent(this,SubjectsActivity.class);
                 intent.putExtra("classId",klassesResponseList.get(2).getId());
+                intent.putExtra("classIcon",klassesResponseList.get(2).getIconUrl());
+                intent.putExtra("klassColor",klassesResponseList.get(2).getColorCode());
+                intent.putExtra("classTitle",klassesResponseList.get(2).getName());
                 startActivity(intent);
             }
         });
@@ -101,6 +113,9 @@ public class MainActivity extends BaseActivity {
             if(klassesResponseList!=null){
                 Intent intent = new Intent(this,SubjectsActivity.class);
                 intent.putExtra("classId",klassesResponseList.get(3).getId());
+                intent.putExtra("klassColor",klassesResponseList.get(3).getColorCode());
+                intent.putExtra("classIcon",klassesResponseList.get(3).getIconUrl());
+                intent.putExtra("classTitle",klassesResponseList.get(3).getName());
                 startActivity(intent);
             }
         });
@@ -109,6 +124,10 @@ public class MainActivity extends BaseActivity {
             if(klassesResponseList!=null){
                 Intent intent = new Intent(this,SubjectsActivity.class);
                 intent.putExtra("classId",klassesResponseList.get(4).getId());
+                intent.putExtra("klassColor",klassesResponseList.get(4).getColorCode());
+                intent.putExtra("classIcon",klassesResponseList.get(4).getIconUrl());
+                intent.putExtra("classTitle",klassesResponseList.get(4).getName());
+
                 startActivity(intent);
             }
         });
@@ -117,6 +136,9 @@ public class MainActivity extends BaseActivity {
             if(klassesResponseList!=null){
                 Intent intent = new Intent(this,SubjectsActivity.class);
                 intent.putExtra("classId",klassesResponseList.get(5).getId());
+                intent.putExtra("klassColor",klassesResponseList.get(5).getColorCode());
+                intent.putExtra("classIcon",klassesResponseList.get(5).getIconUrl());
+                intent.putExtra("classTitle",klassesResponseList.get(5).getName());
                 startActivity(intent);
             }
         });
@@ -128,19 +150,26 @@ public class MainActivity extends BaseActivity {
         });
 
     }
-
     private void generateView(List<KlassesResponse> klassesResponseList) {
-        Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+klassesResponseList.get(0).getBannerUrl()).into(mainBinding.klass1);
+        Picasso.with(this)
+                .load(ShareInfo.getInstance().getBaseUrl()+klassesResponseList.get(0).getBannerUrl())
+                .into(mainBinding.klass1, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        mainBinding.menuProgres.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onError() {
+                        mainBinding.menuProgres.setVisibility(View.VISIBLE);
+                    }
+                });
         Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+klassesResponseList.get(1).getBannerUrl()).into(mainBinding.klass2);
         Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+klassesResponseList.get(2).getBannerUrl()).into(mainBinding.klass3);
         Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+klassesResponseList.get(3).getBannerUrl()).into(mainBinding.klass4);
         Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+klassesResponseList.get(4).getBannerUrl()).into(mainBinding.klass5);
         Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+klassesResponseList.get(5).getBannerUrl()).into(mainBinding.klass6);
     }
-
-
-
-
     public void search(View view) {
         Intent i= new Intent(this, SearchResultActivity.class);
         i.putExtra("key" ,mainBinding.searchEditFrame.getText().toString());

@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ import java.util.List;
 import id.co.skoline.R;
 import id.co.skoline.databinding.ActivitySubjectsBinding;
 import id.co.skoline.model.response.SubjectResponse;
+import id.co.skoline.model.utils.ShareInfo;
 import id.co.skoline.view.adapters.SubjectsAdapter;
 import id.co.skoline.viewControllers.interfaces.SubjectsListener;
 import id.co.skoline.viewControllers.managers.ContentManager;
@@ -37,6 +39,7 @@ public class SubjectsActivity extends BaseActivity {
     List<SubjectResponse> subjectResponseList;
     private SubjectsAdapter subjectsAdapter;
     DividerItemDecoration dividerItemDecoration;
+    String iconPath,color,classTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +59,10 @@ public class SubjectsActivity extends BaseActivity {
         setToolbar(getString(R.string.class_list), true, subjectsBinding.toolbarBinding);
         Intent intent= getIntent();
         int id= intent.getIntExtra("classId",0);
-        Log.i("kelas id",String.valueOf(id));
+        color= intent.getStringExtra("klassColor");
+        iconPath = intent.getStringExtra("classIcon");
+        classTitle=intent.getStringExtra("classTitle");
+//        Log.i("kelas id",iconPath.toString());
         contentManager = new ContentManager(this);
         contentManager.getSubjects(id,new SubjectsListener() {
             @Override
@@ -97,6 +103,10 @@ public class SubjectsActivity extends BaseActivity {
             subjects.add(subjectResponseList.get(i).getName().toString());
             Log.i("subs:",subjectResponseList.get(i).getName());
         }*/
+        Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+iconPath).into(subjectsBinding.classIcon);
+        subjectsBinding.klass.setBackgroundColor(Color.parseColor(color));
+        subjectsBinding.classTitle.setText(classTitle);
+
         subjectsAdapter = new SubjectsAdapter(SubjectsActivity.this,subjectResponseList);
         subjectsBinding.Recycle.setAdapter(subjectsAdapter);
         subjectsAdapter.notifyDataSetChanged();

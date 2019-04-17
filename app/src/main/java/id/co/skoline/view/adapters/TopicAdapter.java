@@ -1,6 +1,7 @@
 package id.co.skoline.view.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +23,7 @@ import id.co.skoline.model.response.SubjectResponse;
 import id.co.skoline.model.response.TopicResponse;
 import id.co.skoline.model.utils.ShareInfo;
 import id.co.skoline.view.activities.SubjectsActivity;
+import id.co.skoline.view.activities.TopicItemsActivity;
 
 public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder>{
 
@@ -57,6 +59,16 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder>{
         TopicResponse topicResponse = topicResponseList.get(position);
         Picasso.with(context).load(ShareInfo.getInstance().getBaseUrl()+ topicResponse.getBannerUrl()).into(holder.adapterTopicListBinding.topicBanner);
         holder.adapterTopicListBinding.topicTitle.setText(topicResponse.getName());
+
+
+        holder.adapterTopicListBinding.getRoot().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context,TopicItemsActivity.class));
+            }
+        });
+
+
     }
 
     @Override

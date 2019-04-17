@@ -1,13 +1,12 @@
 package id.co.skoline.viewControllers.managers;
 
 import android.content.Context;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -16,9 +15,11 @@ import java.util.List;
 import id.co.skoline.model.configuration.ApiHandler;
 import id.co.skoline.model.response.KlassesResponse;
 import id.co.skoline.model.response.SubjectResponse;
+import id.co.skoline.model.response.TopicItemsResponse;
 import id.co.skoline.model.response.TopicResponse;
 
 import id.co.skoline.model.utils.ShareInfo;
+import id.co.skoline.viewControllers.interfaces.TopicItemsListener;
 import id.co.skoline.viewControllers.interfaces.KlassesListener;
 import id.co.skoline.viewControllers.interfaces.SubjectsListener;
 import id.co.skoline.viewControllers.interfaces.TopicsListener;
@@ -32,9 +33,11 @@ public class ContentManager {
     KlassesListener klassesListener;
     SubjectsListener subjectsListener;
     TopicsListener topicsListener;
+    TopicItemsListener topicItemsListener;
     private String reqIdKlasses;
     private String reqIdSubjects;
     private String reqIdTopics;
+    private String reqIdAdvanture;
 
     public ContentManager(Context context){
         this.context = context;
@@ -50,6 +53,9 @@ public class ContentManager {
                 else if(requestId.equals(reqIdTopics)){
                   topicsListener.startLoading(requestId);
                 }
+                else if(requestId.equals(reqIdAdvanture)){
+                    topicItemsListener.startLoading(requestId);
+                }
             }
 
             @Override
@@ -61,6 +67,10 @@ public class ContentManager {
                 }
                 else if(requestId.equals(reqIdTopics)){
                     topicsListener.endLoading(requestId);
+                }
+
+                else if(requestId.equals(reqIdAdvanture)){
+                    topicItemsListener.endLoading(requestId);
                 }
             }
 
@@ -97,13 +107,16 @@ public class ContentManager {
                     }
                 }
 
-                /*try {
-                    JSONObject jsonObject = new JSONObject(responseBody.string());
-                    klassesListener.onSuccess(new Gson().fromJson(jsonObject.toString(), CLASSTYPE.class);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    klassesListener.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
-                }*/
+                if ( requestId.equals(reqIdAdvanture)){
+                    try {
+                        JSONObject jsonObject = new JSONObject(responseBody.string());
+                       topicItemsListener.onSuccess(new Gson().fromJson(jsonObject.toString(), TopicItemsResponse.class));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                       topicItemsListener.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
+                    }
+                }
+
 
             }
 
@@ -111,6 +124,10 @@ public class ContentManager {
             public void failResponse(String requestId, int responseCode, String message) {
                 if(requestId.equals(reqIdKlasses)){
                     klassesListener.onFailed(message, responseCode);
+                }
+                if ( requestId.equals(reqIdAdvanture)){
+                    topicItemsListener.onFailed(message,responseCode);
+
                 }
             }
         };
@@ -134,5 +151,12 @@ public class ContentManager {
         this.reqIdTopics = ShareInfo.getInstance().getRequestId();
         apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/subjects/"+topicsId+"/topics", "get", reqIdTopics, new HashMap());
         return reqIdTopics;
+    }
+
+    public String getAdvanture(TopicItemsListener topicItemsListener){
+        this.topicItemsListener = topicItemsListener;
+        this.reqIdAdvanture = ShareInfo.getInstance().getRequestId();
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/topics/1", "get", reqIdAdvanture, new HashMap());
+        return reqIdAdvanture;
     }
 }

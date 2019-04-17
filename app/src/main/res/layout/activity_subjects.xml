@@ -14,13 +14,38 @@
             android:id="@+id/toolbarBinding"
             layout="@layout/toolbar"></include>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/Recycle"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:visibility="visible">
-        </android.support.v7.widget.RecyclerView>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp">
+            <LinearLayout
+                android:id="@+id/klass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/classIcon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"/>
+                <id.co.skoline.view.custom.CustomTextView
+                    android:id="@+id/classTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/Recycle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:visibility="visible">
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
 
     </LinearLayout>
 
