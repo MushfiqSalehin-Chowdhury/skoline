@@ -18,22 +18,30 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import id.co.skoline.R;
+import id.co.skoline.databinding.ActivityMainBinding;
+import id.co.skoline.databinding.ActivitySubjectsBinding;
 import id.co.skoline.databinding.AdapterSampleBinding;
 import id.co.skoline.databinding.AdapterSubjectListBinding;
+import id.co.skoline.model.response.KlassesResponse;
 import id.co.skoline.model.response.SubjectResponse;
 import id.co.skoline.model.utils.ShareInfo;
+import id.co.skoline.view.activities.MainActivity;
 import id.co.skoline.view.activities.SubjectsActivity;
 import id.co.skoline.view.activities.TopicScreenActivity;
 
-public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.ViewHolder>{
+public class SubjectsAdapter extends  RecyclerView.Adapter<SubjectsAdapter.ViewHolder>{
 
     Context context;
     List<SubjectResponse> subjectResponseList;
+    List<KlassesResponse> klassesResponseList;
     OnItemClickListener onItemClickListener;
+    String name,icon;
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         AdapterSubjectListBinding adapterSubjectListBinding;
+        ActivityMainBinding mainBinding;
         TextView subjectName;
+
 
         public ViewHolder(AdapterSubjectListBinding adapterSubjectListBinding) {
             super(adapterSubjectListBinding.getRoot());
@@ -41,7 +49,6 @@ public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.ViewHo
 
         }
     }
-
     public SubjectsAdapter(Context context, List<SubjectResponse> subjectResponseList) {
         this.context = context;
         this.subjectResponseList = subjectResponseList;
@@ -57,32 +64,24 @@ public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         SubjectResponse subjectResponse= subjectResponseList.get(position);
-        Picasso.with(context).load(ShareInfo.getInstance().getBaseUrl()+subjectResponse.getIconUrl()).into(holder.adapterSubjectListBinding.subjectIcon);
-        holder.adapterSubjectListBinding.subjectTitle.setText(subjectResponse.getName());
-
+        Picasso.with(context).load(ShareInfo.getInstance().getBaseUrl()+subjectResponseList.get(position).getIconUrl()).into(holder.adapterSubjectListBinding.subjectIcon);
+        holder.adapterSubjectListBinding.subjectTitle.setText(subjectResponseList.get(position).getName());
 
         try{
             holder.adapterSubjectListBinding.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //onItemClickListener.onItemClicked(position);
-                 //   Toast.makeText(context,String.valueOf(subjectResponse.getId()), Toast.LENGTH_SHORT).show();
-
-                    Intent intent = new Intent(context, TopicScreenActivity.class);
+                    /*Intent intent = new Intent(context, TopicScreenActivity.class);
                     intent.putExtra("subId",subjectResponse.getId());
                     intent.putExtra("subIcon",subjectResponse.getIconUrl());
                     intent.putExtra("subTitle",subjectResponse.getName());
-                    context.startActivity(intent);
+                    context.startActivity(intent);*/
+                    onItemClickListener.onItemClicked(subjectResponseList.get(position));
                 }
             });
-
         }catch (Exception e){
-            Log.i("clicked",String.valueOf(e));
+            Log.i("clickError",String.valueOf(e));
         }
-
-
-
-
     }
 
     @Override
@@ -91,8 +90,7 @@ public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.ViewHo
     }
 
     public interface OnItemClickListener{
-        void onItemClicked(int position);
-
+        void onItemClicked(SubjectResponse subjectResponse);
 
     }
 

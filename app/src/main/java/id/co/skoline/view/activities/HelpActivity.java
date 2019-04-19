@@ -16,12 +16,11 @@ public class HelpActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         helpBinding= DataBindingUtil.setContentView(this,R.layout.activity_help);
     }
+
     @Override
     protected void viewRelatedTask() {
-
         setToolbar("Help",true,helpBinding.toolbarBinding);
     }
 

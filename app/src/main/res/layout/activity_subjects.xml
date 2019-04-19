@@ -25,21 +25,25 @@
                 android:id="@+id/klass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@drawable/box_shape"
+                >
                 <ImageView
                     android:id="@+id/classIcon"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"/>
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"/>
                 <id.co.skoline.view.custom.CustomTextView
                     android:id="@+id/classTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20dp"
                     android:textColor="@color/colorWhite" />
 
             </LinearLayout>
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/Recycle"
+                android:id="@+id/subjectRecycle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="10dp"

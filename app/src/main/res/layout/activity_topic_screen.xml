@@ -19,31 +19,63 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp"
-            >
+            android:padding="10dp">
+
             <LinearLayout
+                android:id="@+id/klass"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@drawable/box_shape">
+                android:background="@drawable/box_shape"
+                >
                 <ImageView
-                    android:id="@+id/subjectIcon"
+                    android:id="@+id/classIcon"
                     android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/colorWhite"
-                    android:src="@drawable/sub" />
+                    android:layout_height="58dp"/>
                 <id.co.skoline.view.custom.CustomTextView
-                    android:id="@+id/subjectTitle"
+                    android:id="@+id/classTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Found items here"
-                    android:layout_marginTop="20dp" />
+                    android:layout_marginTop="20dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorWhite" />
+
             </LinearLayout>
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/topicRecycle"
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </android.support.v7.widget.RecyclerView>
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:orientation="horizontal"
+                    android:background="@drawable/box_shape">
+                    <ImageView
+                        android:id="@+id/subjectIcon"
+                        android:layout_marginLeft="2dp"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorWhite"
+                        android:src="@drawable/sub" />
+                    <id.co.skoline.view.custom.CustomTextView
+                        android:id="@+id/subjectTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Found items here"
+                        android:layout_marginTop="20dp" />
+                </LinearLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/topicRecycle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </android.support.v7.widget.RecyclerView>
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
