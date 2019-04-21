@@ -20,6 +20,7 @@ import id.co.skoline.databinding.AdapterSampleBinding;
 import id.co.skoline.databinding.AdapterSubjectListBinding;
 import id.co.skoline.databinding.AdapterTopicListBinding;
 import id.co.skoline.model.response.SubjectResponse;
+import id.co.skoline.model.response.TopicItemsResponse;
 import id.co.skoline.model.response.TopicResponse;
 import id.co.skoline.model.utils.ShareInfo;
 import id.co.skoline.view.activities.SubjectsActivity;
@@ -30,6 +31,7 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder>{
     Context context;
     List<TopicResponse>topicResponseList;
     OnItemClickListener onItemClickListener;
+    List<TopicItemsResponse> topicItemsResponseList;
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         AdapterTopicListBinding adapterTopicListBinding;
@@ -57,6 +59,7 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         TopicResponse topicResponse = topicResponseList.get(position);
+
         Picasso.with(context).load(ShareInfo.getInstance().getBaseUrl()+ topicResponse.getBannerUrl()).into(holder.adapterTopicListBinding.topicBanner);
         holder.adapterTopicListBinding.topicTitle.setText(topicResponse.getName());
 
@@ -64,7 +67,7 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder>{
         holder.adapterTopicListBinding.getRoot().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context,TopicItemsActivity.class));
+                onItemClickListener.onItemClicked(topicResponseList.get(position));
             }
         });
 
@@ -77,7 +80,7 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder>{
     }
 
     public interface OnItemClickListener{
-        void onItemClicked(int position);
+        void onItemClicked(TopicResponse topicResponse);
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener){

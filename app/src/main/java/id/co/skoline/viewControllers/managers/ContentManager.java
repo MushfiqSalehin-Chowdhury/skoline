@@ -153,10 +153,10 @@ public class ContentManager {
         return reqIdTopics;
     }
 
-    public String getAdvanture(TopicItemsListener topicItemsListener){
+    public String getAdvanture(int id,TopicItemsListener topicItemsListener){
         this.topicItemsListener = topicItemsListener;
         this.reqIdAdvanture = ShareInfo.getInstance().getRequestId();
-        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/topics/1", "get", reqIdAdvanture, new HashMap());
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/topics/"+id, "get", reqIdAdvanture, new HashMap());
         return reqIdAdvanture;
     }
 }

@@ -57,20 +57,19 @@ public class TopicScreenActivity extends BaseActivity {
 
     @Override
     protected void viewRelatedTask() {
-        setToolbar(getString(R.string.class_list), true, topicScreenBinding.toolbarBinding);
+        setToolbar(getString(R.string.topic_list), true, topicScreenBinding.toolbarBinding);
         Intent intent= getIntent();
         classIconPath= intent.getStringExtra("classIcon");
         classTitle=intent.getStringExtra("classTitle");
         classColor=intent.getStringExtra("classColor");
         subjectResponse = new Gson().fromJson(getIntent().getStringExtra("subjectResponse"), SubjectResponse.class);
+
         Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+subjectResponse.getIconUrl()).into(topicScreenBinding.subjectIcon);
         topicScreenBinding.subjectTitle.setText(subjectResponse.getName());
         topicScreenBinding.classTitle.setText(classTitle);
         topicScreenBinding.klass.setBackgroundColor(Color.parseColor(classColor));
 
         Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+classIconPath).into(topicScreenBinding.classIcon);
-        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-
        // Log.i("kelas id",String.valueOf(id));
         contentManager = new ContentManager(this);
         contentManager.getTopics(subjectResponse.getId(), new TopicsListener() {
@@ -103,6 +102,15 @@ public class TopicScreenActivity extends BaseActivity {
         topicAdapter = new TopicAdapter(TopicScreenActivity.this,topicResponseList);
         topicScreenBinding.topicRecycle.setAdapter(topicAdapter);
         topicAdapter.notifyDataSetChanged();
-
+        topicAdapter.setOnItemClickListener(new TopicAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClicked(TopicResponse topicResponse) {
+                Intent intent = new Intent(TopicScreenActivity.this,TopicItemsActivity.class);
+                intent.putExtra("topicResponse",new Gson().toJson(topicResponse));
+                intent.putExtra("classColor",classColor);
+                intent.putExtra("topicBanner",topicResponse.getBannerUrl());
+                startActivity(intent);
+            }
+        });
     }
 }

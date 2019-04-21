@@ -9,6 +9,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="20dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
         android:background="@drawable/box_shape"
         >
                 <ImageView

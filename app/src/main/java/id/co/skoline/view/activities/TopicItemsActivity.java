@@ -1,46 +1,65 @@
 package id.co.skoline.view.activities;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.MediaController;
+import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import id.co.skoline.R;
 import id.co.skoline.databinding.ActivityTopicItemsBinding;
+import id.co.skoline.model.response.SubjectResponse;
 import id.co.skoline.model.response.TopicItemsResponse;
+import id.co.skoline.model.response.TopicResponse;
+import id.co.skoline.model.utils.ShareInfo;
 import id.co.skoline.viewControllers.interfaces.TopicItemsListener;
 import id.co.skoline.viewControllers.managers.ContentManager;
 
 public class TopicItemsActivity extends BaseActivity {
 
-   ActivityTopicItemsBinding topicScreenBinding;
+   ActivityTopicItemsBinding topicItemsBinding;
     ContentManager contentManager;
     TopicItemsResponse topicItemsResponseList;
+    TopicResponse topicResponse;
+    int id;
+    String classColor,adventureBanner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        topicScreenBinding= DataBindingUtil.setContentView(this,R.layout.activity_topic_items);
+        topicItemsBinding= DataBindingUtil.setContentView(this,R.layout.activity_topic_items);
 
     }
 
     @Override
     protected void viewRelatedTask() {
+        setToolbar(getString(R.string.adventure_list), true, topicItemsBinding.toolbarBinding);
+
+       topicResponse = new Gson().fromJson(getIntent().getStringExtra("topicResponse"), TopicResponse.class);
+       classColor = getIntent().getStringExtra("classColor");
+       adventureBanner=getIntent().getStringExtra("topicBanner");
 
 
         contentManager = new ContentManager(this);
-        contentManager.getAdvanture(new TopicItemsListener() {
+        contentManager.getAdvanture(topicResponse.getId(),new TopicItemsListener() {
             @Override
             public void onSuccess(TopicItemsResponse topicItemsResponseList) {
-                Log.e("MainActivity", new Gson().toJson(topicItemsResponseList));
+                Log.e("TopicItems", new Gson().toJson(topicItemsResponseList));
                 TopicItemsActivity.this.topicItemsResponseList= topicItemsResponseList;
                 generateViewAdvanture(topicItemsResponseList);
             }
+
 
             @Override
             public void onFailed(String message, int responseCode) {
@@ -58,16 +77,17 @@ public class TopicItemsActivity extends BaseActivity {
                 dismissProgressDialog();
             }
         });
-
     }
 
     private void generateViewAdvanture(TopicItemsResponse topicItemsResponseList) {
-
-        topicScreenBinding.adventureTitle.setText(topicItemsResponseList.getTopic().getAdventure().getTitle());
-        topicScreenBinding.adventureDetails.setText(topicItemsResponseList.getTopic().getAdventure().getDescription());
+        Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+adventureBanner).into(topicItemsBinding.advanture);
+        topicItemsBinding.adventureTitle.setText(topicItemsResponseList.getTopic().getAdventure().getTitle());
+        topicItemsBinding.adventureDetails.setText(topicItemsResponseList.getTopic().getAdventure().getDescription());
+        topicItemsBinding.klass.setBackgroundColor(Color.parseColor(classColor));
     }
-
     public void showVideo(View view) {
-
+        Intent intent=new Intent(this,VideoPlayActivity.class);
+        intent.putExtra("videoUrl",ShareInfo.getInstance().getBaseUrl()+topicItemsResponseList.getTopic().getAdventure().getVideoLink());
+        startActivity(intent);
     }
 }

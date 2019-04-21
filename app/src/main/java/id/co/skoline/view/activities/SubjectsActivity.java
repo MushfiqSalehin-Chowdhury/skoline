@@ -55,7 +55,7 @@ public class SubjectsActivity extends BaseActivity {
     }
     @Override
     protected void viewRelatedTask() {
-        setToolbar(getString(R.string.class_list), true, subjectsBinding.toolbarBinding);
+        setToolbar(getString(R.string.subject_list), true, subjectsBinding.toolbarBinding);
         Intent intent= getIntent();
         klassesResponse = new Gson().fromJson(getIntent().getStringExtra("klassResponse"), KlassesResponse.class);
 
@@ -79,13 +79,6 @@ public class SubjectsActivity extends BaseActivity {
             @Override
             public void endLoading(String requestId) {
                 dismissProgressDialog();
-            }
-        });
-
-        subjectsBinding.subjectRecycle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(SubjectsActivity.this, "hello", Toast.LENGTH_SHORT).show();
             }
         });
     }

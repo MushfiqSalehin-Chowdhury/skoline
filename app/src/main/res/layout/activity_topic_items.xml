@@ -37,37 +37,34 @@
                     <ImageView
                         android:id="@+id/classIcon"
                         android:layout_width="100dp"
-                        android:layout_height="60dp"/>
+                        android:layout_height="60dp"
+                        android:src="@drawable/gamestar"/>
                     <id.co.skoline.view.custom.CustomTextView
                         android:id="@+id/classTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="1. Simaak Petualangannya"
                         android:layout_marginTop="20dp"
                         android:textSize="20dp"
                         android:textColor="@color/colorWhite" />
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp"
-                    >
-
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
+                        android:layout_height="wrap_content"
                         android:background="@drawable/box_shape"
                         android:orientation="vertical"
-                        android:layout_weight="1"
                         android:padding="10dp"
+                        android:paddingRight="15dp"
+                        android:paddingLeft="15dp"
+                        android:layout_marginTop="15dp"
                         >
 
                         <ImageView
+                            android:id="@+id/advanture"
                             android:layout_width="match_parent"
                             android:layout_height="225dp"
-                            android:src="@drawable/class1"
                             android:onClick="showVideo"
                             />
                         <id.co.skoline.view.custom.CustomTextView
@@ -82,11 +79,8 @@
                             android:layout_height="wrap_content"
                             android:text="something"
                             />
-                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-
-
         </ScrollView>
     </LinearLayout>
 </layout>

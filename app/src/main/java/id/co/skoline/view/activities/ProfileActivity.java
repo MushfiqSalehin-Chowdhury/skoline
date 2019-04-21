@@ -113,7 +113,6 @@ public class ProfileActivity extends BaseActivity {
     private void generateViewUser(UserResponse userResponseList) {
         dob = userResponseList.getUser().getBirthDate().toString().split("-");
         String age=getAge(Integer.valueOf(dob[0]),Integer.valueOf(dob[1]),Integer.valueOf(dob[2]));
-        Toast.makeText(this, userResponseList.getUser().getBirthDate().toString(), Toast.LENGTH_SHORT).show();
         profileBinding.nameANDage.setText(userResponseList.getUser().getChildName()+","+age+"Years");
 
      /*   topicScreenBinding.adventureDetails.setText(topicItemsResponseList.getTopic().getAdventure().getDescription());*/
