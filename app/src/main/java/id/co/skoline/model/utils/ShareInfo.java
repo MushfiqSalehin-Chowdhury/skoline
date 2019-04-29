@@ -9,6 +9,7 @@ import android.util.Log;
 import java.util.Random;
 
 import id.co.skoline.R;
+import id.co.skoline.view.activities.BaseActivity;
 
 public class ShareInfo {
 
@@ -99,7 +100,9 @@ public class ShareInfo {
     }
 
     public void logout(Context context) {
-        LocalStorage.getInstance().clearData(context, "user_access_info");
+        LocalStorage.getInstance().clearData(context, "auth_token");
+        // todo: GO TO LOGIN SCREEN.
+        ((BaseActivity) context).goToLoginScreen();
     }
 
     public String getAppID() {

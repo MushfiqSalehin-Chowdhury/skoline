@@ -96,6 +96,7 @@ public class SubjectsActivity extends BaseActivity {
             public void onItemClicked(SubjectResponse subjectResponse) {
                 Intent intent = new Intent(SubjectsActivity.this, TopicScreenActivity.class);
                 intent.putExtra("subjectResponse", new Gson().toJson(subjectResponse));
+                intent.putExtra("classId",klassesResponse.getId());
                 intent.putExtra("classIcon", klassesResponse.getIconUrl());
                 intent.putExtra("classTitle",klassesResponse.getName());
                 intent.putExtra("classColor",klassesResponse.getColorCode());

@@ -59,13 +59,13 @@
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:background="@color/colorWhite"
-                        android:src="@drawable/sub" />
+                        android:src="@drawable/sub"/>
                     <id.co.skoline.view.custom.CustomTextView
                         android:id="@+id/subjectTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Found items here"
-                        android:layout_marginTop="20dp" />
+                        android:layout_gravity="center"
+                        android:text="Found items here"/>
                 </LinearLayout>
                 <android.support.v7.widget.RecyclerView
                     android:layout_marginTop="15dp"
@@ -73,13 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </android.support.v7.widget.RecyclerView>
-
             </LinearLayout>
-
-
         </LinearLayout>
-
     </LinearLayout>
-
-
 </layout>

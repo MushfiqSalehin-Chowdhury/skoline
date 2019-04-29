@@ -15,6 +15,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -40,7 +41,9 @@ public class TopicScreenActivity extends BaseActivity {
     private TopicAdapter topicAdapter;
     DividerItemDecoration dividerItemDecoration;
     String classIconPath,classTitle,classColor;
+    int classId;
     SubjectResponse subjectResponse;
+    KlassesResponse klassesResponse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,17 +65,19 @@ public class TopicScreenActivity extends BaseActivity {
         classIconPath= intent.getStringExtra("classIcon");
         classTitle=intent.getStringExtra("classTitle");
         classColor=intent.getStringExtra("classColor");
+        classId = intent.getIntExtra("classId",0);
         subjectResponse = new Gson().fromJson(getIntent().getStringExtra("subjectResponse"), SubjectResponse.class);
 
         Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+subjectResponse.getIconUrl()).into(topicScreenBinding.subjectIcon);
         topicScreenBinding.subjectTitle.setText(subjectResponse.getName());
+        topicScreenBinding.subjectTitle.setTextColor(Color.parseColor(classColor));
         topicScreenBinding.classTitle.setText(classTitle);
         topicScreenBinding.klass.setBackgroundColor(Color.parseColor(classColor));
 
         Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+classIconPath).into(topicScreenBinding.classIcon);
        // Log.i("kelas id",String.valueOf(id));
         contentManager = new ContentManager(this);
-        contentManager.getTopics(subjectResponse.getId(), new TopicsListener() {
+        contentManager.getTopics(classId,subjectResponse.getId(), new TopicsListener() {
             @Override
             public void onSuccess(List<TopicResponse> topicResponseList) {
                 Log.e("MainActivity", new Gson().toJson(topicResponseList));

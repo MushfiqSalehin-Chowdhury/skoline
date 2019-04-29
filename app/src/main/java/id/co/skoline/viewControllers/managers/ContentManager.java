@@ -38,6 +38,8 @@ public class ContentManager {
     private String reqIdSubjects;
     private String reqIdTopics;
     private String reqIdAdvanture;
+    private String reqIdSignIn;
+    private String reqIdSignUp;
 
     public ContentManager(Context context){
         this.context = context;
@@ -68,12 +70,10 @@ public class ContentManager {
                 else if(requestId.equals(reqIdTopics)){
                     topicsListener.endLoading(requestId);
                 }
-
                 else if(requestId.equals(reqIdAdvanture)){
                     topicItemsListener.endLoading(requestId);
                 }
             }
-
             @Override
             public void successResponse(String requestId, ResponseBody responseBody, String baseUrl, String path, String requestType) {
                 if(requestId.equals(reqIdKlasses)){
@@ -116,10 +116,7 @@ public class ContentManager {
                        topicItemsListener.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
                     }
                 }
-
-
             }
-
             @Override
             public void failResponse(String requestId, int responseCode, String message) {
                 if(requestId.equals(reqIdKlasses)){
@@ -127,7 +124,6 @@ public class ContentManager {
                 }
                 if ( requestId.equals(reqIdAdvanture)){
                     topicItemsListener.onFailed(message,responseCode);
-
                 }
             }
         };
@@ -140,16 +136,16 @@ public class ContentManager {
         return reqIdKlasses;
     }
 
-    public String getSubjects(int subId,SubjectsListener subjectsListener){
+    public String getSubjects(int klassId,SubjectsListener subjectsListener){
         this.subjectsListener = subjectsListener;
         this.reqIdSubjects = ShareInfo.getInstance().getRequestId();
-        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/klasses/"+subId+"/subjects", "get", reqIdSubjects, new HashMap());
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/klasses/"+klassId+"/subjects", "get", reqIdSubjects, new HashMap());
         return reqIdSubjects;
     }
-    public String getTopics(int topicsId,TopicsListener topicsListener){
+    public String getTopics(int klassId,int subId,TopicsListener topicsListener){
         this.topicsListener = topicsListener;
         this.reqIdTopics = ShareInfo.getInstance().getRequestId();
-        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/subjects/"+topicsId+"/topics", "get", reqIdTopics, new HashMap());
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/klasses/"+klassId+"/subjects/"+subId+"/topics", "get", reqIdTopics, new HashMap());
         return reqIdTopics;
     }
 

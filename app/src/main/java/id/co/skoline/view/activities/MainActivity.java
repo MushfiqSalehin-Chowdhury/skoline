@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -64,7 +65,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void startLoading(String requestId) {
-                showProgressDialog(getString(R.string.loading_data), false);
+
             }
 
             @Override

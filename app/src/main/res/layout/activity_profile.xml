@@ -43,25 +43,29 @@
                                 android:layout_height="40dp"
                                 android:src="@android:drawable/ic_menu_camera"
                                 android:layout_gravity="bottom"
-                                android:background="@color/colorWhite"/>
+                                android:background="@color/colorWhite"
+                                android:onClick="profilePicture"/>
                         </FrameLayout>
                         <id.co.skoline.view.custom.CustomTextView
                             android:id="@+id/nameANDage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Name and age"
-                            android:textSize="30sp"
+                            android:textSize="20sp"
                             android:padding="10dp"
+                            app:textStyle="Bold"
                             android:textColor="@color/colorWhite"
                             android:layout_gravity="center"
                             android:layout_weight="1"/>
+
                         <ImageView
                             android:id="@+id/option"
-                            android:layout_width="20dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/menu"
+                            android:layout_width="26dp"
+                            android:layout_height="80dp"
                             android:layout_gravity="end"
-                            android:onClick="showMenu" />
+                            android:onClick="showMenu"
+                            android:src="@drawable/menu"
+                            />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -77,6 +81,7 @@
                             android:layout_gravity="center"
                             android:text="Activities"
                             android:padding="10dp"
+                            app:textStyle="Bold"
                             android:textSize="20sp"
                             android:gravity="center"
                             android:background="@drawable/box_shape" />
@@ -100,6 +105,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="Progress"
+                            app:textStyle="Bold"
                             android:padding="10dp"
                             android:textSize="20sp"
                             android:gravity="center"
@@ -121,6 +127,7 @@
                                 android:layout_marginTop="20dp"
                                 android:text="Mathmatika"
                                 android:textColor="@color/colorAccent"
+                                app:textStyle="Bold"
                                 android:textSize="15sp"/>
 
                             <FrameLayout
@@ -157,6 +164,7 @@
                                 android:layout_marginTop="20dp"
                                 android:text="English"
                                 android:textColor="@color/colorPrimaryDark2"
+                                app:textStyle="Bold"
                                 android:textSize="15sp"/>
 
                             <FrameLayout
@@ -192,6 +200,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="20dp"
                                 android:text="Indonesia"
+                                app:textStyle="Bold"
                                 android:textColor="@color/colorPrimaryDark"
                                 android:textSize="15sp"/>
 
@@ -229,6 +238,7 @@
                                 android:layout_marginTop="20dp"
                                 android:text="ilmu"
                                 android:textSize="15sp"
+                                app:textStyle="Bold"
                                 android:textColor="@color/PurpleDark" />
                             <FrameLayout
                                 android:layout_width="match_parent"
@@ -260,6 +270,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="20dp"
                                 android:text="Social"
+                                app:textStyle="Bold"
                                 android:textColor="@color/GreenDark"
                                 android:textSize="15sp"/>
                             <FrameLayout
@@ -290,6 +301,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="20dp"
                                 android:text="Pendidican"
+                                app:textStyle="Bold"
                                 android:textSize="15sp"
                                 android:textColor="@color/colorOrangeDark" />
                             <FrameLayout

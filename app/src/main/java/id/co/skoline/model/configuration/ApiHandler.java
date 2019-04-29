@@ -8,6 +8,7 @@ import java.net.UnknownHostException;
 import java.util.HashMap;
 
 import id.co.skoline.R;
+import id.co.skoline.model.utils.ShareInfo;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,7 +49,7 @@ public abstract class ApiHandler {
                         }
                     } else if (response.code() == 401) {
                         failResponse(requestId, ResponseCode.UNAUTHENTICATION, context.getString(R.string.access_deny));
-                        /*ShareInfo.getInstance().logout(context);*/
+                        ShareInfo.getInstance().logout(context);
                     } else {
                         failResponse(requestId, ResponseCode.UNAUTHENTICATION, context.getString(R.string.network_error));
                     }

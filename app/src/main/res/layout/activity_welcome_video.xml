@@ -21,7 +21,10 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="3">
+                android:layout_weight="3"
+                android:paddingRight="2dp"
+                android:paddingLeft="2dp"
+                >
 
                 <VideoView
                     android:id="@+id/videoView"
@@ -33,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|end"
                     android:onClick="stream"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:layout_margin="10dp"
                     android:background="@color/Gray"
                     android:textColor="@color/colorWhite"

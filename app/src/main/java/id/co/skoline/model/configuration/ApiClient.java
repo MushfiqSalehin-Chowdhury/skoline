@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.os.Build;
+import android.text.TextUtils;
 import android.util.Log;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -19,6 +20,7 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 
 import id.co.skoline.BuildConfig;
+import id.co.skoline.model.utils.ShareInfo;
 import okhttp3.ConnectionSpec;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -31,6 +33,8 @@ public class ApiClient {
     public static AllNetworkCalls callRetrofit(final Context context, String url, final String requestId) {
         try {
 
+
+
             OkHttpClient.Builder client = new OkHttpClient.Builder()
                     .connectTimeout(10, TimeUnit.SECONDS)
                     .writeTimeout(10, TimeUnit.SECONDS)
@@ -41,6 +45,8 @@ public class ApiClient {
                     .addInterceptor(chain -> {
                         Request request = chain.request().newBuilder()
                                 .addHeader("Content-Type", "application/json")
+                                //.addHeader("token","eyJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6InNhbGVoaW5fbXVzaGZpcSIsInBob25lIjoiMDE3NDE0MjM0MzgiLCJpZCI6NiwiY190aW1lIjoiMjAxOS0wNC0yNSAwNDo0NDozMSArMDAwMCJ9.2YNWMtXO0MTa-6RRe2TWJJfF2u7Vgw9GHbXVIvAzQms")
+                                .addHeader("token",TextUtils.isEmpty(ShareInfo.getInstance().getAuthenticationToken(context)) ? "" : ShareInfo.getInstance().getAuthenticationToken(context))
                                 .build();
                         return chain.proceed(request);
                     })

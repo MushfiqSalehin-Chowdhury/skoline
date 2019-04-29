@@ -9,10 +9,10 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 import id.co.skoline.model.configuration.ApiHandler;
-import id.co.skoline.model.response.TopicItemsResponse;
+import id.co.skoline.model.response.TokenResponse;
 import id.co.skoline.model.response.UserResponse;
 import id.co.skoline.model.utils.ShareInfo;
-import id.co.skoline.viewControllers.interfaces.KlassesListener;
+import id.co.skoline.viewControllers.interfaces.SignInListener;
 import id.co.skoline.viewControllers.interfaces.SignupListener;
 import id.co.skoline.viewControllers.interfaces.UserListerner;
 import okhttp3.ResponseBody;
@@ -24,8 +24,10 @@ public class AuthenticationManager {
     ApiHandler apiHandler;
     private String reqIdUser;
     private String reqIdSignUp;
+    private String reqIdSignIn;
     UserListerner userListerner;
     SignupListener signupListener;
+    SignInListener signInListener;
     public AuthenticationManager(Context context) {
         this.context=context;
 
@@ -53,11 +55,23 @@ public class AuthenticationManager {
                         userListerner.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
                     }
                 }
+                if ( requestId.equals(reqIdSignIn)){
+                    try {
+                        JSONObject jsonObject = new JSONObject(responseBody.string());
+                        signInListener.onSuccess(new Gson().fromJson(jsonObject.toString(), TokenResponse.class));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        signInListener.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
+                    }
+                }
             }
             @Override
             public void failResponse(String requestId, int responseCode, String message) {
                 if(requestId.equals(reqIdUser)){
                    userListerner.onFailed(message, responseCode);
+                }
+                if(requestId.equals(reqIdSignIn)){
+                    signInListener.onFailed(message, responseCode);
                 }
             }
         };
@@ -78,5 +92,15 @@ public class AuthenticationManager {
         hashMap.put("user[birth_date]",dateOfBirth);
         apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"/api/v1/users","post",reqIdSignUp,hashMap);
         return reqIdSignUp;
+    }
+
+    public String signIn (String uniqueName, String dateOfBirth,SignInListener signInListener){
+        this.signInListener= signInListener;
+        this.reqIdSignIn= ShareInfo.getInstance().getRequestId();
+        HashMap hashMap = new HashMap();
+        hashMap.put("unique_name",uniqueName);
+        hashMap.put("date_of_birth",dateOfBirth);
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"/api/v1/users/login","post",reqIdSignIn,hashMap);
+        return reqIdSignIn;
     }
 }

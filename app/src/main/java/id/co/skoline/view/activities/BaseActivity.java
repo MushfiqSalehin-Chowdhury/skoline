@@ -232,6 +232,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         onBackPressed();
     }
 
+    public void goToLoginScreen() {
+        Intent intent = new Intent(BaseActivity.this, SignInActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
     public void logout(){
         LocalStorage.getInstance().clearData(this, "LOGGED_IN_USER");
     }

@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.MediaController;
 import android.widget.Toast;
@@ -30,21 +31,18 @@ public class VideoPlayActivity extends BaseActivity {
 
     @Override
     protected void viewRelatedTask() {
-        videoUrl= getIntent().getStringExtra("videoUrl");
-        Uri uri;
-       videoPlayBinding.videoView.setVideoURI(Uri.parse(videoUrl));
-        android.widget.MediaController mc= new MediaController(this);
-        mc.setAnchorView(videoPlayBinding.videoView);
-        videoPlayBinding.videoView.setMediaController(mc);
-        videoPlayBinding.videoView.start();
-    }
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)
-    {
-        if ((keyCode == KeyEvent.KEYCODE_BACK))
-        {
-            finish();
-        }
-        return super.onKeyDown(keyCode, event);
+
+      try{
+
+          videoUrl= getIntent().getStringExtra("videoUrl");
+          videoPlayBinding.videoView.setVideoURI(Uri.parse(videoUrl));
+          android.widget.MediaController mc= new MediaController(this);
+          mc.setAnchorView(videoPlayBinding.videoView);
+          videoPlayBinding.videoView.setMediaController(mc);
+          videoPlayBinding.videoView.start();
+      }
+      catch (Exception e){
+          Log.i("videoError",String.valueOf(e));
+      }
     }
 }

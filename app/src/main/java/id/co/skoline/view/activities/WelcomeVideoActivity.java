@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.CountDownTimer;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
 
 import id.co.skoline.R;
 import id.co.skoline.databinding.ActivityWelcomeVideoBinding;
+import id.co.skoline.model.utils.ShareInfo;
 
 public class WelcomeVideoActivity extends BaseActivity{
 
@@ -40,7 +42,14 @@ public class WelcomeVideoActivity extends BaseActivity{
     }
 
     public void stream(View view) {
-        startActivity(new Intent(WelcomeVideoActivity.this, WelcomePageActivity.class));
-        finish();
+        if (TextUtils.isEmpty(ShareInfo.getInstance().getAuthenticationToken(this))){
+            startActivity(new Intent(this,WelcomePageActivity.class));
+            finish();
+        }
+        else{
+            goToHome();
+            finish();
+        }
+
     }
 }
