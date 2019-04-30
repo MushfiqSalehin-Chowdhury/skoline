@@ -96,5 +96,6 @@ public class SignInActivity extends BaseActivity {
     private void setToken (TokenResponse  tokenResponseList){
         ShareInfo.getInstance().setAuthenticationToken(this,tokenResponseList.getToken().toString());
         goToHome();
+        this.finish();
     }
 }

@@ -33,6 +33,5 @@ public class OtpActivity extends BaseActivity {
     }
 
     public void subscriptionProcess(View view)  {
-        startActivity(new Intent(this,SubscriptionActivity.class));
     }
 }

@@ -34,7 +34,7 @@ public class SignUpActivity extends BaseActivity{
     UserResponse userResponseList;
     Calendar calendar;
     String childName,dob,uName,location,email,phoneNumber;
-    int emailSwitch=0;
+    int emailSwitch=0,success;
     int year;
     public static final Pattern PHONE
             = Pattern.compile(                      // sdd = space, dot, or dash
@@ -133,49 +133,56 @@ public class SignUpActivity extends BaseActivity{
 
         if(!TextUtils.isEmpty(childName) && !TextUtils.isEmpty(uName) && !TextUtils.isEmpty(phoneNumber)){
 
-
             authenticationManager=new AuthenticationManager(this);
-            authenticationManager.signUp(childName,phoneNumber,uName,dob,new SignupListener() {
-                @Override
-                public void onSuccess(UserResponse userResponseList) {
-                    SignUpActivity.this.userResponseList=userResponseList;
-                    Log.i("success","User Created");
-                }
-                @Override
-                public void onFailed(String message, int responseCode) {
-                    SignUpActivity.this.userResponseList = null;
-                    Log.i("failed",message);
-                }
 
-                @Override
-                public void startLoading(String requestId) {
-                }
+            if (isValidPhone(phoneNumber)){
+                authenticationManager.signUp(childName,phoneNumber,uName,dob,new SignupListener() {
 
-                @Override
-                public void endLoading(String requestId) {
-                }
-            });
+                    @Override
+                    public void onSuccess(UserResponse userResponseList) {
+                        SignUpActivity.this.userResponseList=userResponseList;
+                        Log.i("success","User Created");
+                        Toast.makeText(SignUpActivity.this, "User Created", Toast.LENGTH_SHORT).show();
+                        success=1;
+                        creat(success);
+                    }
+                    @Override
+                    public void onFailed(String message, int responseCode) {
+                        SignUpActivity.this.userResponseList = null;
+                        Log.i("invaalid",message);
+                        //Toast.makeText(SignUpActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                        success=0;
+                        creat(success);
+                    }
 
+                    @Override
+                    public void startLoading(String requestId) {
+                    }
 
+                    @Override
+                    public void endLoading(String requestId) {
+                    }
+                });
+
+            }
+            else {
+                signUpBinding.number.setError("invalid number");
+            }
             if (emailSwitch==1){
                 if (!isValidEmail(email)){
                     signUpBinding.email.setError("invalid Email");
                 }
-                else {
-                    startActivity(new Intent(this,OtpActivity.class));
-                    finish();
-                }
             }
-            else{
-                if (!isValidPhone(phoneNumber)){
-                signUpBinding.number.setError("invalid Phone Number");
-                }
-                else {
-                    startActivity(new Intent(this,OtpActivity.class));
-                    finish();
-                }
 
-            }
         }
+    }
+
+    public void creat(int success){
+
+        if (success==0 ) {
+            signUpBinding.uname.setError("already taken");
+        }
+        else
+            startActivity(new Intent(this,OtpActivity.class));
     }
 }

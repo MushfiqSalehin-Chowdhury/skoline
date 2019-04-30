@@ -3,6 +3,11 @@ package id.co.skoline.model.configuration;
 
 import android.content.Context;
 import android.util.Log;
+
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.HashMap;
@@ -40,7 +45,7 @@ public abstract class ApiHandler {
                     Log.e(TAG, "onResponse: " + response.code());
                     Log.e(TAG, "onResponse: " + String.valueOf(response.body()));
                     endApiCall(requestId);
-                    if (response.code() == ResponseCode.SUCCESS_RESPONSE) {
+                    if (response.code() == ResponseCode.SUCCESS_RESPONSE || response.code() == 201) {
                         try {
                             successResponse(requestId, response.body(), baseUrl, path, requestType);
                         } catch (Exception e) {
@@ -50,7 +55,16 @@ public abstract class ApiHandler {
                     } else if (response.code() == 401) {
                         failResponse(requestId, ResponseCode.UNAUTHENTICATION, context.getString(R.string.access_deny));
                         ShareInfo.getInstance().logout(context);
-                    } else {
+                    } /*else if (response.code() == 422) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response.body().string());
+                            Log.e(TAG, "onResponse: JSONObject - " + new Gson().toJson(jsonObject));
+                            failResponse(requestId, ResponseCode.FORM_VALIDATION_ERROR, jsonObject.getString("message"));
+                        } catch (Exception e) {
+                            Log.e(TAG, "onResponse: failResponse " + String.valueOf(e));
+                            failResponse(requestId, ResponseCode.INVALID_JSON_RESPONSE, context.getString(R.string.invalid_json_response));
+                        }
+                    }*/ else {
                         failResponse(requestId, ResponseCode.UNAUTHENTICATION, context.getString(R.string.network_error));
                     }
                 }

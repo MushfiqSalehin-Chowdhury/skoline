@@ -215,9 +215,9 @@ public class ProfileActivity extends BaseActivity {
                 Log.i("Camera", "G : " + grantResults[0]);
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-
-                   launchCamera();
+                    launchCamera();
             }
+
                 if (ActivityCompat.shouldShowRequestPermissionRationale
                         (this, Manifest.permission.CAMERA)) {
 
@@ -226,14 +226,10 @@ public class ProfileActivity extends BaseActivity {
                 }
 
             case REQUEST_EXTERNAL_STORAGE : {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-
+                if (grantResults.length > 1
+                        && grantResults[1] == PackageManager.PERMISSION_GRANTED)
                    chooseFile();
             }
-
-
-
     }
 }
 

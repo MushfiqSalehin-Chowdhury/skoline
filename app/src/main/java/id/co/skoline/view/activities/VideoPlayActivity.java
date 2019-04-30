@@ -1,6 +1,7 @@
 package id.co.skoline.view.activities;
 
 import android.databinding.DataBindingUtil;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,7 +22,7 @@ public class VideoPlayActivity extends BaseActivity {
 
     ActivityVideoPlayBinding videoPlayBinding;
     TopicItemsResponse topicItemsResponseList;
-    String videoUrl;
+   private String videoUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,17 +33,38 @@ public class VideoPlayActivity extends BaseActivity {
     @Override
     protected void viewRelatedTask() {
 
-      try{
+        videoUrl= getIntent().getStringExtra("videoUrl");
 
-          videoUrl= getIntent().getStringExtra("videoUrl");
-          videoPlayBinding.videoView.setVideoURI(Uri.parse(videoUrl));
-          android.widget.MediaController mc= new MediaController(this);
-          mc.setAnchorView(videoPlayBinding.videoView);
-          videoPlayBinding.videoView.setMediaController(mc);
-          videoPlayBinding.videoView.start();
-      }
-      catch (Exception e){
-          Log.i("videoError",String.valueOf(e));
-      }
+        videoPlayBinding.videoView.setVideoPath(videoUrl);
+
+        MediaController mediaController = new
+                MediaController(this);
+        mediaController.setAnchorView(videoPlayBinding.videoView);
+        videoPlayBinding.videoView.setMediaController(mediaController);
+
+        videoPlayBinding.videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener()  {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                Log.i("time", "Duration = " +
+                        videoPlayBinding.videoView.getDuration());
+                videoPlayBinding.videoView.start();
+            }
+        });
+
+        videoPlayBinding.videoView.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+            @Override
+            public boolean onError(MediaPlayer mp, int what, int extra) {
+
+                Log.i("err",String.valueOf(what));
+                return false;
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        super.finish();
+
     }
 }

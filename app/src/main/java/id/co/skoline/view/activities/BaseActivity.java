@@ -229,11 +229,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         Intent intent = new Intent(BaseActivity.this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
-        onBackPressed();
     }
 
     public void goToLoginScreen() {
-        Intent intent = new Intent(BaseActivity.this, SignInActivity.class);
+        Intent intent = new Intent(BaseActivity.this, WelcomePageActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }

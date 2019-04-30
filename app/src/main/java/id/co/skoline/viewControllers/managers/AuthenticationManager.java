@@ -64,6 +64,16 @@ public class AuthenticationManager {
                         signInListener.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
                     }
                 }
+
+                if ( requestId.equals(reqIdSignUp)){
+                    try {
+                        JSONObject jsonObject = new JSONObject(responseBody.string());
+                        signupListener.onSuccess(new Gson().fromJson(jsonObject.toString(), UserResponse.class));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        signupListener.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
+                    }
+                }
             }
             @Override
             public void failResponse(String requestId, int responseCode, String message) {
@@ -73,13 +83,16 @@ public class AuthenticationManager {
                 if(requestId.equals(reqIdSignIn)){
                     signInListener.onFailed(message, responseCode);
                 }
+                if(requestId.equals(reqIdSignUp)){
+                    signupListener.onFailed(message, responseCode);
+                }
             }
         };
     }
     public String getUsers(UserListerner userListerner){
         this.userListerner = userListerner;
         this.reqIdUser = ShareInfo.getInstance().getRequestId();
-        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/users/4", "get", reqIdUser, new HashMap());
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/users/user_profile", "get", reqIdUser, new HashMap());
         return reqIdUser;
     }
     public String signUp (String childName, String phone,String uniqueName, String dateOfBirth,SignupListener signupListener){
