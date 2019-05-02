@@ -22,7 +22,9 @@ public class VideoPlayActivity extends BaseActivity {
 
     ActivityVideoPlayBinding videoPlayBinding;
     TopicItemsResponse topicItemsResponseList;
-   private String videoUrl;
+    private String videoUrl;
+
+    MediaController mediaController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,22 +34,26 @@ public class VideoPlayActivity extends BaseActivity {
 
     @Override
     protected void viewRelatedTask() {
-
         videoUrl= getIntent().getStringExtra("videoUrl");
-
+        Log.i("videoLink",videoUrl);
         videoPlayBinding.videoView.setVideoPath(videoUrl);
-
-        MediaController mediaController = new
-                MediaController(this);
+        mediaController = new MediaController(this);
         mediaController.setAnchorView(videoPlayBinding.videoView);
         videoPlayBinding.videoView.setMediaController(mediaController);
 
         videoPlayBinding.videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener()  {
             @Override
             public void onPrepared(MediaPlayer mp) {
-                Log.i("time", "Duration = " +
-                        videoPlayBinding.videoView.getDuration());
-                videoPlayBinding.videoView.start();
+                Log.i("VideoPlayActivity", "Duration = " +videoPlayBinding.videoView.getDuration());
+
+                mp.start();
+            }
+        });
+
+        videoPlayBinding.videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+
             }
         });
 
@@ -55,7 +61,8 @@ public class VideoPlayActivity extends BaseActivity {
             @Override
             public boolean onError(MediaPlayer mp, int what, int extra) {
 
-                Log.i("err",String.valueOf(what));
+                Log.i("VideoPlayActivity",String.valueOf(what));
+                Log.i("VideoPlayActivity",String.valueOf(extra));
                 return false;
             }
         });
@@ -64,7 +71,8 @@ public class VideoPlayActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        super.finish();
-
+      /*  if(mediaController!=null){
+            mediaController.stop
+        }*/
     }
 }

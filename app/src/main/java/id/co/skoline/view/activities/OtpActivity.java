@@ -29,7 +29,8 @@ public class OtpActivity extends BaseActivity {
     }
 
     public void signIn(View view) {
-        startActivity(new Intent(this,SignInActivity.class));
+
+
     }
 
     public void subscriptionProcess(View view)  {

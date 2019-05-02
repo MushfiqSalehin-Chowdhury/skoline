@@ -38,6 +38,8 @@ public abstract class ApiHandler {
                 bodyToCall = ApiClient.callRetrofit(context, baseUrl, requestId).getRequest(path);
             else if (requestType.toLowerCase().equals("post"))
                 bodyToCall = ApiClient.callRetrofit(context, baseUrl, requestId).postRequest(path, hashMap);
+            else if (requestType.toLowerCase().equals("postImage"))
+                bodyToCall = ApiClient.callRetrofit(context, baseUrl, requestId).sendDocuments(path, hashMap);
 
             bodyToCall.enqueue(new Callback<ResponseBody>() {
                 @Override

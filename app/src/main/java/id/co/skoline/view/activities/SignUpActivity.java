@@ -1,9 +1,18 @@
 package id.co.skoline.view.activities;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
@@ -15,6 +24,17 @@ import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -23,7 +43,10 @@ import java.util.regex.Pattern;
 import id.co.skoline.R;
 import id.co.skoline.databinding.ActivitySignUpBinding;
 import id.co.skoline.model.configuration.ApiHandler;
+import id.co.skoline.model.response.SignupErrorResponse;
 import id.co.skoline.model.response.UserResponse;
+import id.co.skoline.model.utils.GeocoderHandler;
+import id.co.skoline.model.utils.LocationAddress;
 import id.co.skoline.viewControllers.interfaces.SignupListener;
 import id.co.skoline.viewControllers.managers.AuthenticationManager;
 
@@ -34,12 +57,24 @@ public class SignUpActivity extends BaseActivity{
     UserResponse userResponseList;
     Calendar calendar;
     String childName,dob,uName,location,email,phoneNumber;
+    Spinner spinner;
+    Double lat,lang;
+    private GoogleMap mMap;
+    LocationManager locationManager;
+    LocationListener locationListener;
+    GoogleApiClient mGoogleApiClient;
+    private FusedLocationProviderClient mfusedLocationProviderClient;
+    private Location mLocation;
+    private LocationRequest mLocationRequest;
     int emailSwitch=0,success;
+    LocationAddress locationAddress;
+    GeocoderHandler geocoderHandler;
+
     int year;
     public static final Pattern PHONE
-            = Pattern.compile(                      // sdd = space, dot, or dash
-            "(\\+[0-9]+[\\- ]*)?"        // +<digits><sdd>*
-                    + "(\\([0-9]+\\)[\\- ]*)?"   // (<digits>)<sdd>*
+            = Pattern.compile(
+            "(\\+[0-9]+[\\- ]*)?"
+                    + "(\\([0-9]+\\)[\\- ]*)?"
                     + "([0-9][0-9\\- ]+[0-9])");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +82,68 @@ public class SignUpActivity extends BaseActivity{
         signUpBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up);
         calendar= Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
+        geocoderHandler = new GeocoderHandler();
+        locationAddress= new LocationAddress();
+        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+                getLocation();
+            }
+            @Override
+            public void onStatusChanged(String s, int i, Bundle bundle) {
+            }
+            @Override
+            public void onProviderEnabled(String s) {
+            }
+            @Override
+            public void onProviderDisabled(String s) {
+            }
+        };
+        if ((ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            { ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},2);
+            }
+        }
+        else {
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+            getLocation();
+        }
+    }
+
+
+    private void getLocation (){
+        mfusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(this);
+        try{
+            Task location = mfusedLocationProviderClient.getLastLocation();
+            location.addOnCompleteListener(new OnCompleteListener() {
+                @Override
+                public void onComplete(@NonNull Task task) {
+                    if (task.isSuccessful()){
+                        Log.d("location","Found");
+                        Location currentLocation = (Location) task.getResult();
+                        //Log.i("here",String.valueOf(currentLocation.getLatitude())+","+currentLocation.getLongitude());
+                        lat = currentLocation.getLatitude();
+                        lang =currentLocation.getLongitude();
+                        locationAddress.getAddressFromLocation(lat,lang,
+                                getApplicationContext(), geocoderHandler);
+                    }
+                    else
+                        Log.d("location","not found");
+                }
+            });
+        }catch(SecurityException e)
+        {
+            Log.d("notfound", "location not found");
+        }
+        signUpBinding.location.setText(geocoderHandler.getLocation());
     }
 
     @Override
     protected void viewRelatedTask() {
+
+
         signUpBinding.emailSwitch.setOnCheckedChangeListener(
                 new CompoundButton.OnCheckedChangeListener() {
                     @Override
@@ -61,13 +154,11 @@ public class SignUpActivity extends BaseActivity{
                             emailSwitch=1;
                         } else {
                             signUpBinding.email.setEnabled(false);
-                            emailSwitch=0;
+                            emailSwitch = 0;
                         }
-
                     }
                 }
         );
-
         signUpBinding.termsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -86,12 +177,12 @@ public class SignUpActivity extends BaseActivity{
             arraySpinner.add(year-i);
         }
 
-        Spinner s = (Spinner) findViewById(R.id.year);
+        spinner = findViewById(R.id.year);
         ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this,
                 android.R.layout.simple_spinner_item, arraySpinner );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        s.setPrompt("yyyy");
-        s.setAdapter(adapter);
+        spinner.setPrompt("yyyy");
+        spinner.setAdapter(adapter);
 
         Log.d("year",String.valueOf(year));
         signUpBinding.terms.setText(Html.fromHtml(getString(R.string.agree_terms_privacy)));
@@ -106,7 +197,6 @@ public class SignUpActivity extends BaseActivity{
     public static boolean isValidPhone(CharSequence target) {
         return (!TextUtils.isEmpty(target) && PHONE.matcher(target).matches());
     }
-
 
     public void verify(View view) {
         childName= signUpBinding.childName.getText().toString();
@@ -139,16 +229,21 @@ public class SignUpActivity extends BaseActivity{
                 authenticationManager.signUp(childName,phoneNumber,uName,dob,new SignupListener() {
 
                     @Override
-                    public void onSuccess(UserResponse userResponseList) {
-                        SignUpActivity.this.userResponseList=userResponseList;
-                        Log.i("success","User Created");
-                        Toast.makeText(SignUpActivity.this, "User Created", Toast.LENGTH_SHORT).show();
-                        success=1;
-                        creat(success);
+                    public void onSuccess(SignupErrorResponse signupErrorResponseList) {
+                        if(signupErrorResponseList.getStatus()==422){
+                            showToast(signupErrorResponseList.getMessage());
+                        }
+                        else{
+                            //SignUpActivity.this.userResponseList=userResponseList;
+                            Log.i("success","User Created");
+                            Toast.makeText(SignUpActivity.this, "User Created", Toast.LENGTH_SHORT).show();
+                            success=1;
+                            creat(success);
+                        }
                     }
                     @Override
                     public void onFailed(String message, int responseCode) {
-                        SignUpActivity.this.userResponseList = null;
+                        //SignUpActivity.this.userResponseList = null;
                         Log.i("invaalid",message);
                         //Toast.makeText(SignUpActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                         success=0;

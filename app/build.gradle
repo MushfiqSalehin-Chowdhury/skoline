@@ -68,4 +68,7 @@ dependencies {
 
     /*country code */
     implementation 'com.hbb20:ccp:2.2.7'
+
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+    implementation 'com.google.android.gms:play-services-maps:16.1.0'
 }

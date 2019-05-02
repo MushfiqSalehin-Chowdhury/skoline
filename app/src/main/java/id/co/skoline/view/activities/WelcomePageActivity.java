@@ -26,7 +26,8 @@ public class WelcomePageActivity extends BaseActivity {
         welcomeBinding.appweb.setText(Html.fromHtml(getString(R.string.app_website)));
         welcomeBinding.appweb.setMovementMethod(LinkMovementMethod.getInstance());
     }
-    public void signIn(View view) {
+    public void
+    signIn(View view) {
         startActivity(new Intent(this,SignInActivity.class));
         finish();
     }

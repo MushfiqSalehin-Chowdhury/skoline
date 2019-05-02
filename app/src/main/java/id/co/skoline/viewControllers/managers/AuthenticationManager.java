@@ -1,21 +1,27 @@
 package id.co.skoline.viewControllers.managers;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
+import java.util.BitSet;
 import java.util.HashMap;
 
 import id.co.skoline.model.configuration.ApiHandler;
+import id.co.skoline.model.response.SignupErrorResponse;
 import id.co.skoline.model.response.TokenResponse;
 import id.co.skoline.model.response.UserResponse;
 import id.co.skoline.model.utils.ShareInfo;
 import id.co.skoline.viewControllers.interfaces.SignInListener;
 import id.co.skoline.viewControllers.interfaces.SignupListener;
 import id.co.skoline.viewControllers.interfaces.UserListerner;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import retrofit2.http.PartMap;
 
 import static id.co.skoline.model.configuration.ResponseCode.INVALID_JSON_RESPONSE;
 
@@ -24,7 +30,7 @@ public class AuthenticationManager {
     ApiHandler apiHandler;
     private String reqIdUser;
     private String reqIdSignUp;
-    private String reqIdSignIn;
+    private String reqIdSignIn,img;
     UserListerner userListerner;
     SignupListener signupListener;
     SignInListener signInListener;
@@ -68,7 +74,7 @@ public class AuthenticationManager {
                 if ( requestId.equals(reqIdSignUp)){
                     try {
                         JSONObject jsonObject = new JSONObject(responseBody.string());
-                        signupListener.onSuccess(new Gson().fromJson(jsonObject.toString(), UserResponse.class));
+                        signupListener.onSuccess(new Gson().fromJson(jsonObject.toString(), SignupErrorResponse.class));
                     } catch (Exception e) {
                         e.printStackTrace();
                         signupListener.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
@@ -95,6 +101,17 @@ public class AuthenticationManager {
         apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/users/user_profile", "get", reqIdUser, new HashMap());
         return reqIdUser;
     }
+
+    public String uploadImage(MultipartBody.Part part, RequestBody requestBody,UserListerner userListerner){
+        this.userListerner = userListerner;
+        this.reqIdUser = ShareInfo.getInstance().getRequestId();
+        HashMap hashMap = new HashMap();
+        hashMap.put("avatar",requestBody);
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/users/19/upload_avatar", "postImage", reqIdUser, new HashMap());
+        return reqIdUser;
+    }
+
+
     public String signUp (String childName, String phone,String uniqueName, String dateOfBirth,SignupListener signupListener){
         this.signupListener= signupListener;
         this.reqIdSignUp= ShareInfo.getInstance().getRequestId();
@@ -106,6 +123,7 @@ public class AuthenticationManager {
         apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"/api/v1/users","post",reqIdSignUp,hashMap);
         return reqIdSignUp;
     }
+
 
     public String signIn (String uniqueName, String dateOfBirth,SignInListener signInListener){
         this.signInListener= signInListener;
