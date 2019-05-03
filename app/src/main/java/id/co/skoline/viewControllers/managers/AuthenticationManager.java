@@ -107,7 +107,7 @@ public class AuthenticationManager {
         this.reqIdUser = ShareInfo.getInstance().getRequestId();
         HashMap hashMap = new HashMap();
         hashMap.put("avatar",requestBody);
-        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/users/19/upload_avatar", "postImage", reqIdUser, new HashMap());
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/users/20/upload_avatar", "postImage", reqIdUser, hashMap);
         return reqIdUser;
     }
 
