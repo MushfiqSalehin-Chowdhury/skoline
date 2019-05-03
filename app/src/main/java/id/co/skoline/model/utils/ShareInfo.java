@@ -30,6 +30,7 @@ public class ShareInfo {
     }
 
     public native String getBaseUrl();
+    public native String getRootBaseUrl();
 
     public int getPxToDp(int px) {
         return (int) (px / Resources.getSystem().getDisplayMetrics().density);

@@ -132,27 +132,27 @@ public class ContentManager {
     public String getKlasses(KlassesListener klassesListener){
         this.klassesListener = klassesListener;
         this.reqIdKlasses = ShareInfo.getInstance().getRequestId();
-        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/klasses", "get", reqIdKlasses, new HashMap());
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "klasses", "get", reqIdKlasses, new HashMap());
         return reqIdKlasses;
     }
 
     public String getSubjects(int klassId,SubjectsListener subjectsListener){
         this.subjectsListener = subjectsListener;
         this.reqIdSubjects = ShareInfo.getInstance().getRequestId();
-        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/klasses/"+klassId+"/subjects", "get", reqIdSubjects, new HashMap());
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "klasses/"+klassId+"/subjects", "get", reqIdSubjects, new HashMap());
         return reqIdSubjects;
     }
     public String getTopics(int klassId,int subId,TopicsListener topicsListener){
         this.topicsListener = topicsListener;
         this.reqIdTopics = ShareInfo.getInstance().getRequestId();
-        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/klasses/"+klassId+"/subjects/"+subId+"/topics", "get", reqIdTopics, new HashMap());
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "klasses/"+klassId+"/subjects/"+subId+"/topics", "get", reqIdTopics, new HashMap());
         return reqIdTopics;
     }
 
     public String getAdvanture(int id,TopicItemsListener topicItemsListener){
         this.topicItemsListener = topicItemsListener;
         this.reqIdAdvanture = ShareInfo.getInstance().getRequestId();
-        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/topics/"+id, "get", reqIdAdvanture, new HashMap());
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "topics/"+id, "get", reqIdAdvanture, new HashMap());
         return reqIdAdvanture;
     }
 }

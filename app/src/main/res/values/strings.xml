@@ -57,7 +57,7 @@
     <string name="topic_list">Select Topic</string>
     <string name="adventure_list">Adventure and Play</string>
     <string name="loading_data">Loading data...</string>
-    <string name="skipButton">skip</string>
+    <string name="skipButton">Skip</string>
     <string name="signin_you_in">Signing you in...</string>
     <string name="user_not_found">User not found</string>
     <string name="uniqueName_resend">Unique name has been sent to</string>
@@ -66,6 +66,12 @@
     <string name="invalidNumber">Invalid number</string>
     <string name="invalidEmail">Invalid email address</string>
     <string name="help">Help</string>
+    <string name="take_picture">Take Picture</string>
+    <string name="choose_from_gallery">Choose From Gallery</string>
+    <string name="couldnt_upload_image">Couldn\'t load image</string>
+    <string name="years">years</string>
+    <string name="uploading_photo">Uploading photo...</string>
+    <string name="image_update_successful">Profile picture successfully uploaded</string>
 
 
     <string-array name="Day">

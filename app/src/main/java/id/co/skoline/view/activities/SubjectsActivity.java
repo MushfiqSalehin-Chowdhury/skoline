@@ -84,7 +84,7 @@ public class SubjectsActivity extends BaseActivity {
     }
     private void generateViewSubject(List<SubjectResponse> subjectResponseList) {
 
-        Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+klassesResponse.getIconUrl()).into(subjectsBinding.classIcon);
+        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponse.getIconUrl()).into(subjectsBinding.classIcon);
         subjectsBinding.klass.setBackgroundColor(Color.parseColor(klassesResponse.getColorCode()));
         subjectsBinding.classTitle.setText(klassesResponse.getName());
 

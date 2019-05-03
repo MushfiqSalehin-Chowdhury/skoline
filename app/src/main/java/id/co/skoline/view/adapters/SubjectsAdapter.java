@@ -64,7 +64,7 @@ public class SubjectsAdapter extends  RecyclerView.Adapter<SubjectsAdapter.ViewH
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         SubjectResponse subjectResponse= subjectResponseList.get(position);
-        Picasso.with(context).load(ShareInfo.getInstance().getBaseUrl()+subjectResponseList.get(position).getIconUrl()).into(holder.adapterSubjectListBinding.subjectIcon);
+        Picasso.with(context).load(ShareInfo.getInstance().getRootBaseUrl()+subjectResponseList.get(position).getIconUrl()).into(holder.adapterSubjectListBinding.subjectIcon);
         holder.adapterSubjectListBinding.subjectTitle.setText(subjectResponseList.get(position).getName());
 
         try{

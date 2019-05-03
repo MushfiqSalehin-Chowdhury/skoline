@@ -80,14 +80,14 @@ public class TopicItemsActivity extends BaseActivity {
     }
 
     private void generateViewAdvanture(TopicItemsResponse topicItemsResponseList) {
-        Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+adventureBanner).into(topicItemsBinding.advanture);
+        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+adventureBanner).into(topicItemsBinding.advanture);
         topicItemsBinding.adventureTitle.setText(topicItemsResponseList.getTopic().getAdventure().getTitle());
         topicItemsBinding.adventureDetails.setText(topicItemsResponseList.getTopic().getAdventure().getDescription());
         topicItemsBinding.klass.setBackgroundColor(Color.parseColor(classColor));
     }
     public void showVideo(View view) {
         Intent intent=new Intent(this,VideoPlayActivity.class);
-        intent.putExtra("videoUrl",ShareInfo.getInstance().getBaseUrl()+topicItemsResponseList.getTopic().getAdventure().getVideoLink());
+        intent.putExtra("videoUrl",ShareInfo.getInstance().getRequestId()+topicItemsResponseList.getTopic().getAdventure().getVideoLink());
         startActivity(intent);
     }
 }

@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/help"
+        android:id="@+id/fromCamera"
         android:orderInCategory="100"
-        android:title="Take Picture"
+        android:title="@string/take_picture"
         app:showAsAction="never" />
     <item
-        android:id="@+id/logOut"
+        android:id="@+id/fromGallery"
         android:orderInCategory="100"
-        android:title="Choose From Gallery"
+        android:title="@string/choose_from_gallery"
         app:showAsAction="never" />
 
 </menu>

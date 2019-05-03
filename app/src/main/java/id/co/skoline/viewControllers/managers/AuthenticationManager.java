@@ -2,11 +2,13 @@ package id.co.skoline.viewControllers.managers;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.util.Log;
 
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.BitSet;
 import java.util.HashMap;
 
@@ -17,7 +19,9 @@ import id.co.skoline.model.response.UserResponse;
 import id.co.skoline.model.utils.ShareInfo;
 import id.co.skoline.viewControllers.interfaces.SignInListener;
 import id.co.skoline.viewControllers.interfaces.SignupListener;
+import id.co.skoline.viewControllers.interfaces.UploadPhotoListener;
 import id.co.skoline.viewControllers.interfaces.UserListerner;
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -26,14 +30,19 @@ import retrofit2.http.PartMap;
 import static id.co.skoline.model.configuration.ResponseCode.INVALID_JSON_RESPONSE;
 
 public class AuthenticationManager {
+
     private Context context;
     ApiHandler apiHandler;
     private String reqIdUser;
     private String reqIdSignUp;
-    private String reqIdSignIn,img;
+    private String reqIdSignIn;
+    private String reqIdUploadPhoto;
+
     UserListerner userListerner;
     SignupListener signupListener;
     SignInListener signInListener;
+    UploadPhotoListener uploadPhotoListener;
+
     public AuthenticationManager(Context context) {
         this.context=context;
 
@@ -42,12 +51,20 @@ public class AuthenticationManager {
             public void startApiCall(String requestId) {
                 if(requestId.equals(reqIdUser)){
                     userListerner.startLoading(requestId);
+                } else if(requestId.equals(reqIdSignIn)){
+                    signInListener.startLoading(requestId);
+                } else if(requestId.equals(reqIdSignUp)){
+                    signupListener.startLoading(requestId);
                 }
             }
             @Override
             public void endApiCall(String requestId) {
                 if(requestId.equals(reqIdUser)){
-                    userListerner.startLoading(requestId);
+                    userListerner.endLoading(requestId);
+                } else if(requestId.equals(reqIdSignIn)){
+                    signInListener.endLoading(requestId);
+                } else if(requestId.equals(reqIdSignUp)){
+                    signupListener.endLoading(requestId);
                 }
             }
             @Override
@@ -60,8 +77,7 @@ public class AuthenticationManager {
                         e.printStackTrace();
                         userListerner.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
                     }
-                }
-                if ( requestId.equals(reqIdSignIn)){
+                } else if ( requestId.equals(reqIdSignIn)){
                     try {
                         JSONObject jsonObject = new JSONObject(responseBody.string());
                         signInListener.onSuccess(new Gson().fromJson(jsonObject.toString(), TokenResponse.class));
@@ -69,9 +85,7 @@ public class AuthenticationManager {
                         e.printStackTrace();
                         signInListener.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
                     }
-                }
-
-                if ( requestId.equals(reqIdSignUp)){
+                } else if ( requestId.equals(reqIdSignUp)){
                     try {
                         JSONObject jsonObject = new JSONObject(responseBody.string());
                         signupListener.onSuccess(new Gson().fromJson(jsonObject.toString(), SignupErrorResponse.class));
@@ -84,12 +98,10 @@ public class AuthenticationManager {
             @Override
             public void failResponse(String requestId, int responseCode, String message) {
                 if(requestId.equals(reqIdUser)){
-                   userListerner.onFailed(message, responseCode);
-                }
-                if(requestId.equals(reqIdSignIn)){
+                    userListerner.onFailed(message, responseCode);
+                } else if(requestId.equals(reqIdSignIn)){
                     signInListener.onFailed(message, responseCode);
-                }
-                if(requestId.equals(reqIdSignUp)){
+                } else if(requestId.equals(reqIdSignUp)){
                     signupListener.onFailed(message, responseCode);
                 }
             }
@@ -98,17 +110,27 @@ public class AuthenticationManager {
     public String getUsers(UserListerner userListerner){
         this.userListerner = userListerner;
         this.reqIdUser = ShareInfo.getInstance().getRequestId();
-        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/users/user_profile", "get", reqIdUser, new HashMap());
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "users/user_profile", "get", reqIdUser, new HashMap());
         return reqIdUser;
     }
 
-    public String uploadImage(MultipartBody.Part part, RequestBody requestBody,UserListerner userListerner){
-        this.userListerner = userListerner;
-        this.reqIdUser = ShareInfo.getInstance().getRequestId();
-        HashMap hashMap = new HashMap();
-        hashMap.put("avatar",requestBody);
-        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "/api/v1/users/20/upload_avatar", "postImage", reqIdUser, hashMap);
-        return reqIdUser;
+    public void uploadPhoto(String imagePath, UploadPhotoListener uploadPhotoListener) {
+        this.uploadPhotoListener = uploadPhotoListener;
+        this.reqIdUploadPhoto = ShareInfo.getInstance().getRequestId();
+        RequestBody requestFileForImage = null;
+        
+        HashMap<String, RequestBody> hashMap = new HashMap<>();
+
+        try {
+            File file = new File(imagePath);
+            requestFileForImage = RequestBody.create(MediaType.parse("image/jpg"), file);
+        } catch (Exception ignored) {
+            Log.d("TAG", "ignored image:" + ignored.getMessage());
+        }
+
+        hashMap.put("avatar\"; filename=\"image_" + System.currentTimeMillis() + ".jpg\"", requestFileForImage);
+
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "users/upload_avatar", "post_image", reqIdUploadPhoto, hashMap);
     }
 
 
@@ -120,7 +142,7 @@ public class AuthenticationManager {
         hashMap.put("user[phone]",phone);
         hashMap.put("user[unique_name]",uniqueName);
         hashMap.put("user[birth_date]",dateOfBirth);
-        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"/api/v1/users","post",reqIdSignUp,hashMap);
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"users","post",reqIdSignUp,hashMap);
         return reqIdSignUp;
     }
 
@@ -131,7 +153,7 @@ public class AuthenticationManager {
         HashMap hashMap = new HashMap();
         hashMap.put("unique_name",uniqueName);
         hashMap.put("date_of_birth",dateOfBirth);
-        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"/api/v1/users/login","post",reqIdSignIn,hashMap);
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"users/login","post",reqIdSignIn,hashMap);
         return reqIdSignIn;
     }
 }

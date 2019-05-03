@@ -60,7 +60,7 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder>{
 
         TopicResponse topicResponse = topicResponseList.get(position);
 
-        Picasso.with(context).load(ShareInfo.getInstance().getBaseUrl()+ topicResponse.getBannerUrl()).into(holder.adapterTopicListBinding.topicBanner);
+        Picasso.with(context).load(ShareInfo.getInstance().getRootBaseUrl()+ topicResponse.getBannerUrl()).into(holder.adapterTopicListBinding.topicBanner);
         holder.adapterTopicListBinding.topicTitle.setText(topicResponse.getName());
 
 

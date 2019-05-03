@@ -23,8 +23,6 @@ public class MainActivity extends BaseActivity {
     ActivityMainBinding mainBinding;
     ContentManager contentManager;
     List<KlassesResponse> klassesResponseList = new ArrayList<>();
-    List<SubjectResponse> subjectResponseList= new ArrayList<>();
-    ShareInfo shareInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,12 +32,18 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void viewRelatedTask() {
         setToolbar(getString(R.string.class_list), true, mainBinding.toolbarBinding);
+
+        mainBinding.scrollView.setVisibility(View.GONE);
+        mainBinding.progressBar.setVisibility(View.VISIBLE);
+
         contentManager = new ContentManager(this);
         contentManager.getKlasses(new KlassesListener() {
             @Override
             public void onSuccess(List<KlassesResponse> klassesResponseList) {
                 Log.e("MainActivity", new Gson().toJson(klassesResponseList));
                 MainActivity.this.klassesResponseList = klassesResponseList;
+                mainBinding.scrollView.setVisibility(View.VISIBLE);
+                mainBinding.progressBar.setVisibility(View.GONE);
                 generateView(klassesResponseList);
             }
 
@@ -47,6 +51,7 @@ public class MainActivity extends BaseActivity {
             public void onFailed(String message, int responseCode) {
                 Log.e("MainActivity", "message: "+message);
                 MainActivity.this.klassesResponseList = null;
+                showToast(message);
             }
 
             @Override
@@ -56,7 +61,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void endLoading(String requestId) {
-                dismissProgressDialog();
+
             }
         });
 
@@ -115,24 +120,12 @@ public class MainActivity extends BaseActivity {
     }
 
     private void generateView(List<KlassesResponse> klassesResponseList) {
-        Picasso.with(this)
-                .load(ShareInfo.getInstance().getBaseUrl()+klassesResponseList.get(0).getBannerUrl())
-                .into(mainBinding.klass1, new Callback() {
-                    @Override
-                    public void onSuccess() {
-                        mainBinding.menuProgres.setVisibility(View.GONE);
-                    }
-
-                    @Override
-                    public void onError() {
-                        mainBinding.menuProgres.setVisibility(View.VISIBLE);
-                    }
-                });
-        Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+klassesResponseList.get(1).getBannerUrl()).into(mainBinding.klass2);
-        Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+klassesResponseList.get(2).getBannerUrl()).into(mainBinding.klass3);
-        Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+klassesResponseList.get(3).getBannerUrl()).into(mainBinding.klass4);
-        Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+klassesResponseList.get(4).getBannerUrl()).into(mainBinding.klass5);
-        Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+klassesResponseList.get(5).getBannerUrl()).into(mainBinding.klass6);
+        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponseList.get(0).getBannerUrl()).into(mainBinding.klass1);
+        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponseList.get(1).getBannerUrl()).into(mainBinding.klass2);
+        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponseList.get(2).getBannerUrl()).into(mainBinding.klass3);
+        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponseList.get(3).getBannerUrl()).into(mainBinding.klass4);
+        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponseList.get(4).getBannerUrl()).into(mainBinding.klass5);
+        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponseList.get(5).getBannerUrl()).into(mainBinding.klass6);
     }
 
     public void search(View view) {

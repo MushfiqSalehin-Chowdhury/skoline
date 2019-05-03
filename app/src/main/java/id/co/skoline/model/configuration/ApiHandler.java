@@ -34,12 +34,17 @@ public abstract class ApiHandler {
             startApiCall(requestId);
             Call<ResponseBody> bodyToCall = null;
 
-            if (requestType.toLowerCase().equals("get"))
-                bodyToCall = ApiClient.callRetrofit(context, baseUrl, requestId).getRequest(path);
-            else if (requestType.toLowerCase().equals("post"))
-                bodyToCall = ApiClient.callRetrofit(context, baseUrl, requestId).postRequest(path, hashMap);
-            else if (requestType.toLowerCase().equals("postImage"))
-                bodyToCall = ApiClient.callRetrofit(context, baseUrl, requestId).sendDocuments(path, hashMap);
+            switch (requestType) {
+                case "get":
+                    bodyToCall = ApiClient.callRetrofit(context, baseUrl, requestId).getRequest(path);
+                    break;
+                case "post":
+                    bodyToCall = ApiClient.callRetrofit(context, baseUrl, requestId).postRequest(path, hashMap);
+                    break;
+                case "post_image":
+                    bodyToCall = ApiClient.callRetrofit(context, baseUrl, requestId).sendDocuments(path, hashMap);
+                    break;
+            }
 
             bodyToCall.enqueue(new Callback<ResponseBody>() {
                 @Override

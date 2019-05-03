@@ -9,64 +9,100 @@
             android:background="@color/allMenuBackgroung"
             android:orientation="vertical"
             tools:context=".view.activities.ProfileActivity">
+
             <include
                 android:id="@+id/toolbarBinding"
-                layout="@layout/toolbar"></include>
+                layout="@layout/toolbar"/>
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/colorPrimaryDark"
-                        android:padding="15dp">
-                        <FrameLayout
-                            android:layout_width="wrap_content"
+                        android:background="@color/colorPrimaryDark">
+
+                        <LinearLayout
+                            android:padding="15dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center">
-                            <ImageView
-                                android:id="@+id/ProPic"
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
-                                android:src="@drawable/fajar"
-                                android:background="@color/colorWhite"/>
-                            <ImageView
-                                android:id="@+id/cam"
-                                android:layout_width="50dp"
-                                android:layout_height="40dp"
-                                android:src="@android:drawable/ic_menu_camera"
-                                android:layout_gravity="bottom"
-                                android:background="@color/colorWhite"
-                                android:onClick="profilePicture"/>
-                        </FrameLayout>
-                        <id.co.skoline.view.custom.CustomTextView
-                            android:id="@+id/nameANDage"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Name and age"
-                            android:textSize="20sp"
-                            android:padding="10dp"
-                            app:textStyle="Bold"
-                            android:textColor="@color/colorWhite"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"/>
+                            android:orientation="horizontal">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:id="@+id/profilePicture"
+                                    android:layout_width="90dp"
+                                    android:layout_height="90dp"
+                                    android:src="@drawable/fajar"
+                                    android:background="@color/colorWhite"/>
+
+                                <ImageView
+                                    android:id="@+id/changeProfilePicture"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@android:drawable/ic_menu_camera"
+                                    android:layout_gravity="bottom"/>
+
+                            </FrameLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="vertical">
+
+                                <id.co.skoline.view.custom.CustomTextView
+                                    android:id="@+id/userFullname"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="20sp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginBottom="5dp"
+                                    app:textStyle="Bold"
+                                    android:textColor="@color/colorWhite"
+                                    android:layout_gravity="center"/>
+
+                                <id.co.skoline.view.custom.CustomTextView
+                                    android:id="@+id/userAge"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="16sp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="5dp"
+                                    app:textStyle="Normal"
+                                    android:textColor="@color/colorWhite"
+                                    android:layout_gravity="center"/>
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
 
                         <ImageView
-                            android:id="@+id/option"
-                            android:layout_width="26dp"
-                            android:layout_height="80dp"
-                            android:layout_gravity="end"
-                            android:onClick="showMenu"
-                            android:src="@drawable/menu"
-                            />
+                            android:id="@+id/menuOption"
+                            android:layout_width="40dp"
+                            android:padding="10dp"
+                            android:layout_height="70dp"
+                            android:adjustViewBounds="true"
+                            android:layout_gravity="center"
+                            android:tint="@color/colorWhite"
+                            android:src="@drawable/menu" />
+
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="400dp"

@@ -34,15 +34,13 @@ public class WelcomeVideoActivity extends BaseActivity{
         mediaController = new MediaController(this);
         mediaController.setAnchorView(welcomeVideoBinding.videoView);
         welcomeVideoBinding.videoView.setMediaController(mediaController);
-
         welcomeVideoBinding.videoView.setOnPreparedListener(mp -> mp.start());
-
         welcomeVideoBinding.videoView.setOnCompletionListener(mp -> {
             mp.stop();
             mp.release();
             goToNextPage();
         });
-
+        mediaController.setVisibility(View.GONE);
         welcomeVideoBinding.videoView.setOnErrorListener((mp, what, extra) -> false);
 
     }

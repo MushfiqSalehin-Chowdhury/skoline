@@ -68,13 +68,13 @@ public class TopicScreenActivity extends BaseActivity {
         classId = intent.getIntExtra("classId",0);
         subjectResponse = new Gson().fromJson(getIntent().getStringExtra("subjectResponse"), SubjectResponse.class);
 
-        Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+subjectResponse.getIconUrl()).into(topicScreenBinding.subjectIcon);
+        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+subjectResponse.getIconUrl()).into(topicScreenBinding.subjectIcon);
         topicScreenBinding.subjectTitle.setText(subjectResponse.getName());
         topicScreenBinding.subjectTitle.setTextColor(Color.parseColor(classColor));
         topicScreenBinding.classTitle.setText(classTitle);
         topicScreenBinding.klass.setBackgroundColor(Color.parseColor(classColor));
 
-        Picasso.with(this).load(ShareInfo.getInstance().getBaseUrl()+classIconPath).into(topicScreenBinding.classIcon);
+        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+classIconPath).into(topicScreenBinding.classIcon);
        // Log.i("kelas id",String.valueOf(id));
         contentManager = new ContentManager(this);
         contentManager.getTopics(classId,subjectResponse.getId(), new TopicsListener() {
