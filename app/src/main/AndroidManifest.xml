@@ -24,7 +24,7 @@
         <activity android:name=".view.activities.SubjectsActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".view.activities.SignInActivity">
+        <activity android:name=".view.activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,7 +40,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.activities.SplashActivity"
+            android:name=".view.activities.SignInActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity

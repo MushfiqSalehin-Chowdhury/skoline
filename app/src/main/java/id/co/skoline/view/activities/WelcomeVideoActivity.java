@@ -2,11 +2,14 @@ package id.co.skoline.view.activities;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
+import android.widget.MediaController;
 
 import id.co.skoline.R;
 import id.co.skoline.databinding.ActivityWelcomeVideoBinding;
@@ -15,6 +18,7 @@ import id.co.skoline.model.utils.ShareInfo;
 public class WelcomeVideoActivity extends BaseActivity{
 
     ActivityWelcomeVideoBinding welcomeVideoBinding;
+    MediaController mediaController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,21 +31,27 @@ public class WelcomeVideoActivity extends BaseActivity{
 
         welcomeVideoBinding.videoView.setVideoPath("android.resource://"+getPackageName()+ "/"+R.raw.skoline_bumper);
         welcomeVideoBinding.videoView.start();
+        mediaController = new MediaController(this);
+        mediaController.setAnchorView(welcomeVideoBinding.videoView);
+        welcomeVideoBinding.videoView.setMediaController(mediaController);
 
-        new CountDownTimer(17000, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) { }
+        welcomeVideoBinding.videoView.setOnPreparedListener(mp -> mp.start());
 
-            @Override
-            public void onFinish() {
-               /* finish();
-                startActivity(new Intent(WelcomeVideoActivity.this,WelcomePageActivity.class));*/
-            }
-        }.start();
+        welcomeVideoBinding.videoView.setOnCompletionListener(mp -> {
+            mp.stop();
+            mp.release();
+            goToNextPage();
+        });
+
+        welcomeVideoBinding.videoView.setOnErrorListener((mp, what, extra) -> false);
 
     }
 
-    public void stream(View view) {
+    public void nextPage(View view) {
+        goToNextPage();
+    }
+
+    private void goToNextPage(){
         if (TextUtils.isEmpty(ShareInfo.getInstance().getAuthenticationToken(this))){
             startActivity(new Intent(this,WelcomePageActivity.class));
             finish();
@@ -50,6 +60,5 @@ public class WelcomeVideoActivity extends BaseActivity{
             goToHome();
             finish();
         }
-
     }
 }

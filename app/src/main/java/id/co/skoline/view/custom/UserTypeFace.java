@@ -23,17 +23,17 @@ public class UserTypeFace {
     public static final String TITLE_MEDIUM;
 
     static {
-        NORMAL ="fonts/customfont/font-normal.ttf";
-        LIGHT="fonts/customfont/font-light.ttf";
-        BOLD="fonts/customfont/font-bold.ttf";
-        MEDIUM ="fonts/customfont/font-medium.ttf";
-        ITALIC ="fonts/customfont/font-italic.ttf";
+        NORMAL ="fonts/font-normal.ttf";
+        LIGHT="fonts/font-light.ttf";
+        BOLD="fonts/font-bold.ttf";
+        MEDIUM ="fonts/font-medium.ttf";
+        ITALIC ="fonts/font-italic.ttf";
 
-        TITLE_NORMAL ="fonts/customfont/title-normal.ttf";
-        TITLE_LIGHT="fonts/customfont/title-light.ttf";
-        TITLE_BOLD="fonts/customfont/title-bold.ttf";
-        TITLE_MEDIUM ="fonts/customfont/title-medium.ttf";
-        TITLE_ITALIC ="fonts/customfont/title-italic.ttf";
+        TITLE_NORMAL ="fonts/font-normal.ttf";
+        TITLE_LIGHT="fonts/font-light.ttf";
+        TITLE_BOLD="fonts/font-bold.ttf";
+        TITLE_MEDIUM ="fonts/font-medium.ttf";
+        TITLE_ITALIC ="fonts/font-italic.ttf";
     }
 
     private static final Hashtable<String, Typeface> cache = new Hashtable<String, Typeface>();
