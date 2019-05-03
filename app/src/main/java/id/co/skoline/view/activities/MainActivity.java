@@ -2,34 +2,20 @@ package id.co.skoline.view.activities;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.gson.Gson;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import id.co.skoline.R;
 import id.co.skoline.databinding.ActivityMainBinding;
 import id.co.skoline.model.response.KlassesResponse;
 import id.co.skoline.model.response.SubjectResponse;
 import id.co.skoline.model.utils.ShareInfo;
-import id.co.skoline.view.adapters.SubjectsAdapter;
 import id.co.skoline.viewControllers.interfaces.KlassesListener;
-import id.co.skoline.viewControllers.interfaces.SubjectsListener;
 import id.co.skoline.viewControllers.managers.ContentManager;
 
 public class MainActivity extends BaseActivity {
@@ -77,10 +63,6 @@ public class MainActivity extends BaseActivity {
         mainBinding.klass1.setOnClickListener(v -> {
             if(klassesResponseList!=null){
                 Intent intent = new Intent(this,SubjectsActivity.class);
-                /*intent.putExtra("classId",klassesResponseList.get(0).getId());
-                intent.putExtra("klassColor",klassesResponseList.get(0).getColorCode());
-                intent.putExtra("classIcon",klassesResponseList.get(0).getIconUrl());
-                intent.putExtra("classTitle",klassesResponseList.get(0).getName());*/
                 intent.putExtra("klassResponse", new Gson().toJson(klassesResponseList.get(0)));
                 startActivity(intent);
             }
@@ -156,7 +138,6 @@ public class MainActivity extends BaseActivity {
     public void search(View view) {
         Intent i= new Intent(this, SearchResultActivity.class);
         i.putExtra("key" ,mainBinding.searchEditFrame.getText().toString());
-        // Toast.makeText(this, mainMenuBinding.searchEditFrame.getText(), Toast.LENGTH_SHORT).show();
         startActivity(i);
     }
 

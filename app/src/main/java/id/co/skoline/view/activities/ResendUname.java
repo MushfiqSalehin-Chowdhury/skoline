@@ -12,19 +12,22 @@ import id.co.skoline.databinding.ActivityResendUnameBinding;
 
 public class ResendUname extends BaseActivity{
     ActivityResendUnameBinding resendUnameBinding;
+    String phoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         resendUnameBinding= DataBindingUtil.setContentView(this,R.layout.activity_resend_uname);
+        phoneNumber= resendUnameBinding.ccp.getSelectedCountryCode()+resendUnameBinding.number.getText();
     }
 
     @Override
     protected void viewRelatedTask() {
+
     }
 
     public void resendUname(View view) {
-        Toast.makeText(this, "User Name Has Been Sent to  "+resendUnameBinding.number.getText().toString(), Toast.LENGTH_LONG).show();
+        Toast.makeText(this,getString(R.string.uniqueName_resend)+phoneNumber, Toast.LENGTH_LONG).show();
         startActivity(new Intent(this,SignInActivity.class));
         finish();
     }

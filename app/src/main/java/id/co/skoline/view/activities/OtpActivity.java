@@ -30,7 +30,6 @@ public class OtpActivity extends BaseActivity {
 
     public void signIn(View view) {
 
-
     }
 
     public void subscriptionProcess(View view)  {
