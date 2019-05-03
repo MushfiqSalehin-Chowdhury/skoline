@@ -6,9 +6,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
-
 import id.co.skoline.R;
-import id.co.skoline.databinding.ActivityHelpBinding;
 import id.co.skoline.databinding.ActivityWelcomeBinding;
 
 public class WelcomePageActivity extends BaseActivity {
@@ -25,6 +23,8 @@ public class WelcomePageActivity extends BaseActivity {
     protected void viewRelatedTask() {
         welcomeBinding.appweb.setText(Html.fromHtml(getString(R.string.app_website)));
         welcomeBinding.appweb.setMovementMethod(LinkMovementMethod.getInstance());
+        welcomeBinding.signIn.setTypeface(defaultTypeface);
+        welcomeBinding.signUp.setTypeface(defaultTypeface);
     }
     public void
     signIn(View view) {

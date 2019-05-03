@@ -22,6 +22,9 @@ public class OtpActivity extends BaseActivity {
 
     @Override
     protected void viewRelatedTask(){
+        otpBinding.varifyButton.setTypeface(defaultTypeface);
+        otpBinding.backSignupButton.setTypeface(defaultTypeface);
+        otpBinding.resendCodeButton.setTypeface(defaultTypeface);
     }
 
     public void backToSignUp(View view) {
