@@ -58,6 +58,8 @@
     <string name="adventure_list">Adventure and Play</string>
     <string name="loading_data">Loading data...</string>
     <string name="skipButton">skip</string>
+    <string name="signin_you_in">Signing you in...</string>
+    <string name="user_not_found">User not found</string>
 
 
     <string-array name="Day">
