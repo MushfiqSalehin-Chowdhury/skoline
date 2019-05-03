@@ -21,7 +21,6 @@ import id.co.skoline.model.utils.ShareInfo;
 public class VideoPlayActivity extends BaseActivity {
 
     ActivityVideoPlayBinding videoPlayBinding;
-    TopicItemsResponse topicItemsResponseList;
     private String videoUrl;
 
     MediaController mediaController;

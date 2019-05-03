@@ -37,14 +37,11 @@ public class TopicScreenActivity extends BaseActivity {
     ActivityTopicScreenBinding topicScreenBinding;
     ContentManager contentManager;
     List<TopicResponse> topicResponseList;
-    List<SubjectResponse> subjectResponseList;
     private TopicAdapter topicAdapter;
     DividerItemDecoration dividerItemDecoration;
     String classIconPath,classTitle,classColor;
     int classId;
     SubjectResponse subjectResponse;
-    KlassesResponse klassesResponse;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

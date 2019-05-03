@@ -17,7 +17,7 @@
     <string name="name_info">Enter Unique Name</string>
     <string name="childName_info">Child Full Name</string>
     <string name="dob">Date of Birth</string>
-    <string name="dob_hint">dd/mm/2019</string>
+    <string name="dob_hint">dd/mm/yyyy</string>
     <string name="name_hint">Enter Unique Name</string>
     <string name="childName_hint">Child Full Name</string>
     <string name="number_hint">12345678.. </string>

@@ -126,7 +126,6 @@ public class ProfileActivity extends BaseActivity {
     @Override
     protected void viewRelatedTask() {
         setToolbar("Profile", true, profileBinding.toolbarBinding);
-
     }
 
     public void showMenu(View view) {

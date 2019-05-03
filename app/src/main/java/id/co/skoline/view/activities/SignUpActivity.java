@@ -136,8 +136,6 @@ public class SignUpActivity extends BaseActivity{
 
     @Override
     protected void viewRelatedTask() {
-
-
         signUpBinding.emailSwitch.setOnCheckedChangeListener(
                 new CompoundButton.OnCheckedChangeListener() {
                     @Override
