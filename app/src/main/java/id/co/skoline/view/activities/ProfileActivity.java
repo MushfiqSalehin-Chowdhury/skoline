@@ -62,11 +62,10 @@ public class ProfileActivity extends BaseActivity {
     AuthenticationManager authenticationManager;
     UserResponse userResponseList;
     private String[] dob;
-    String filename,imageUrl;
+    String imageUrl;
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int OPEN_DOCUMENT_CODE = 2;
-    android.widget.ImageView ImageView;
     private static final int REQUEST_EXTERNAL_STORAGE = 3;
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,

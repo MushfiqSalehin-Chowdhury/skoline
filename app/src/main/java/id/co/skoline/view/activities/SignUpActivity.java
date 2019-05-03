@@ -34,6 +34,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.hbb20.CountryCodePicker;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -54,22 +55,17 @@ public class SignUpActivity extends BaseActivity{
 
     ActivitySignUpBinding signUpBinding;
     AuthenticationManager authenticationManager;
-    UserResponse userResponseList;
     Calendar calendar;
-    String childName,dob,uName,location,email,phoneNumber;
+    String childName,dob,uName,email,phoneNumber;
     Spinner spinner;
     Double lat,lang;
-    private GoogleMap mMap;
     LocationManager locationManager;
     LocationListener locationListener;
-    GoogleApiClient mGoogleApiClient;
     private FusedLocationProviderClient mfusedLocationProviderClient;
-    private Location mLocation;
     private LocationRequest mLocationRequest;
-    int emailSwitch=0,success;
+    int emailSwitch=0;
     LocationAddress locationAddress;
     GeocoderHandler geocoderHandler;
-
     int year;
     public static final Pattern PHONE
             = Pattern.compile(
@@ -111,8 +107,6 @@ public class SignUpActivity extends BaseActivity{
             getLocation();
         }
     }
-
-
     private void getLocation (){
         mfusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(this);
         try{
@@ -135,7 +129,7 @@ public class SignUpActivity extends BaseActivity{
             });
         }catch(SecurityException e)
         {
-            Log.d("notfound", "location not found");
+            Log.d("notFound", "location not found");
         }
         signUpBinding.location.setText(geocoderHandler.getLocation());
     }
@@ -204,20 +198,20 @@ public class SignUpActivity extends BaseActivity{
         dob= signUpBinding.day.getSelectedItem().toString()
                 +"-"+signUpBinding.month.getSelectedItem().toString()
                 +"-"+signUpBinding.year.getSelectedItem().toString();
-        phoneNumber= signUpBinding.number.getText().toString();
+        phoneNumber=signUpBinding.ccp.getSelectedCountryCode()+signUpBinding.number.getText();
         email = signUpBinding.email.getText().toString();
 
 
         if(TextUtils.isEmpty(childName)){
-            signUpBinding.childName.setError("Can't be Empty");
+            signUpBinding.childName.setError(getString(R.string.emptyField));
         }
 
         if(TextUtils.isEmpty(uName)){
-            signUpBinding.uname.setError("Can't be Empty");
+            signUpBinding.uname.setError(getString(R.string.emptyField));
         }
 
         if (TextUtils.isEmpty(phoneNumber)){
-            signUpBinding.number.setError("Can't be Empty");
+            signUpBinding.number.setError(getString(R.string.emptyField));
         }
 
 
@@ -234,22 +228,16 @@ public class SignUpActivity extends BaseActivity{
                             showToast(signupErrorResponseList.getMessage());
                         }
                         else{
-                            //SignUpActivity.this.userResponseList=userResponseList;
                             Log.i("success","User Created");
-                            Toast.makeText(SignUpActivity.this, "User Created", Toast.LENGTH_SHORT).show();
-                            success=1;
-                            creat(success);
+                            Toast.makeText(SignUpActivity.this,getString(R.string.userCreated), Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(SignUpActivity.this,OtpActivity.class));
                         }
                     }
                     @Override
                     public void onFailed(String message, int responseCode) {
-                        //SignUpActivity.this.userResponseList = null;
-                        Log.i("invaalid",message);
-                        //Toast.makeText(SignUpActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-                        success=0;
-                        creat(success);
+                        Log.i("invalid",message);
+                        showToast(message);
                     }
-
                     @Override
                     public void startLoading(String requestId) {
                     }
@@ -261,23 +249,14 @@ public class SignUpActivity extends BaseActivity{
 
             }
             else {
-                signUpBinding.number.setError("invalid number");
+                signUpBinding.number.setError(getString(R.string.invalidNumber));
             }
             if (emailSwitch==1){
                 if (!isValidEmail(email)){
-                    signUpBinding.email.setError("invalid Email");
+                    signUpBinding.email.setError(getString(R.string.invalidEmail));
                 }
             }
 
         }
-    }
-
-    public void creat(int success){
-
-        if (success==0 ) {
-            signUpBinding.uname.setError("already taken");
-        }
-        else
-            startActivity(new Intent(this,OtpActivity.class));
     }
 }

@@ -21,7 +21,7 @@ public class HelpActivity extends BaseActivity {
 
     @Override
     protected void viewRelatedTask() {
-        setToolbar("Help",true,helpBinding.toolbarBinding);
+        setToolbar(getString(R.string.help),true,helpBinding.toolbarBinding);
     }
 
     public void sendMail(View view) {

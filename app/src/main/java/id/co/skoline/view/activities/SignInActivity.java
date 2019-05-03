@@ -2,30 +2,25 @@ package id.co.skoline.view.activities;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.CountDownTimer;
+import android.text.Editable;
 import android.text.TextUtils;
-import android.util.Log;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
 
 import id.co.skoline.R;
 import id.co.skoline.databinding.ActivitySignInBinding;
 import id.co.skoline.model.response.TokenResponse;
-import id.co.skoline.model.response.UserResponse;
 import id.co.skoline.model.utils.ShareInfo;
 import id.co.skoline.viewControllers.interfaces.SignInListener;
-import id.co.skoline.viewControllers.interfaces.SignupListener;
 import id.co.skoline.viewControllers.managers.AuthenticationManager;
 
 public class SignInActivity extends BaseActivity {
 
     ActivitySignInBinding signInBinding;
     AuthenticationManager authenticationManager;
-    String uName,dob,accessToken;
-    UserResponse userResponseList;
-    TokenResponse tokenResponseList;
+    String uName,dob;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +29,32 @@ public class SignInActivity extends BaseActivity {
     }
     @Override
     protected void viewRelatedTask() {
+        signInBinding.dob.addTextChangedListener(new TextWatcher() {
+            int previousLength = 0;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                previousLength = signInBinding.dob.getText().toString().length();
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                int length = s.length();
+                if ((previousLength < length) && (length == 2 || length == 5)) {
+                    s.append("-");
+                }
+            }
+        });
     }
     public void resendUname(View view) {
         startActivity(new Intent(this, ResendUname.class));
         finish();
     }
+
     public void signIn(View view) {
         if (TextUtils.isEmpty(signInBinding.uname.getText().toString()) || TextUtils.isEmpty(signInBinding.dob.getText().toString()) )  {
             if(TextUtils.isEmpty(signInBinding.uname.getText().toString())){
@@ -54,8 +69,7 @@ public class SignInActivity extends BaseActivity {
             if(!TextUtils.isEmpty(signInBinding.dob.getText().toString())){
                 signInBinding.dobError.setVisibility(View.GONE);
             }
-        }
-        else {
+        } else {
             uName = signInBinding.uname.getText().toString();
             dob = signInBinding.dob.getText().toString();
 
@@ -63,38 +77,28 @@ public class SignInActivity extends BaseActivity {
             authenticationManager.signIn(uName, dob, new SignInListener() {
                 @Override
                 public void onSuccess(TokenResponse tokenResponseList) {
-                    SignInActivity.this.tokenResponseList = tokenResponseList;
-                    new CountDownTimer(3000,1000) {
-                        @Override
-                        public void onTick(long millisUntilFinished) {
-                            showProgressDialog("Sigining In", false);
-                        }
-                        @Override
-                        public void onFinish() {
-                            dismissProgressDialog();
-                            setToken(tokenResponseList);
-                        }
-                    }.start();
-                    Log.i("Token","Token Recieved");
+                    setToken(tokenResponseList);
                 }
                 @Override
                 public void onFailed(String message, int responseCode) {
-                    Toast.makeText(SignInActivity.this, "User Not Found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignInActivity.this, getString(R.string.user_not_found), Toast.LENGTH_SHORT).show();
                     signInBinding.unameError.setVisibility(View.VISIBLE);
                     signInBinding.dobError.setVisibility(View.VISIBLE);
                 }
                 @Override
                 public void startLoading(String requestId) {
-
+                    showProgressDialog(getString(R.string.signin_you_in), false);
                 }
                 @Override
                 public void endLoading(String requestId) {
+                    dismissProgressDialog();
                 }
             });
         }
     }
-    private void setToken (TokenResponse  tokenResponseList){
-        ShareInfo.getInstance().setAuthenticationToken(this,tokenResponseList.getToken().toString());
+
+    private void setToken (TokenResponse tokenResponseList){
+        ShareInfo.getInstance().setAuthenticationToken(this, tokenResponseList.getToken());
         goToHome();
         this.finish();
     }

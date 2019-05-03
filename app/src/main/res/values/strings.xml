@@ -17,10 +17,10 @@
     <string name="name_info">Enter Unique Name</string>
     <string name="childName_info">Child Full Name</string>
     <string name="dob">Date of Birth</string>
-    <string name="dob_hint">yyyy/mm/dd</string>
+    <string name="dob_hint">dd/mm/2019</string>
     <string name="name_hint">Enter Unique Name</string>
     <string name="childName_hint">Child Full Name</string>
-    <string name="number_hint">+12345678.. </string>
+    <string name="number_hint">12345678.. </string>
     <string name="location_hint">Your Location</string>
     <string name="location_info">Your Location / info</string>
     <string name="email_hint">example@abc.com</string>
@@ -58,6 +58,14 @@
     <string name="adventure_list">Adventure and Play</string>
     <string name="loading_data">Loading data...</string>
     <string name="skipButton">skip</string>
+    <string name="signin_you_in">Signing you in...</string>
+    <string name="user_not_found">User not found</string>
+    <string name="uniqueName_resend">Unique name has been sent to</string>
+    <string name="emptyField">Can\'t be empty</string>
+    <string name="userCreated">User created successfully</string>
+    <string name="invalidNumber">Invalid number</string>
+    <string name="invalidEmail">Invalid email address</string>
+    <string name="help">Help</string>
 
 
     <string-array name="Day">
