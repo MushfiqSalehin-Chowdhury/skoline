@@ -49,6 +49,9 @@ public class SignInActivity extends BaseActivity {
                 }
             }
         });
+
+        // set custom font
+        signInBinding.signin.setTypeface(defaultTypeface);
     }
     public void resendUname(View view) {
         startActivity(new Intent(this, ResendUname.class));

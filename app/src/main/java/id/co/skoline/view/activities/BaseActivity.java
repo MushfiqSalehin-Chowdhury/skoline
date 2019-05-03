@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -44,6 +45,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private String language;
 
+    public Typeface defaultTypeface;
+
     protected BaseActivity() {
     }
 
@@ -53,6 +56,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         progressDialog = new ProgressDialog(BaseActivity.this, R.style.CustomProgress);
         language = ShareInfo.getLanguageType(this);
+        defaultTypeface = Typeface.createFromAsset(getAssets(),"fonts/font-normal.ttf");
     }
 
     @Override
