@@ -73,6 +73,8 @@
     <string name="uploading_photo">Uploading photo...</string>
     <string name="image_update_successful">Profile picture successfully uploaded</string>
     <string name="topicVideoHeadline">1. Simak Petualangannya</string>
+    <string name="searchTitle">Search Videos</string>
+    <string name="couldnt_find">Couldn\'t find anything</string>
 
 
     <string-array name="Day">

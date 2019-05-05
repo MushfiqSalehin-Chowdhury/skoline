@@ -5,15 +5,13 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
 import com.google.gson.Gson;
-import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
-import java.util.ArrayList;
-import java.util.List;
+
 import id.co.skoline.R;
 import id.co.skoline.databinding.ActivityMainBinding;
 import id.co.skoline.model.response.KlassesResponse;
-import id.co.skoline.model.response.SubjectResponse;
 import id.co.skoline.model.utils.ShareInfo;
 import id.co.skoline.viewControllers.interfaces.KlassesListener;
 import id.co.skoline.viewControllers.managers.ContentManager;
@@ -44,7 +42,7 @@ public class MainActivity extends BaseActivity {
                 MainActivity.this.klassesResponse = klassesResponse;
                 mainBinding.scrollView.setVisibility(View.VISIBLE);
                 mainBinding.progressBar.setVisibility(View.GONE);
-                generateView(klassesResponse.getKlasses());
+                generateView();
             }
 
             @Override
@@ -63,6 +61,11 @@ public class MainActivity extends BaseActivity {
             public void endLoading(String requestId) {
 
             }
+        });
+
+        mainBinding.searchBar.setOnClickListener(v -> {
+            Intent i= new Intent(this, SearchResultActivity.class);
+            startActivity(i);
         });
 
         mainBinding.klass1.setOnClickListener(v -> {
@@ -119,20 +122,16 @@ public class MainActivity extends BaseActivity {
         });
     }
 
-    private void generateView(List<KlassesResponse.Klass> klassesResponseList) {
-        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponseList.get(0).getBannerUrl()).into(mainBinding.klass1);
-        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponseList.get(1).getBannerUrl()).into(mainBinding.klass2);
-        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponseList.get(2).getBannerUrl()).into(mainBinding.klass3);
-        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponseList.get(3).getBannerUrl()).into(mainBinding.klass4);
-        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponseList.get(4).getBannerUrl()).into(mainBinding.klass5);
-        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponseList.get(5).getBannerUrl()).into(mainBinding.klass6);
+    private void generateView() {
+        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponse.getKlasses().get(0).getBannerUrl()).into(mainBinding.klass1);
+        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponse.getKlasses().get(1).getBannerUrl()).into(mainBinding.klass2);
+        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponse.getKlasses().get(2).getBannerUrl()).into(mainBinding.klass3);
+        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponse.getKlasses().get(3).getBannerUrl()).into(mainBinding.klass4);
+        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponse.getKlasses().get(4).getBannerUrl()).into(mainBinding.klass5);
+        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponse.getKlasses().get(5).getBannerUrl()).into(mainBinding.klass6);
+        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponse.getUser().getAvatar()).into(mainBinding.profileImg);
     }
 
-    public void search(View view) {
-        Intent i= new Intent(this, SearchResultActivity.class);
-        i.putExtra("key" ,mainBinding.searchEditFrame.getText().toString());
-        startActivity(i);
-    }
 
     public void profile(View view) {
         startActivity(new Intent(this,ProfileActivity.class));

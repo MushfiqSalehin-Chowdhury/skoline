@@ -7,36 +7,45 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import id.co.skoline.R;
 import id.co.skoline.databinding.AdapterSampleBinding;
+import id.co.skoline.databinding.AdapterSearchResultBinding;
+import id.co.skoline.model.response.SearchResponse;
+import id.co.skoline.model.utils.ShareInfo;
 
 public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapter.ViewHolder>{
 
     Context context;
-    List<String> stringList;
+    List<SearchResponse> searchResponseList;
     OnItemClickListener onItemClickListener;
 
-    public SearchResultAdapter(Context context, List<String> stringList) {
+    public SearchResultAdapter(Context context, List<SearchResponse> searchResponsesList) {
         this.context = context;
-        this.stringList = stringList;
+        this.searchResponseList = searchResponsesList;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new ViewHolder(DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.adapter_sample, viewGroup, false));
+        return new ViewHolder(DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.adapter_search_result, viewGroup, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
+        SearchResponse searchResponse= searchResponseList.get(position);
+       Picasso.with(context).load(ShareInfo.getInstance().getRootBaseUrl()+searchResponseList.get(position).getBanner()).into(holder.adaptersearchResultBinding.topicBanner);
+        holder.adaptersearchResultBinding.topicTitle.setText(searchResponseList.get(position).getTitle());
+
     }
 
     @Override
     public int getItemCount() {
-        return stringList.size();
+        return searchResponseList.size();
     }
 
     public interface OnItemClickListener{
@@ -49,11 +58,11 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        AdapterSampleBinding adapterSampleBinding;
+        AdapterSearchResultBinding adaptersearchResultBinding;
 
-        public ViewHolder(AdapterSampleBinding adapterSampleBinding) {
-            super(adapterSampleBinding.getRoot());
-            this.adapterSampleBinding = adapterSampleBinding;
+        public ViewHolder(AdapterSearchResultBinding adapterSearchResultBinding) {
+            super(adapterSearchResultBinding.getRoot());
+            this.adaptersearchResultBinding = adapterSearchResultBinding;
 
         }
     }

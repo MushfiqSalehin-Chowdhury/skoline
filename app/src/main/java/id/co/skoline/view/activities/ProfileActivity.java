@@ -206,7 +206,7 @@ public class ProfileActivity extends ImageActivity {
                 showToast(getString(R.string.couldnt_upload_image));
                 profileBinding.profilePicture.setImageBitmap(null);
                 Picasso.with(ProfileActivity.this)
-                        .load(ShareInfo.getInstance().getRootBaseUrl()+userResponseList.getUser().getAvater().toString())
+                        .load(ShareInfo.getInstance().getRootBaseUrl()+userResponseList.getUser().getAvatar().toString())
                         .error(R.drawable.fajar)
                         .placeholder(R.drawable.fajar)
                         .into(profileBinding.profilePicture);
@@ -231,10 +231,11 @@ public class ProfileActivity extends ImageActivity {
         profileBinding.userFullname.setText(userResponseList.getUser().getChildName());
         profileBinding.userAge.setText(String.format("%s %s", age, getString(R.string.years)));
 
-        Log.i("profileImage",ShareInfo.getInstance().getRootBaseUrl()+userResponseList.getUser().getAvater().toString());
+        Log.i("profileImage",ShareInfo.getInstance().getRootBaseUrl()+userResponseList.getUser().getAvatar());
+        Log.i("profileImageUser",new Gson().toJson(userResponseList));
 
         Picasso.with(this)
-                .load(ShareInfo.getInstance().getRootBaseUrl()+userResponseList.getUser().getAvater().toString())
+                .load(ShareInfo.getInstance().getRootBaseUrl()+userResponseList.getUser().getAvatar().toString())
                 .error(R.drawable.fajar)
                 .placeholder(R.drawable.fajar)
                 .into(profileBinding.profilePicture);
