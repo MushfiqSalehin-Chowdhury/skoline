@@ -22,7 +22,7 @@
     <string name="childName_hint">Child Full Name</string>
     <string name="number_hint">12345678.. </string>
     <string name="location_hint">Your Location</string>
-    <string name="location_info">Your Location / info</string>
+    <string name="location_info">Your Location/info</string>
     <string name="email_hint">example@abc.com</string>
     <string name="newspaper_text">News ?</string>
     <string name="agree_terms_privacy">By continuing, you agree to our &lt;a href=https://skoline.co.id/syarat-dan-ketentuan/>Terms of Use

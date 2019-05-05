@@ -32,6 +32,7 @@ public class WelcomePageActivity extends BaseActivity {
         finish();
     }
     public void signUp(View view) {
+
         startActivity(new Intent(this,SignUpActivity.class));
     }
 }

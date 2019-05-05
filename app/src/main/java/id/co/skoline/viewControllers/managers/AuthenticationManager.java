@@ -66,6 +66,8 @@ public class AuthenticationManager {
                     signupListener.startLoading(requestId);
                 } else if(requestId.equals(reqIdSubscription)){
                     subscriptionListenerList.startLoading(requestId);
+                } else if(requestId.equals(reqIdUploadPhoto)){
+                    uploadPhotoListener.startLoading(requestId);
                 }
             }
             @Override
@@ -78,6 +80,8 @@ public class AuthenticationManager {
                     signupListener.endLoading(requestId);
                 } else if(requestId.equals(reqIdSubscription)){
                     subscriptionListenerList.startLoading(requestId);
+                } else if(requestId.equals(reqIdUploadPhoto)){
+                    uploadPhotoListener.endLoading(requestId);
                 }
             }
             @Override
@@ -116,6 +120,15 @@ public class AuthenticationManager {
                         subscriptionListenerList.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
                     }
                 }
+                    else if(requestId.equals(reqIdUploadPhoto)){
+                    try {
+                        JSONObject jsonObject = new JSONObject(responseBody.string());
+                        uploadPhotoListener.uploadPhotoListenerSuccess("");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        uploadPhotoListener.uploadPhotoListenerFail(INVALID_JSON_RESPONSE, "Invalid JSON Response");
+                    }
+                }
             }
             @Override
             public void failResponse(String requestId, int responseCode, String message) {
@@ -127,6 +140,8 @@ public class AuthenticationManager {
                     signupListener.onFailed(message, responseCode);
                 } else if(requestId.equals(reqIdSubscription)){
                     subscriptionListenerList.onFailed(message, responseCode);
+                } else if(requestId.equals(reqIdUploadPhoto)){
+                    uploadPhotoListener.uploadPhotoListenerFail(responseCode, message);
                 }
             }
         };

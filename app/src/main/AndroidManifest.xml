@@ -16,14 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.activities.VideoPlayActivity"
-            android:screenOrientation="landscape"
-            />
+            android:screenOrientation="landscape" />
         <activity android:name=".view.activities.TopicItemsActivity"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".view.activities.SubjectsActivity"
             android:screenOrientation="portrait"/>
-
 
         <activity android:name=".view.activities.SplashActivity">
 
