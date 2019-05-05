@@ -35,7 +35,7 @@ public class OtpActivity extends BaseActivity {
 
         otpBinding.varifyButton.setOnClickListener(v -> {
             authenticationManager = new AuthenticationManager(this);
-            authenticationManager.getOtp(phone, uniqueName, new OtpListener() {
+            authenticationManager.checkOtp(phone, uniqueName, new OtpListener() {
                 @Override
                 public void onSuccess(OtpResponse otpResponseList) {
                     showToast(otpResponseList.getOtp());

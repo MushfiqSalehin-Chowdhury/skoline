@@ -41,7 +41,9 @@
             android:src="@drawable/bela_benar"
             android:visibility="gone" />
 
+
         <id.co.skoline.view.custom.CustomTextView
+            android:visibility="gone"
             android:id="@+id/subscriptionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,19 +52,27 @@
             android:textColor="@color/colorWhite"
             android:text="@string/subscriptionTxt" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
         <Button
-            android:id="@+id/subs1"
+            android:id="@+id/btnTrialVersion"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20dp"
             android:background="@drawable/box_purplebutton"
             android:textColor="@color/colorWhite"
-            android:textSize="20sp"
-            android:onClick="sucess"
-            android:text="@string/subButton1" />
+            android:textSize="16sp"
+            android:textAllCaps="true"
+            android:text="@string/start_your_trial_version" />
+
+
 
         <Button
+            android:visibility="gone"
             android:layout_marginTop="10dp"
             android:id="@+id/subs2"
             android:layout_width="match_parent"
@@ -74,10 +84,7 @@
             android:onClick="failed"
             android:text="@string/subButton2" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
+
 
     </LinearLayout>
 

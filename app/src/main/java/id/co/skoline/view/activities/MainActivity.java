@@ -16,6 +16,8 @@ import id.co.skoline.model.utils.ShareInfo;
 import id.co.skoline.viewControllers.interfaces.KlassesListener;
 import id.co.skoline.viewControllers.managers.ContentManager;
 
+import static id.co.skoline.model.configuration.StaticStrings.NOT_ACTIVE;
+
 public class MainActivity extends BaseActivity {
 
     ActivityMainBinding mainBinding;
@@ -42,7 +44,12 @@ public class MainActivity extends BaseActivity {
                 MainActivity.this.klassesResponse = klassesResponse;
                 mainBinding.scrollView.setVisibility(View.VISIBLE);
                 mainBinding.progressBar.setVisibility(View.GONE);
-                generateView();
+                if(klassesResponse.getUser().getSubType().equals(NOT_ACTIVE)){
+                    finish();
+                    startActivity(new Intent(MainActivity.this, SubscriptionActivity.class));
+                } else {
+                    generateView();
+                }
             }
 
             @Override

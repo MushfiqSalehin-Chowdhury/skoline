@@ -100,7 +100,6 @@ public class VideoPlayActivity extends BaseActivity {
                 new MediaPlayer.OnPreparedListener() {
                     @Override
                     public void onPrepared(MediaPlayer mediaPlayer) {
-
                         // Restore saved position, if available.
                         if (mCurrentPosition > 0) {
                             videoPlayBinding.videoView.seekTo(mCurrentPosition);

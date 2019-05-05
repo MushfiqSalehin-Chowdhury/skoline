@@ -53,8 +53,8 @@ public class SignInActivity extends BaseActivity {
         // set custom font
         signInBinding.signin.setTypeface(defaultTypeface);
 
-        signInBinding.uname.setText("salehin_mushfiq");
-        signInBinding.dob.setText("09/10/2019");
+        /*signInBinding.uname.setText("salehin_mushfiq");
+        signInBinding.dob.setText("09/10/2019");*/
     }
     public void resendUname(View view) {
         startActivity(new Intent(this, ResendUname.class));
