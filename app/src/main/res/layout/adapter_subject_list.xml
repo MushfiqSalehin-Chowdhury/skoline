@@ -8,28 +8,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/allMenuBackgroung"
-        android:orientation="vertical"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <ImageView
+            android:id="@+id/subjectIcon"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:src="@drawable/sub" />
+
+        <id.co.skoline.view.custom.CustomTextView
+            android:id="@+id/subjectTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
-
-            <ImageView
-                android:id="@+id/subjectIcon"
-                android:layout_width="100dp"
-                android:layout_height="55dp"
-                android:src="@drawable/sub" />
-
-            <id.co.skoline.view.custom.CustomTextView
-                android:id="@+id/subjectTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="lsdlsdjlksdjldsd"
-                android:textSize="18sp"/>
-        </LinearLayout>
-
+            android:layout_marginTop="20dp"
+            android:text="lsdlsdjlksdjldsd"
+            android:textSize="18sp"/>
     </LinearLayout>
 </layout>

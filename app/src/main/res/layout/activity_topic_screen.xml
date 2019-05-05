@@ -52,11 +52,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:orientation="horizontal"
-                    android:background="@drawable/box_shape">
+                    android:background="@drawable/box_shape"
+                    android:padding="5dp">
                     <ImageView
                         android:id="@+id/subjectIcon"
-                        android:layout_marginLeft="2dp"
-                        android:layout_width="100dp"
+                        android:layout_width="70dp"
                         android:layout_height="match_parent"
                         android:background="@color/colorWhite"
                         android:src="@drawable/sub"/>
@@ -65,11 +65,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:textSize="18sp"
                         android:text="Found items here"/>
                 </LinearLayout>
                 <android.support.v7.widget.RecyclerView
-                    android:layout_marginTop="15dp"
                     android:id="@+id/topicRecycle"
+                    android:layout_marginTop="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </android.support.v7.widget.RecyclerView>

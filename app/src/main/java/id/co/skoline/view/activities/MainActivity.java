@@ -22,7 +22,7 @@ public class MainActivity extends BaseActivity {
 
     ActivityMainBinding mainBinding;
     ContentManager contentManager;
-    List<KlassesResponse> klassesResponseList = new ArrayList<>();
+    KlassesResponse klassesResponse = new KlassesResponse();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,18 +39,18 @@ public class MainActivity extends BaseActivity {
         contentManager = new ContentManager(this);
         contentManager.getKlasses(new KlassesListener() {
             @Override
-            public void onSuccess(List<KlassesResponse> klassesResponseList) {
-                Log.e("MainActivity", new Gson().toJson(klassesResponseList));
-                MainActivity.this.klassesResponseList = klassesResponseList;
+            public void onSuccess(KlassesResponse klassesResponse) {
+                Log.e("MainActivity", new Gson().toJson(klassesResponse));
+                MainActivity.this.klassesResponse = klassesResponse;
                 mainBinding.scrollView.setVisibility(View.VISIBLE);
                 mainBinding.progressBar.setVisibility(View.GONE);
-                generateView(klassesResponseList);
+                generateView(klassesResponse.getKlasses());
             }
 
             @Override
             public void onFailed(String message, int responseCode) {
                 Log.e("MainActivity", "message: "+message);
-                MainActivity.this.klassesResponseList = null;
+                MainActivity.this.klassesResponse = null;
                 showToast(message);
             }
 
@@ -66,60 +66,60 @@ public class MainActivity extends BaseActivity {
         });
 
         mainBinding.klass1.setOnClickListener(v -> {
-            if(klassesResponseList!=null){
+            if(klassesResponse!=null){
                 Intent intent = new Intent(this,SubjectsActivity.class);
-                intent.putExtra("klassResponse", new Gson().toJson(klassesResponseList.get(0)));
+                intent.putExtra("klassResponse", new Gson().toJson(klassesResponse.getKlasses().get(0)));
                 startActivity(intent);
             }
         });
 
         mainBinding.klass2.setOnClickListener(v -> {
-            if(klassesResponseList!=null){
+            if(klassesResponse!=null){
                 Intent intent = new Intent(this,SubjectsActivity.class);
-                intent.putExtra("klassResponse", new Gson().toJson(klassesResponseList.get(1)));
+                intent.putExtra("klassResponse", new Gson().toJson(klassesResponse.getKlasses().get(1)));
                 startActivity(intent);
             }
         });
 
         mainBinding.klass3.setOnClickListener(v -> {
-            if(klassesResponseList!=null){
+            if(klassesResponse!=null){
                 Intent intent = new Intent(this,SubjectsActivity.class);
-                intent.putExtra("klassResponse", new Gson().toJson(klassesResponseList.get(2)));
+                intent.putExtra("klassResponse", new Gson().toJson(klassesResponse.getKlasses().get(2)));
                 startActivity(intent);
             }
         });
 
         mainBinding.klass4.setOnClickListener(v -> {
-            if(klassesResponseList!=null){
+            if(klassesResponse!=null){
                 Intent intent = new Intent(this,SubjectsActivity.class);
-                intent.putExtra("klassResponse", new Gson().toJson(klassesResponseList.get(3)));
+                intent.putExtra("klassResponse", new Gson().toJson(klassesResponse.getKlasses().get(3)));
                 startActivity(intent);
             }
         });
 
         mainBinding.klass5.setOnClickListener(v -> {
-            if(klassesResponseList!=null){
+            if(klassesResponse!=null){
                 Intent intent = new Intent(this,SubjectsActivity.class);
-                intent.putExtra("klassResponse", new Gson().toJson(klassesResponseList.get(4)));
+                intent.putExtra("klassResponse", new Gson().toJson(klassesResponse.getKlasses().get(4)));
                 startActivity(intent);
             }
         });
 
         mainBinding.klass6.setOnClickListener(v -> {
-            if(klassesResponseList!=null){
+            if(klassesResponse!=null){
                 Intent intent = new Intent(this,SubjectsActivity.class);
-                intent.putExtra("klassResponse", new Gson().toJson(klassesResponseList.get(5)));
+                intent.putExtra("klassResponse", new Gson().toJson(klassesResponse.getKlasses().get(5)));
                 startActivity(intent);
             }
         });
 
         mainBinding.bonusImg.setOnClickListener(v -> {
-            if (klassesResponseList!=null){
+            if (klassesResponse!=null){
             }
         });
     }
 
-    private void generateView(List<KlassesResponse> klassesResponseList) {
+    private void generateView(List<KlassesResponse.Klass> klassesResponseList) {
         Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponseList.get(0).getBannerUrl()).into(mainBinding.klass1);
         Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponseList.get(1).getBannerUrl()).into(mainBinding.klass2);
         Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponseList.get(2).getBannerUrl()).into(mainBinding.klass3);

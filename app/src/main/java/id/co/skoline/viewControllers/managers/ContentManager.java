@@ -78,9 +78,8 @@ public class ContentManager {
             public void successResponse(String requestId, ResponseBody responseBody, String baseUrl, String path, String requestType) {
                 if(requestId.equals(reqIdKlasses)){
                     try {
-                        Type listType = new TypeToken<List<KlassesResponse>>() {}.getType();
-                        JSONArray arrayResponse = new JSONArray(responseBody.string());
-                        klassesListener.onSuccess(new Gson().fromJson(arrayResponse.toString(), listType));
+                        JSONObject jsonObject = new JSONObject(responseBody.string());
+                        klassesListener.onSuccess(new Gson().fromJson(jsonObject.toString(), KlassesResponse.class));
                     } catch (Exception e) {
                         e.printStackTrace();
                         klassesListener.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);

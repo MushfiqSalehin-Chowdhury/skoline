@@ -7,6 +7,6 @@ import id.co.skoline.model.response.KlassesResponse;
 public interface KlassesListener extends BaseApiCallListener{
 
 
-    void onSuccess(List<KlassesResponse> klassesResponseList);
+    void onSuccess(KlassesResponse klassesResponse);
     void onFailed(String message, int responseCode);
 }
