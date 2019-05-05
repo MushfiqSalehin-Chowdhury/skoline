@@ -26,9 +26,8 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:textColor="@color/colorBlack"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:visibility="visible"
-                android:padding="15dp"
                 />
 
         </android.support.v7.widget.Toolbar>

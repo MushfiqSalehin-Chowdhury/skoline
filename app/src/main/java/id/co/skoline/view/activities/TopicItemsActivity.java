@@ -84,6 +84,7 @@ public class TopicItemsActivity extends BaseActivity {
         topicItemsBinding.adventureTitle.setText(topicItemsResponseList.getTopic().getAdventure().getTitle());
         topicItemsBinding.adventureDetails.setText(topicItemsResponseList.getTopic().getAdventure().getDescription());
         topicItemsBinding.klass.setBackgroundColor(Color.parseColor(classColor));
+        topicItemsBinding.topicVideoHeadline.setText(getString(R.string.topicVideoHeadline));
     }
     public void showVideo(View view) {
         Intent intent=new Intent(this,VideoPlayActivity.class);

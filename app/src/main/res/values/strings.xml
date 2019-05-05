@@ -72,6 +72,7 @@
     <string name="years">years</string>
     <string name="uploading_photo">Uploading photo...</string>
     <string name="image_update_successful">Profile picture successfully uploaded</string>
+    <string name="topicVideoHeadline">1. Simak Petualangannya</string>
 
 
     <string-array name="Day">
