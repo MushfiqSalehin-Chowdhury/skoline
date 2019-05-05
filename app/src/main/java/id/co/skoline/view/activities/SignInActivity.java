@@ -45,7 +45,7 @@ public class SignInActivity extends BaseActivity {
             public void afterTextChanged(Editable s) {
                 int length = s.length();
                 if ((previousLength < length) && (length == 2 || length == 5)) {
-                    s.append("-");
+                    s.append("/");
                 }
             }
         });
@@ -54,7 +54,7 @@ public class SignInActivity extends BaseActivity {
         signInBinding.signin.setTypeface(defaultTypeface);
 
         signInBinding.uname.setText("salehin_mushfiq");
-        signInBinding.dob.setText("09-10-2019");
+        signInBinding.dob.setText("09/10/2019");
     }
     public void resendUname(View view) {
         startActivity(new Intent(this, ResendUname.class));
