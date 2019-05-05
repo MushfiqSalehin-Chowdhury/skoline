@@ -35,19 +35,18 @@
                     android:background="@drawable/box_shape"
                     >
                     <ImageView
-                        android:id="@+id/classIcon"
+                        android:id="@+id/starIcon"
                         android:layout_width="80dp"
                         android:layout_height="60dp"
                         android:src="@drawable/gamestar"/>
                     <id.co.skoline.view.custom.CustomTextView
-                        android:id="@+id/classTitle"
+                        android:id="@+id/topicVideoHeadline"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1. Simaak Petualangannya"
                         android:layout_marginTop="20dp"
-                        android:textSize="20dp"
-                        android:textColor="@color/colorWhite" />
-
+                        android:textSize="18sp"
+                        android:textColor="@color/colorWhite"
+                        app:textStyle="Bold"/>
                 </LinearLayout>
 
                     <LinearLayout
@@ -58,6 +57,7 @@
                         android:paddingTop="10dp"
                         android:paddingRight="20dp"
                         android:paddingLeft="20dp"
+                        android:paddingBottom="10dp"
                         android:layout_marginTop="15dp"
                         >
 
@@ -72,12 +72,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="something"
+                            android:textSize="15sp"
+                            app:textStyle="Bold"
                             />
                         <id.co.skoline.view.custom.CustomTextView
                             android:id="@+id/adventureDetails"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="something"
+                            android:layout_marginTop="10dp"
                             />
                 </LinearLayout>
             </LinearLayout>

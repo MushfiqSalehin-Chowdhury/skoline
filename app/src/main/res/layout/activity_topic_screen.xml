@@ -38,8 +38,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:textSize="20dp"
-                    android:textColor="@color/colorWhite" />
-
+                    android:textColor="@color/colorWhite"
+                    app:textStyle="Bold"/>
             </LinearLayout>
 
             <LinearLayout
@@ -66,7 +66,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="18sp"
-                        android:text="Found items here"/>
+                        android:text="Found items here"
+                        app:textStyle="Bold"/>
                 </LinearLayout>
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/topicRecycle"
