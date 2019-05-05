@@ -75,7 +75,8 @@
     <string name="topicVideoHeadline">1. Simak Petualangannya</string>
     <string name="start_your_trial_version">Start Your Trail Version</string>
     <string name="subcription_successful">Subscription successfully completed</string>
-
+    <string name="searchTitle">Search Videos</string>
+    <string name="couldnt_find">Couldn\'t find anything</string>
 
     <string-array name="Day">
         <item>"   "01</item>

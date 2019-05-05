@@ -36,7 +36,7 @@ public abstract class ApiHandler {
 
             switch (requestType) {
                 case "get":
-                    bodyToCall = ApiClient.callRetrofit(context, baseUrl, requestId).getRequest(path);
+                    bodyToCall = ApiClient.callRetrofit(context, baseUrl, requestId).getRequest(path, hashMap);
                     break;
                 case "post":
                     bodyToCall = ApiClient.callRetrofit(context, baseUrl, requestId).postRequest(path, hashMap);

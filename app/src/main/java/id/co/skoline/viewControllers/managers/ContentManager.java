@@ -20,6 +20,7 @@ import id.co.skoline.model.response.SubjectResponse;
 import id.co.skoline.model.response.TopicItemsResponse;
 import id.co.skoline.model.response.TopicResponse;
 
+import id.co.skoline.model.response.UserResponse;
 import id.co.skoline.model.utils.ShareInfo;
 import id.co.skoline.viewControllers.interfaces.SearchListener;
 import id.co.skoline.viewControllers.interfaces.TopicItemsListener;

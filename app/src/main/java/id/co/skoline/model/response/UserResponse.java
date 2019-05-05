@@ -40,9 +40,9 @@ public class UserResponse {
         @SerializedName("newsletter")
         @Expose
         private Object newsletter;
-        @SerializedName("avater")
+        @SerializedName("avatar")
         @Expose
-        private Object avater;
+        private String avatar;
 
         public String getChildName() {
             return childName;
@@ -100,12 +100,8 @@ public class UserResponse {
             this.newsletter = newsletter;
         }
 
-        public Object getAvater() {
-            return avater;
-        }
-
-        public void setAvater(Object avater) {
-            this.avater = avater;
+        public String getAvatar() {
+            return avatar;
         }
 
     }

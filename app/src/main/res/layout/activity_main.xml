@@ -46,30 +46,22 @@
                         android:paddingEnd="10dp">
 
                         <LinearLayout
+                            android:id="@+id/search_bar"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
+                            android:gravity="end"
                             android:background="@drawable/box_shape"
                             android:orientation="horizontal">
 
-                            <id.co.skoline.view.custom.CustomEditText
-                                android:id="@+id/search_edit_frame"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:padding="10dp"
-                                android:background="@null"
-                                android:layout_weight="1" />
-
                             <ImageView
-                                android:id="@+id/search_mag_icon"
                                 android:layout_width="30dp"
                                 android:layout_height="match_parent"
-                                android:onClick="search"
                                 android:padding="5dp"
                                 android:src="@drawable/search_mag" />
                         </LinearLayout>
 
-                        <ImageView
+                        <id.co.skoline.view.custom.CircleImageView
                             android:id="@+id/profile_img"
                             android:layout_width="40dp"
                             android:layout_marginStart="10dp"

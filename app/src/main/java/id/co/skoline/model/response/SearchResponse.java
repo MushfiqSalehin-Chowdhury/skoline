@@ -17,6 +17,9 @@ public class SearchResponse {
     @SerializedName("video_link")
     @Expose
     private String videoLink;
+    @SerializedName("banner")
+    @Expose
+    private String banner;
 
     public Integer getId() {
         return id;
@@ -49,5 +52,14 @@ public class SearchResponse {
     public void setVideoLink(String videoLink) {
         this.videoLink = videoLink;
     }
+
+    public String getBanner() {
+        return banner;
+    }
+
+    public void setBanner(String banner) {
+        this.banner = banner;
+    }
+
 
 }
