@@ -134,8 +134,9 @@ public class ContentManager {
                 }
                 else if ( requestId.equals(reqIdSearch)){
                     try {
-                        JSONObject jsonObject = new JSONObject(responseBody.string());
-                        searchListener.onSuccess(new Gson().fromJson(jsonObject.toString(), SearchResponse.class));
+                        Type listType = new TypeToken<List<SearchResponse>>() {}.getType();
+                        JSONArray arrayResponse = new JSONArray(responseBody.string());
+                        searchListener.onSuccess(new Gson().fromJson(arrayResponse.toString(), listType));
                     } catch (Exception e) {
                         e.printStackTrace();
                         searchListener.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
@@ -196,8 +197,8 @@ public class ContentManager {
         this.searchListener = searchListener;
         this.reqIdSearch = ShareInfo.getInstance().getRequestId();
         HashMap hashMap = new HashMap();
-        hashMap.put("", search);
-        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "", "post", reqIdSearch, hashMap);
+        hashMap.put("search_key", search);
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "adventures", "get", reqIdSearch, hashMap);
         return reqIdSearch;
     }
 
