@@ -23,6 +23,8 @@ import id.co.skoline.databinding.ActivityVideoPlayBinding;
 import id.co.skoline.model.response.TopicItemsResponse;
 import id.co.skoline.model.response.TopicResponse;
 import id.co.skoline.model.utils.ShareInfo;
+import id.co.skoline.viewControllers.interfaces.VideoCompletedListerner;
+import id.co.skoline.viewControllers.managers.ContentManager;
 
 public class VideoPlayActivity extends BaseActivity {
 
@@ -34,6 +36,9 @@ public class VideoPlayActivity extends BaseActivity {
     // Tag for the instance state bundle.
     private static final String PLAYBACK_TIME = "play_time";
     private String videoUrl = "";
+    private String videoId = "";
+
+    ContentManager contentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,9 @@ public class VideoPlayActivity extends BaseActivity {
         videoPlayBinding= DataBindingUtil.setContentView(this,R.layout.activity_video_play);
 
         videoUrl = getIntent().getStringExtra("videoUrl");
+        videoId = getIntent().getStringExtra("videoId");
+
+        contentManager = new ContentManager(this);
 
         if (savedInstanceState != null) {
             mCurrentPosition = savedInstanceState.getInt(PLAYBACK_TIME);
@@ -112,28 +120,21 @@ public class VideoPlayActivity extends BaseActivity {
                         videoPlayBinding.videoView.start();
                     }
                 });
-
-        // Listener for onCompletion() event (runs after media has finished
-        // playing).
         videoPlayBinding.videoView.setOnCompletionListener(
                 new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mediaPlayer) {
                         // Return the video position to the start.
                         //videoPlayBinding.videoView.seekTo(0);
+                        videoWatchingComplete();
                     }
                 });
     }
 
-
-    // Release all media-related resources. In a more complicated app this
-    // might involve unregistering listeners or releasing audio focus.
     private void releasePlayer() {
         videoPlayBinding.videoView.stopPlayback();
     }
 
-    // Get a Uri for the media sample regardless of whether that sample is
-    // embedded in the app resources or available on the internet.
     private Uri getMedia(String mediaName) {
         if (URLUtil.isValidUrl(mediaName)) {
             // Media name is an external URL.
@@ -144,4 +145,30 @@ public class VideoPlayActivity extends BaseActivity {
                     "/raw/" + mediaName);
         }
     }
+
+    private void videoWatchingComplete() {
+        contentManager.videoCompleted(videoId, new VideoCompletedListerner() {
+            @Override
+            public void onSuccess(String message) {
+                showToast(getString(R.string.progress_submitted));
+            }
+
+            @Override
+            public void onFailed(String message, int responseCode) {
+                showToast(message);
+            }
+
+            @Override
+            public void startLoading(String requestId) {
+                showProgressDialog(getString(R.string.sumitting_progress), false);
+            }
+
+            @Override
+            public void endLoading(String requestId) {
+                dismissProgressDialog();
+            }
+        });
+    }
+
+
 }

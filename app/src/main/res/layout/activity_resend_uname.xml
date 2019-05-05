@@ -78,7 +78,6 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/boxbutton"
                 android:padding="5dp"
-                android:onClick="resendUname"
                 android:textColor="@color/colorWhite"
                 android:text="@string/resend_uname" />
         </LinearLayout>

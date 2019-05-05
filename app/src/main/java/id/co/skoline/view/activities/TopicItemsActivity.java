@@ -37,9 +37,7 @@ public class TopicItemsActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         topicItemsBinding= DataBindingUtil.setContentView(this,R.layout.activity_topic_items);
-
     }
 
     @Override
@@ -89,6 +87,7 @@ public class TopicItemsActivity extends BaseActivity {
     public void showVideo(View view) {
         Intent intent=new Intent(this,VideoPlayActivity.class);
         intent.putExtra("videoUrl",ShareInfo.getInstance().getRootBaseUrl()+topicItemsResponseList.getTopic().getAdventure().getVideoLink());
+        intent.putExtra("videoId",topicItemsResponseList.getTopic().getAdventure().getId());
         startActivity(intent);
     }
 }

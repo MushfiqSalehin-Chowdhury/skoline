@@ -4,12 +4,17 @@
     <item
         android:id="@+id/help"
         android:orderInCategory="100"
-        android:title="Help"
+        android:title="@string/help"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/switchLanguage"
+        android:orderInCategory="100"
+        android:title="@string/change_language"
         app:showAsAction="never" />
     <item
         android:id="@+id/logOut"
         android:orderInCategory="100"
-        android:title="Logout"
+        android:title="@string/logout"
         app:showAsAction="never" />
 
 </menu>

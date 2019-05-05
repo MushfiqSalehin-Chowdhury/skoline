@@ -83,7 +83,11 @@ public class SignInActivity extends BaseActivity {
             authenticationManager.signIn(uName, dob, new SignInListener() {
                 @Override
                 public void onSuccess(TokenResponse tokenResponseList) {
-                    setToken(tokenResponseList);
+                    if(tokenResponseList.getStatus()==200){
+                        setToken(tokenResponseList);
+                    } else if(tokenResponseList.getStatus()==404) {
+                        showToast(tokenResponseList.getMessage());
+                    }
                 }
                 @Override
                 public void onFailed(String message, int responseCode) {
