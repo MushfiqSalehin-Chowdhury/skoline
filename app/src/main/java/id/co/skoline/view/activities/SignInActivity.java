@@ -57,7 +57,7 @@ public class SignInActivity extends BaseActivity {
         signInBinding.dob.setText("09/10/2019");*/
     }
     public void resendUname(View view) {
-        startActivity(new Intent(this, ResendUname.class));
+        startActivity(new Intent(this, ResendUniqueNameActivity.class));
         finish();
     }
 

@@ -2,12 +2,9 @@ package id.co.skoline.view.activities;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.hardware.biometrics.BiometricPrompt;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.regex.Pattern;
 
@@ -16,7 +13,7 @@ import id.co.skoline.databinding.ActivityResendUnameBinding;
 import id.co.skoline.viewControllers.interfaces.ForgetUniqueNameListerner;
 import id.co.skoline.viewControllers.managers.AuthenticationManager;
 
-public class ResendUname extends BaseActivity{
+public class ResendUniqueNameActivity extends BaseActivity{
 
     ActivityResendUnameBinding resendUnameBinding;
     String phoneNumber;
@@ -44,7 +41,7 @@ public class ResendUname extends BaseActivity{
                             @Override
                             public void onSuccess(String message) {
                                 showToast(getString(R.string.uniqueName_resend)+" "+phoneNumber);
-                                startActivity(new Intent(ResendUname.this,SignInActivity.class));
+                                startActivity(new Intent(ResendUniqueNameActivity.this,SignInActivity.class));
                                 finish();
                             }
 

@@ -64,7 +64,7 @@
             android:name=".view.activities.WelcomePageActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.activities.ResendUname"
+            android:name=".view.activities.ResendUniqueNameActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.activities.ProfileActivity"
