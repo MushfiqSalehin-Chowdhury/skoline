@@ -36,7 +36,7 @@
                     >
                     <ImageView
                         android:id="@+id/classIcon"
-                        android:layout_width="100dp"
+                        android:layout_width="80dp"
                         android:layout_height="60dp"
                         android:src="@drawable/gamestar"/>
                     <id.co.skoline.view.custom.CustomTextView
@@ -55,9 +55,9 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/box_shape"
                         android:orientation="vertical"
-                        android:padding="10dp"
-                        android:paddingRight="15dp"
-                        android:paddingLeft="15dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="20dp"
+                        android:paddingLeft="20dp"
                         android:layout_marginTop="15dp"
                         >
 

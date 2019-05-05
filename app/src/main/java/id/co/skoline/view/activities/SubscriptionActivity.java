@@ -8,7 +8,8 @@ import android.view.View;
 import id.co.skoline.R;
 import id.co.skoline.databinding.ActivitySubscriptionBinding;
 
-public class SubscriptionActivity extends BaseActivity{
+public class
+SubscriptionActivity extends BaseActivity{
 
     ActivitySubscriptionBinding subscriptionBinding;
 

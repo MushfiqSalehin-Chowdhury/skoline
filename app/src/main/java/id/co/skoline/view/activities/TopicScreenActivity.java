@@ -54,7 +54,7 @@ public class TopicScreenActivity extends BaseActivity {
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.recycle_view_devider));
         topicScreenBinding.topicRecycle.addItemDecoration(dividerItemDecoration);
     }
-
+ 
     @Override
     protected void viewRelatedTask() {
         setToolbar(getString(R.string.topic_list), true, topicScreenBinding.toolbarBinding);

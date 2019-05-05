@@ -70,6 +70,8 @@ public class VideoPlayActivity extends BaseActivity {
             @Override
             public boolean onError(MediaPlayer mp, int what, int extra) {
 
+                mp.stop();
+                mp.release();
                 Log.i("VideoPlayActivity",String.valueOf(what));
                 Log.i("VideoPlayActivity",String.valueOf(extra));
                 return false;

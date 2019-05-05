@@ -21,8 +21,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +45,7 @@ public class SubjectsActivity extends BaseActivity {
     private SubjectsAdapter subjectsAdapter;
     DividerItemDecoration dividerItemDecoration;
     String iconPath,color,classTitle;
-    KlassesResponse klassesResponse;
+    KlassesResponse.Klass klassesResponse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +59,8 @@ public class SubjectsActivity extends BaseActivity {
     protected void viewRelatedTask() {
         setToolbar(getString(R.string.subject_list), true, subjectsBinding.toolbarBinding);
         Intent intent= getIntent();
-        klassesResponse = new Gson().fromJson(getIntent().getStringExtra("klassResponse"), KlassesResponse.class);
+
+        klassesResponse = new Gson().fromJson(getIntent().getStringExtra("klassResponse"), KlassesResponse.Klass.class);
 
         contentManager = new ContentManager(this);
         contentManager.getSubjects(klassesResponse.getId(),new SubjectsListener() {
