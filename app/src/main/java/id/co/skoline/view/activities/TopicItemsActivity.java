@@ -46,13 +46,13 @@ public class TopicItemsActivity extends BaseActivity {
     protected void viewRelatedTask() {
         setToolbar(getString(R.string.adventure_list), true, topicItemsBinding.toolbarBinding);
 
-       topicResponse = new Gson().fromJson(getIntent().getStringExtra("topicResponse"), TopicResponse.class);
-       classColor = getIntent().getStringExtra("classColor");
-       adventureBanner=getIntent().getStringExtra("topicBanner");
+        topicResponse = new Gson().fromJson(getIntent().getStringExtra("topicResponse"), TopicResponse.class);
+        classColor = getIntent().getStringExtra("classColor");
+        adventureBanner = getIntent().getStringExtra("topicBanner");
 
 
         contentManager = new ContentManager(this);
-        contentManager.getAdvanture(topicResponse.getId(),new TopicItemsListener() {
+        contentManager.getAdventure(topicResponse.getId(),new TopicItemsListener() {
             @Override
             public void onSuccess(TopicItemsResponse topicItemsResponseList) {
                 Log.e("TopicItems", new Gson().toJson(topicItemsResponseList));
@@ -87,7 +87,7 @@ public class TopicItemsActivity extends BaseActivity {
     }
     public void showVideo(View view) {
         Intent intent=new Intent(this,VideoPlayActivity.class);
-        intent.putExtra("videoUrl",ShareInfo.getInstance().getRequestId()+topicItemsResponseList.getTopic().getAdventure().getVideoLink());
+        intent.putExtra("videoUrl",ShareInfo.getInstance().getRootBaseUrl()+topicItemsResponseList.getTopic().getAdventure().getVideoLink());
         startActivity(intent);
     }
 }

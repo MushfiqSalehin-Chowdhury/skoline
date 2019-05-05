@@ -108,7 +108,7 @@ public class SignUpActivity extends BaseActivity{
         }
     }
     private void getLocation (){
-        mfusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(this);
+        mfusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         try{
             Task location = mfusedLocationProviderClient.getLastLocation();
             location.addOnCompleteListener(new OnCompleteListener() {

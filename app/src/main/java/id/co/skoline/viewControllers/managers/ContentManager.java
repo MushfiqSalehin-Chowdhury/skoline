@@ -1,6 +1,7 @@
 package id.co.skoline.viewControllers.managers;
 
 import android.content.Context;
+import android.provider.MediaStore;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -23,6 +24,7 @@ import id.co.skoline.viewControllers.interfaces.TopicItemsListener;
 import id.co.skoline.viewControllers.interfaces.KlassesListener;
 import id.co.skoline.viewControllers.interfaces.SubjectsListener;
 import id.co.skoline.viewControllers.interfaces.TopicsListener;
+import id.co.skoline.viewControllers.interfaces.VideoCompletedListerner;
 import okhttp3.ResponseBody;
 
 import static id.co.skoline.model.configuration.ResponseCode.INVALID_JSON_RESPONSE;
@@ -34,12 +36,12 @@ public class ContentManager {
     SubjectsListener subjectsListener;
     TopicsListener topicsListener;
     TopicItemsListener topicItemsListener;
+    VideoCompletedListerner videoCompletedListerner;
     private String reqIdKlasses;
     private String reqIdSubjects;
     private String reqIdTopics;
     private String reqIdAdvanture;
-    private String reqIdSignIn;
-    private String reqIdSignUp;
+    private String reqIdVideoCompleted;
 
     public ContentManager(Context context){
         this.context = context;
@@ -58,6 +60,9 @@ public class ContentManager {
                 else if(requestId.equals(reqIdAdvanture)){
                     topicItemsListener.startLoading(requestId);
                 }
+                else if(requestId.equals(reqIdVideoCompleted)){
+                    videoCompletedListerner.startLoading(requestId);
+                }
             }
 
             @Override
@@ -73,6 +78,9 @@ public class ContentManager {
                 else if(requestId.equals(reqIdAdvanture)){
                     topicItemsListener.endLoading(requestId);
                 }
+                else if(requestId.equals(reqIdVideoCompleted)){
+                    videoCompletedListerner.endLoading(requestId);
+                }
             }
             @Override
             public void successResponse(String requestId, ResponseBody responseBody, String baseUrl, String path, String requestType) {
@@ -85,8 +93,7 @@ public class ContentManager {
                         e.printStackTrace();
                         klassesListener.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
                     }
-                }
-               else if(requestId.equals(reqIdSubjects)){
+                } else if(requestId.equals(reqIdSubjects)){
                     try {
                         Type listType = new TypeToken<List<SubjectResponse>>() {}.getType();
                         JSONArray arrayResponse = new JSONArray(responseBody.string());
@@ -95,8 +102,7 @@ public class ContentManager {
                         e.printStackTrace();
                         subjectsListener.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
                     }
-                }
-                if(requestId.equals(reqIdTopics)){
+                } else if(requestId.equals(reqIdTopics)){
                     try {
                         Type listType = new TypeToken<List<TopicResponse>>() {}.getType();
                         JSONArray arrayResponse = new JSONArray(responseBody.string());
@@ -105,9 +111,7 @@ public class ContentManager {
                         e.printStackTrace();
                         topicsListener.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
                     }
-                }
-
-                if ( requestId.equals(reqIdAdvanture)){
+                } else if (requestId.equals(reqIdAdvanture)){
                     try {
                         JSONObject jsonObject = new JSONObject(responseBody.string());
                        topicItemsListener.onSuccess(new Gson().fromJson(jsonObject.toString(), TopicItemsResponse.class));
@@ -115,15 +119,18 @@ public class ContentManager {
                         e.printStackTrace();
                        topicItemsListener.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
                     }
+                } else if(requestId.equals(reqIdVideoCompleted)){
+                    videoCompletedListerner.onSuccess("");
                 }
             }
             @Override
             public void failResponse(String requestId, int responseCode, String message) {
                 if(requestId.equals(reqIdKlasses)){
                     klassesListener.onFailed(message, responseCode);
-                }
-                if ( requestId.equals(reqIdAdvanture)){
+                } else if ( requestId.equals(reqIdAdvanture)){
                     topicItemsListener.onFailed(message,responseCode);
+                } else if ( requestId.equals(reqIdVideoCompleted)){
+                    videoCompletedListerner.onFailed(message,responseCode);
                 }
             }
         };
@@ -149,10 +156,20 @@ public class ContentManager {
         return reqIdTopics;
     }
 
-    public String getAdvanture(int id,TopicItemsListener topicItemsListener){
+    public String getAdventure(int id,TopicItemsListener topicItemsListener){
         this.topicItemsListener = topicItemsListener;
         this.reqIdAdvanture = ShareInfo.getInstance().getRequestId();
         apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "topics/"+id, "get", reqIdAdvanture, new HashMap());
         return reqIdAdvanture;
+    }
+
+    public String videoCompleted(String adventureId, VideoCompletedListerner videoCompletedListerner){
+        this.videoCompletedListerner = videoCompletedListerner;
+        this.reqIdVideoCompleted = ShareInfo.getInstance().getRequestId();
+        HashMap hashMap = new HashMap();
+        hashMap.put("adventure_id", adventureId);
+        hashMap.put("status", 1); // 1 for video completed
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "users/user_progress/", "post", reqIdVideoCompleted, hashMap);
+        return reqIdVideoCompleted;
     }
 }
