@@ -23,6 +23,7 @@ import id.co.skoline.model.response.SubscriptionResponse;
 import id.co.skoline.model.response.TokenResponse;
 import id.co.skoline.model.response.UserResponse;
 import id.co.skoline.model.utils.ShareInfo;
+import id.co.skoline.viewControllers.interfaces.ConfirmSubscriptionListener;
 import id.co.skoline.viewControllers.interfaces.SignInListener;
 import id.co.skoline.viewControllers.interfaces.SignupListener;
 import id.co.skoline.viewControllers.interfaces.SubscriptionListener;
@@ -45,12 +46,14 @@ public class AuthenticationManager {
     private String reqIdSignIn;
     private String reqIdSubscription;
     private String reqIdUploadPhoto;
+    private String reqIdConfirmSubscription;
 
     UserListerner userListerner;
     SignupListener signupListener;
     SignInListener signInListener;
     UploadPhotoListener uploadPhotoListener;
     SubscriptionListener subscriptionListenerList;
+    ConfirmSubscriptionListener confirmSubscriptionListener;
 
     public AuthenticationManager(Context context) {
         this.context=context;
@@ -68,6 +71,8 @@ public class AuthenticationManager {
                     subscriptionListenerList.startLoading(requestId);
                 } else if(requestId.equals(reqIdUploadPhoto)){
                     uploadPhotoListener.startLoading(requestId);
+                } else if(requestId.equals(reqIdConfirmSubscription)){
+                    confirmSubscriptionListener.startLoading(requestId);
                 }
             }
             @Override
@@ -79,9 +84,11 @@ public class AuthenticationManager {
                 } else if(requestId.equals(reqIdSignUp)){
                     signupListener.endLoading(requestId);
                 } else if(requestId.equals(reqIdSubscription)){
-                    subscriptionListenerList.startLoading(requestId);
+                    subscriptionListenerList.endLoading(requestId);
                 } else if(requestId.equals(reqIdUploadPhoto)){
                     uploadPhotoListener.endLoading(requestId);
+                } else if(requestId.equals(reqIdConfirmSubscription)){
+                    confirmSubscriptionListener.endLoading(requestId);
                 }
             }
             @Override
@@ -110,6 +117,14 @@ public class AuthenticationManager {
                         e.printStackTrace();
                         signupListener.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
                     }
+                } else if(requestId.equals(reqIdUploadPhoto)){
+                    try {
+                        JSONObject jsonObject = new JSONObject(responseBody.string());
+                        uploadPhotoListener.uploadPhotoListenerSuccess("");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        uploadPhotoListener.uploadPhotoListenerFail(INVALID_JSON_RESPONSE, "Invalid JSON Response");
+                    }
                 } else if(requestId.equals(reqIdSubscription)){
                     try {
                         Type listType = new TypeToken<List<SubscriptionResponse>>() {}.getType();
@@ -119,14 +134,13 @@ public class AuthenticationManager {
                         e.printStackTrace();
                         subscriptionListenerList.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
                     }
-                }
-                    else if(requestId.equals(reqIdUploadPhoto)){
+                } else if(requestId.equals(reqIdConfirmSubscription)){
                     try {
                         JSONObject jsonObject = new JSONObject(responseBody.string());
-                        uploadPhotoListener.uploadPhotoListenerSuccess("");
+                        confirmSubscriptionListener.onSuccess("");
                     } catch (Exception e) {
                         e.printStackTrace();
-                        uploadPhotoListener.uploadPhotoListenerFail(INVALID_JSON_RESPONSE, "Invalid JSON Response");
+                        confirmSubscriptionListener.onFailed( "Invalid JSON Response", INVALID_JSON_RESPONSE);
                     }
                 }
             }
@@ -142,6 +156,8 @@ public class AuthenticationManager {
                     subscriptionListenerList.onFailed(message, responseCode);
                 } else if(requestId.equals(reqIdUploadPhoto)){
                     uploadPhotoListener.uploadPhotoListenerFail(responseCode, message);
+                } else if(requestId.equals(reqIdConfirmSubscription)){
+                    confirmSubscriptionListener.onFailed(message, responseCode);
                 }
             }
         };
@@ -196,10 +212,20 @@ public class AuthenticationManager {
         return reqIdSignIn;
     }
 
-    public String getSubscriptonList (SubscriptionListener subscriptionListenerList){
+    public String getSubscriptionList(SubscriptionListener subscriptionListenerList){
         this.subscriptionListenerList= subscriptionListenerList;
         this.reqIdSubscription=ShareInfo.getInstance().getRequestId();
         apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"subscriptions","get",reqIdSubscription,new HashMap<>());
         return  reqIdSubscription;
     }
+
+    public String confirmSubscription(String subscription_id, ConfirmSubscriptionListener confirmSubscriptionListener){
+        this.confirmSubscriptionListener = confirmSubscriptionListener;
+        this.reqIdConfirmSubscription = ShareInfo.getInstance().getRequestId();
+        HashMap hashMap = new HashMap();
+        hashMap.put("subscription_id", subscription_id);
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"users/activate_subscription","post",reqIdConfirmSubscription, hashMap);
+        return  reqIdConfirmSubscription;
+    }
+
 }
