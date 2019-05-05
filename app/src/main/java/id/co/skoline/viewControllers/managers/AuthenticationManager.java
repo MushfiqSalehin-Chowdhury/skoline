@@ -17,12 +17,14 @@ import java.util.HashMap;
 import java.util.List;
 
 import id.co.skoline.model.configuration.ApiHandler;
+import id.co.skoline.model.response.OtpResponse;
 import id.co.skoline.model.response.SignupErrorResponse;
 import id.co.skoline.model.response.SubjectResponse;
 import id.co.skoline.model.response.SubscriptionResponse;
 import id.co.skoline.model.response.TokenResponse;
 import id.co.skoline.model.response.UserResponse;
 import id.co.skoline.model.utils.ShareInfo;
+import id.co.skoline.viewControllers.interfaces.OtpListener;
 import id.co.skoline.viewControllers.interfaces.ConfirmSubscriptionListener;
 import id.co.skoline.viewControllers.interfaces.ForgetUniqueNameListerner;
 import id.co.skoline.viewControllers.interfaces.SignInListener;
@@ -47,6 +49,7 @@ public class AuthenticationManager {
     private String reqIdSignIn;
     private String reqIdSubscription;
     private String reqIdUploadPhoto;
+    private String reqIdOtp;
     private String reqIdConfirmSubscription;
     private String reqIdForgetUniqueName;
 
@@ -55,6 +58,7 @@ public class AuthenticationManager {
     SignInListener signInListener;
     UploadPhotoListener uploadPhotoListener;
     SubscriptionListener subscriptionListenerList;
+    OtpListener otpListener;
     ConfirmSubscriptionListener confirmSubscriptionListener;
     ForgetUniqueNameListerner forgetUniqueNameListerner;
 
@@ -74,6 +78,8 @@ public class AuthenticationManager {
                     subscriptionListenerList.startLoading(requestId);
                 } else if(requestId.equals(reqIdUploadPhoto)){
                     uploadPhotoListener.startLoading(requestId);
+                } else if(requestId.equals(reqIdOtp)){
+                    otpListener.startLoading(requestId);
                 } else if(requestId.equals(reqIdConfirmSubscription)){
                     confirmSubscriptionListener.startLoading(requestId);
                 } else if(requestId.equals(reqIdForgetUniqueName)){
@@ -92,6 +98,8 @@ public class AuthenticationManager {
                     subscriptionListenerList.endLoading(requestId);
                 } else if(requestId.equals(reqIdUploadPhoto)){
                     uploadPhotoListener.endLoading(requestId);
+                }else if(requestId.equals(reqIdOtp)){
+                    otpListener.endLoading(requestId);
                 } else if(requestId.equals(reqIdConfirmSubscription)){
                     confirmSubscriptionListener.endLoading(requestId);
                 } else if(requestId.equals(reqIdForgetUniqueName)){
@@ -152,7 +160,18 @@ public class AuthenticationManager {
                 } else if(requestId.equals(reqIdForgetUniqueName)){
                     forgetUniqueNameListerner.onSuccess("");
                 }
+                    else if(requestId.equals(reqIdOtp)){
+                    try {
+                        Type listType = new TypeToken<List<OtpResponse>>() {}.getType();
+                        JSONArray arrayResponse = new JSONArray(responseBody.string());
+                        subscriptionListenerList.onSuccess(new Gson().fromJson(arrayResponse.toString(), listType));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        subscriptionListenerList.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
+                    }
+                }
             }
+
             @Override
             public void failResponse(String requestId, int responseCode, String message) {
                 if(requestId.equals(reqIdUser)){
@@ -165,6 +184,8 @@ public class AuthenticationManager {
                     subscriptionListenerList.onFailed(message, responseCode);
                 } else if(requestId.equals(reqIdUploadPhoto)){
                     uploadPhotoListener.uploadPhotoListenerFail(responseCode, message);
+                } else if(requestId.equals(reqIdOtp)){
+                    otpListener.onFailed(message, responseCode);
                 } else if(requestId.equals(reqIdConfirmSubscription)){
                     confirmSubscriptionListener.onFailed(message, responseCode);
                 } else if(requestId.equals(reqIdForgetUniqueName)){
@@ -229,7 +250,15 @@ public class AuthenticationManager {
         apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"subscriptions","get",reqIdSubscription,new HashMap<>());
         return  reqIdSubscription;
     }
-
+    public String checkOtp (String phone,String uniqueName,OtpListener otpListener){
+        this.otpListener=otpListener;
+        this.reqIdOtp = ShareInfo.getInstance().getRequestId();
+        HashMap hashMap = new HashMap();
+        hashMap.put("phone",phone);
+        hashMap.put("unique_name",uniqueName);
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"users/fetch_otp","get",reqIdOtp,new HashMap());
+        return  reqIdOtp;
+    }
     public String confirmSubscription(String subscription_id, ConfirmSubscriptionListener confirmSubscriptionListener){
         this.confirmSubscriptionListener = confirmSubscriptionListener;
         this.reqIdConfirmSubscription = ShareInfo.getInstance().getRequestId();
@@ -247,5 +276,4 @@ public class AuthenticationManager {
         apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"users/unique_name","get",reqIdForgetUniqueName, hashMap);
         return  reqIdForgetUniqueName;
     }
-
 }

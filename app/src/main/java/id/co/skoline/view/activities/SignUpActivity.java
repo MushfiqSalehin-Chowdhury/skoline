@@ -56,7 +56,7 @@ public class SignUpActivity extends BaseActivity{
     ActivitySignUpBinding signUpBinding;
     AuthenticationManager authenticationManager;
     Calendar calendar;
-    String childName,dob,uName,email,phoneNumber;
+    String childName,dob,uName,email,phoneNumber,countryCode;
     Spinner spinner;
     Double lat,lang;
     LocationManager locationManager;
@@ -196,7 +196,8 @@ public class SignUpActivity extends BaseActivity{
         dob= signUpBinding.day.getSelectedItem().toString()
                 +"-"+signUpBinding.month.getSelectedItem().toString()
                 +"-"+signUpBinding.year.getSelectedItem().toString();
-        phoneNumber=signUpBinding.ccp.getSelectedCountryCode()+signUpBinding.number.getText();
+        phoneNumber= signUpBinding.number.getText().toString();
+        countryCode=signUpBinding.ccp.getSelectedCountryCode();
         email = signUpBinding.email.getText().toString();
 
 
@@ -218,7 +219,7 @@ public class SignUpActivity extends BaseActivity{
             authenticationManager=new AuthenticationManager(this);
 
             if (isValidPhone(phoneNumber)){
-                authenticationManager.signUp(childName,phoneNumber,uName,dob,new SignupListener() {
+                authenticationManager.signUp(childName,countryCode+phoneNumber,uName,dob,new SignupListener() {
 
                     @Override
                     public void onSuccess(SignupErrorResponse signupErrorResponseList) {
