@@ -13,8 +13,12 @@ public class TopicItemsResponse {
     public void setTopic(Topic topic) {
         this.topic = topic;
     }
+
     public class Adventure {
 
+        @SerializedName("id")
+        @Expose
+        private String id;
         @SerializedName("title")
         @Expose
         private String title;
@@ -24,6 +28,14 @@ public class TopicItemsResponse {
         @SerializedName("video_link")
         @Expose
         private Object videoLink;
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
 
         public String getTitle() {
             return title;

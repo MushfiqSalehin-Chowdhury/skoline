@@ -57,7 +57,7 @@ public class SignInActivity extends BaseActivity {
         signInBinding.dob.setText("09/10/2019");*/
     }
     public void resendUname(View view) {
-        startActivity(new Intent(this, ResendUname.class));
+        startActivity(new Intent(this, ResendUniqueNameActivity.class));
         finish();
     }
 
@@ -83,7 +83,11 @@ public class SignInActivity extends BaseActivity {
             authenticationManager.signIn(uName, dob, new SignInListener() {
                 @Override
                 public void onSuccess(TokenResponse tokenResponseList) {
-                    setToken(tokenResponseList);
+                    if(tokenResponseList.getStatus()==200){
+                        setToken(tokenResponseList);
+                    } else if(tokenResponseList.getStatus()==404) {
+                        showToast(tokenResponseList.getMessage());
+                    }
                 }
                 @Override
                 public void onFailed(String message, int responseCode) {

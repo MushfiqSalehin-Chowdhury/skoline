@@ -27,6 +27,7 @@ import id.co.skoline.model.response.VerifyOtpResponse;
 import id.co.skoline.model.utils.ShareInfo;
 import id.co.skoline.viewControllers.interfaces.OtpListener;
 import id.co.skoline.viewControllers.interfaces.ConfirmSubscriptionListener;
+import id.co.skoline.viewControllers.interfaces.ForgetUniqueNameListerner;
 import id.co.skoline.viewControllers.interfaces.SignInListener;
 import id.co.skoline.viewControllers.interfaces.SignupListener;
 import id.co.skoline.viewControllers.interfaces.SubscriptionListener;
@@ -53,6 +54,7 @@ public class AuthenticationManager {
     private String reqIdOtp;
     private String reqIdVerifyOtp;
     private String reqIdConfirmSubscription;
+    private String reqIdForgetUniqueName;
 
     UserListerner userListerner;
     SignupListener signupListener;
@@ -62,6 +64,7 @@ public class AuthenticationManager {
     OtpListener otpListener;
     ConfirmSubscriptionListener confirmSubscriptionListener;
     VerifyOtpListener verifyOtpListener;
+    ForgetUniqueNameListerner forgetUniqueNameListerner;
 
     public AuthenticationManager(Context context) {
         this.context=context;
@@ -85,6 +88,8 @@ public class AuthenticationManager {
                     confirmSubscriptionListener.startLoading(requestId);
                 }else if(requestId.equals(reqIdVerifyOtp)){
                     verifyOtpListener.startLoading(requestId);
+                } else if(requestId.equals(reqIdForgetUniqueName)){
+                    forgetUniqueNameListerner.startLoading(requestId);
                 }
 
             }
@@ -106,6 +111,8 @@ public class AuthenticationManager {
                     confirmSubscriptionListener.endLoading(requestId);
                 }else if(requestId.equals(reqIdVerifyOtp)){
                     verifyOtpListener.endLoading(requestId);
+                } else if(requestId.equals(reqIdForgetUniqueName)){
+                    forgetUniqueNameListerner.endLoading(requestId);
                 }
             }
             @Override
@@ -159,7 +166,10 @@ public class AuthenticationManager {
                         e.printStackTrace();
                         confirmSubscriptionListener.onFailed( "Invalid JSON Response", INVALID_JSON_RESPONSE);
                     }
-                } else if(requestId.equals(reqIdOtp)){
+                }  else if(requestId.equals(reqIdForgetUniqueName)){
+                    forgetUniqueNameListerner.onSuccess("");
+                }
+                    else if(requestId.equals(reqIdOtp)){
                     try {
                         JSONObject jsonObject = new JSONObject(responseBody.string());
                         otpListener.onSuccess(new Gson().fromJson(jsonObject.toString(), OtpResponse.class));
@@ -196,6 +206,8 @@ public class AuthenticationManager {
                     confirmSubscriptionListener.onFailed(message, responseCode);
                 } else if(requestId.equals(reqIdVerifyOtp)){
                     verifyOtpListener.onFailed(message, responseCode);
+                } else if(requestId.equals(reqIdForgetUniqueName)){
+                    forgetUniqueNameListerner.onFailed(message, responseCode);
                 }
             }
         };
@@ -282,5 +294,14 @@ public class AuthenticationManager {
         hashMap.put("subscription_id", subscription_id);
         apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"users/activate_subscription","post",reqIdConfirmSubscription, hashMap);
         return  reqIdConfirmSubscription;
+    }
+
+    public String forgetUniqueName(String mobileNumber, ForgetUniqueNameListerner forgetUniqueNameListerner){
+        this.forgetUniqueNameListerner = forgetUniqueNameListerner;
+        this.reqIdForgetUniqueName = ShareInfo.getInstance().getRequestId();
+        HashMap hashMap = new HashMap();
+        hashMap.put("phone", mobileNumber);
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"users/unique_name","get",reqIdForgetUniqueName, hashMap);
+        return  reqIdForgetUniqueName;
     }
 }
