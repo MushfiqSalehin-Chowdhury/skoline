@@ -23,6 +23,7 @@ import id.co.skoline.model.response.SubjectResponse;
 import id.co.skoline.model.response.SubscriptionResponse;
 import id.co.skoline.model.response.TokenResponse;
 import id.co.skoline.model.response.UserResponse;
+import id.co.skoline.model.response.VerifyOtpResponse;
 import id.co.skoline.model.utils.ShareInfo;
 import id.co.skoline.viewControllers.interfaces.OtpListener;
 import id.co.skoline.viewControllers.interfaces.ConfirmSubscriptionListener;
@@ -31,6 +32,7 @@ import id.co.skoline.viewControllers.interfaces.SignupListener;
 import id.co.skoline.viewControllers.interfaces.SubscriptionListener;
 import id.co.skoline.viewControllers.interfaces.UploadPhotoListener;
 import id.co.skoline.viewControllers.interfaces.UserListerner;
+import id.co.skoline.viewControllers.interfaces.VerifyOtpListener;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -49,6 +51,7 @@ public class AuthenticationManager {
     private String reqIdSubscription;
     private String reqIdUploadPhoto;
     private String reqIdOtp;
+    private String reqIdVerifyOtp;
     private String reqIdConfirmSubscription;
 
     UserListerner userListerner;
@@ -58,6 +61,7 @@ public class AuthenticationManager {
     SubscriptionListener subscriptionListenerList;
     OtpListener otpListener;
     ConfirmSubscriptionListener confirmSubscriptionListener;
+    VerifyOtpListener verifyOtpListener;
 
     public AuthenticationManager(Context context) {
         this.context=context;
@@ -79,7 +83,10 @@ public class AuthenticationManager {
                     otpListener.startLoading(requestId);
                 } else if(requestId.equals(reqIdConfirmSubscription)){
                     confirmSubscriptionListener.startLoading(requestId);
+                }else if(requestId.equals(reqIdVerifyOtp)){
+                    verifyOtpListener.startLoading(requestId);
                 }
+
             }
             @Override
             public void endApiCall(String requestId) {
@@ -97,6 +104,8 @@ public class AuthenticationManager {
                     otpListener.endLoading(requestId);
                 } else if(requestId.equals(reqIdConfirmSubscription)){
                     confirmSubscriptionListener.endLoading(requestId);
+                }else if(requestId.equals(reqIdVerifyOtp)){
+                    verifyOtpListener.endLoading(requestId);
                 }
             }
             @Override
@@ -150,15 +159,21 @@ public class AuthenticationManager {
                         e.printStackTrace();
                         confirmSubscriptionListener.onFailed( "Invalid JSON Response", INVALID_JSON_RESPONSE);
                     }
-                }
-                    else if(requestId.equals(reqIdOtp)){
+                } else if(requestId.equals(reqIdOtp)){
                     try {
-                        Type listType = new TypeToken<List<OtpResponse>>() {}.getType();
-                        JSONArray arrayResponse = new JSONArray(responseBody.string());
-                        subscriptionListenerList.onSuccess(new Gson().fromJson(arrayResponse.toString(), listType));
-                    } catch (Exception e) {
+                        JSONObject jsonObject = new JSONObject(responseBody.string());
+                        otpListener.onSuccess(new Gson().fromJson(jsonObject.toString(), OtpResponse.class));
+                }      catch (Exception e) {
                         e.printStackTrace();
-                        subscriptionListenerList.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
+                        otpListener.onFailed( "Invalid JSON Response", INVALID_JSON_RESPONSE);
+                     }
+                } else if(requestId.equals(reqIdVerifyOtp)){
+                    try {
+                        JSONObject jsonObject = new JSONObject(responseBody.string());
+                        verifyOtpListener.onSuccess(new Gson().fromJson(jsonObject.toString(), VerifyOtpResponse.class));
+                    }      catch (Exception e) {
+                        e.printStackTrace();
+                        verifyOtpListener.onFailed( "Invalid JSON Response", INVALID_JSON_RESPONSE);
                     }
                 }
             }
@@ -179,6 +194,8 @@ public class AuthenticationManager {
                     otpListener.onFailed(message, responseCode);
                 } else if(requestId.equals(reqIdConfirmSubscription)){
                     confirmSubscriptionListener.onFailed(message, responseCode);
+                } else if(requestId.equals(reqIdVerifyOtp)){
+                    verifyOtpListener.onFailed(message, responseCode);
                 }
             }
         };
@@ -186,7 +203,7 @@ public class AuthenticationManager {
     public String getUsers(UserListerner userListerner){
         this.userListerner = userListerner;
         this.reqIdUser = ShareInfo.getInstance().getRequestId();
-        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "users/user_profile", "get", reqIdUser, new HashMap());
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "users/profile", "get", reqIdUser, new HashMap());
         return reqIdUser;
     }
 
@@ -239,14 +256,24 @@ public class AuthenticationManager {
         apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"subscriptions","get",reqIdSubscription,new HashMap<>());
         return  reqIdSubscription;
     }
-    public String checkOtp (String phone,String uniqueName,OtpListener otpListener){
+    public String getOtp (String phone,String uniqueName,OtpListener otpListener){
         this.otpListener=otpListener;
         this.reqIdOtp = ShareInfo.getInstance().getRequestId();
         HashMap hashMap = new HashMap();
         hashMap.put("phone",phone);
         hashMap.put("unique_name",uniqueName);
-        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"users/fetch_otp","get",reqIdOtp,new HashMap());
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"users/fetch_otp","get",reqIdOtp,hashMap);
         return  reqIdOtp;
+    }
+    public String checkOtp (String phone,String uniqueName,String otp,VerifyOtpListener verifyOtpListener){
+        this.verifyOtpListener=verifyOtpListener;
+        this.reqIdVerifyOtp = ShareInfo.getInstance().getRequestId();
+        HashMap hashMap = new HashMap();
+        hashMap.put("phone",phone);
+        hashMap.put("unique_name",uniqueName);
+        hashMap.put("otp",otp);
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"users/verify_otp","post",reqIdVerifyOtp,hashMap);
+        return  reqIdVerifyOtp;
     }
     public String confirmSubscription(String subscription_id, ConfirmSubscriptionListener confirmSubscriptionListener){
         this.confirmSubscriptionListener = confirmSubscriptionListener;

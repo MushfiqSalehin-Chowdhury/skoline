@@ -1,4 +1,8 @@
 package id.co.skoline.viewControllers.interfaces;
 
-public interface VerifyOtpListener {
+import id.co.skoline.model.response.VerifyOtpResponse;
+
+public interface VerifyOtpListener extends BaseApiCallListener{
+    void onSuccess(VerifyOtpResponse verifyOtpResponse);
+    void onFailed(String message, int responseCode);
 }
