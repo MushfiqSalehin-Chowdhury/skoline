@@ -136,7 +136,7 @@ public class MainActivity extends BaseActivity {
         Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponse.getKlasses().get(3).getBannerUrl()).into(mainBinding.klass4);
         Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponse.getKlasses().get(4).getBannerUrl()).into(mainBinding.klass5);
         Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponse.getKlasses().get(5).getBannerUrl()).into(mainBinding.klass6);
-        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponse.getUser().getAvatar()).into(mainBinding.profileImg);
+        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+klassesResponse.getUser().getAvatar()).error(R.drawable.profile_img).into(mainBinding.profileImg);
     }
 
 

@@ -30,19 +30,19 @@ public class UserResponse {
         private String phone;
         @SerializedName("birth_date")
         @Expose
-        private Object birthDate;
+        private String birthDate;
         @SerializedName("email")
         @Expose
-        private String email;
+        private Object email;
         @SerializedName("location")
         @Expose
         private Object location;
         @SerializedName("newsletter")
         @Expose
         private Object newsletter;
-        @SerializedName("avatar")
+        @SerializedName("avatar_url")
         @Expose
-        private String avatar;
+        private String avatarUrl;
 
         public String getChildName() {
             return childName;
@@ -68,19 +68,19 @@ public class UserResponse {
             this.phone = phone;
         }
 
-        public Object getBirthDate() {
+        public String getBirthDate() {
             return birthDate;
         }
 
-        public void setBirthDate(Object birthDate) {
+        public void setBirthDate(String birthDate) {
             this.birthDate = birthDate;
         }
 
-        public String getEmail() {
+        public Object getEmail() {
             return email;
         }
 
-        public void setEmail(String email) {
+        public void setEmail(Object email) {
             this.email = email;
         }
 
@@ -100,8 +100,12 @@ public class UserResponse {
             this.newsletter = newsletter;
         }
 
-        public String getAvatar() {
-            return avatar;
+        public String getAvatarUrl() {
+            return avatarUrl;
+        }
+
+        public void setAvatarUrl(String avatarUrl) {
+            this.avatarUrl = avatarUrl;
         }
 
     }
