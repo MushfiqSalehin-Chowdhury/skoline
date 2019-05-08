@@ -133,11 +133,12 @@ public class ProfileActivity extends ImageActivity {
         }
 
         popup.setOnMenuItemClickListener(item -> {
-            if (item.getTitle().equals(getString(R.string.help))) {
+            if (item.getItemId() == R.id.help) {
                 startActivity(new Intent(this, HelpActivity.class));
-            } else if (item.getTitle().equals(getString(R.string.change_language))) {
+            } else if (item.getItemId() == R.id.switchLanguage) {
+                showToast("changing");
                 setCurrentLanguage();
-            } else if (item.getTitle().equals(getString(R.string.logout))) {
+            } else if (item.getItemId() == R.id.logOut) {
                 ShareInfo.getInstance().logout(this);
                 finish();
             }
@@ -148,9 +149,9 @@ public class ProfileActivity extends ImageActivity {
 
     private void setCurrentLanguage() {
         if(ShareInfo.getLanguageType(this).equals(INDONESIA)){
-            changeLanguage(ENGLISH);
+            changeLanguage(ENGLISH, ProfileActivity.this);
         } else {
-            changeLanguage(INDONESIA);
+            changeLanguage(INDONESIA, ProfileActivity.this);
         }
 
     }
