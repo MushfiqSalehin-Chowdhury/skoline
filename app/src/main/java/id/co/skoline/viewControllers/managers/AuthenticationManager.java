@@ -259,6 +259,7 @@ public class AuthenticationManager {
         apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"users/fetch_otp","get",reqIdOtp,new HashMap());
         return  reqIdOtp;
     }
+
     public String confirmSubscription(String subscription_id, ConfirmSubscriptionListener confirmSubscriptionListener){
         this.confirmSubscriptionListener = confirmSubscriptionListener;
         this.reqIdConfirmSubscription = ShareInfo.getInstance().getRequestId();

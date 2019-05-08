@@ -27,7 +27,7 @@ import id.co.skoline.viewControllers.managers.ContentManager;
 
 public class TopicItemsActivity extends BaseActivity {
 
-   ActivityTopicItemsBinding topicItemsBinding;
+    ActivityTopicItemsBinding topicItemsBinding;
     ContentManager contentManager;
     TopicItemsResponse topicItemsResponseList;
     TopicResponse topicResponse;
