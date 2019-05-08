@@ -40,7 +40,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     private static final int reqCode = 580;
     public DisplayMetrics displayMetrics = new DisplayMetrics();
     public ProgressDialog progressDialog;
-
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
     private String language;

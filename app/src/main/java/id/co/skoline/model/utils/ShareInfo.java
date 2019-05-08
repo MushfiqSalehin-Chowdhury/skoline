@@ -14,7 +14,7 @@ import id.co.skoline.view.activities.BaseActivity;
 public class ShareInfo {
 
     private static final ShareInfo ourInstance = new ShareInfo();
-    public static final String BANGLA = "bn";
+    public static final String INDONESIA = "id";
     public static final String ENGLISH = "en";
     public static final int BENEFICIARY_ADD_CODE = 305;
 

@@ -17,7 +17,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     public void welcomeAnimation() {
-        new CountDownTimer(1000,1000) {
+        new CountDownTimer(2000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 

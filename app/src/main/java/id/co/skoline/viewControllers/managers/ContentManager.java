@@ -166,14 +166,12 @@ public class ContentManager {
             }
         };
     }
-
     public String getKlasses(KlassesListener klassesListener){
         this.klassesListener = klassesListener;
         this.reqIdKlasses = ShareInfo.getInstance().getRequestId();
         apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "klasses", "get", reqIdKlasses, new HashMap());
         return reqIdKlasses;
     }
-
     public String getSubjects(int klassId,SubjectsListener subjectsListener){
         this.subjectsListener = subjectsListener;
         this.reqIdSubjects = ShareInfo.getInstance().getRequestId();
@@ -186,14 +184,12 @@ public class ContentManager {
         apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "klasses/"+klassId+"/subjects/"+subId+"/topics", "get", reqIdTopics, new HashMap());
         return reqIdTopics;
     }
-
     public String getAdventure(int id,TopicItemsListener topicItemsListener){
         this.topicItemsListener = topicItemsListener;
         this.reqIdAdvanture = ShareInfo.getInstance().getRequestId();
         apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "topics/"+id, "get", reqIdAdvanture, new HashMap());
         return reqIdAdvanture;
     }
-
     public String getSearchResults (String search,SearchListener searchListener){
         this.searchListener = searchListener;
         this.reqIdSearch = ShareInfo.getInstance().getRequestId();
@@ -206,10 +202,10 @@ public class ContentManager {
     public String videoCompleted(String adventureId, VideoCompletedListerner videoCompletedListerner){
         this.videoCompletedListerner = videoCompletedListerner;
         this.reqIdVideoCompleted = ShareInfo.getInstance().getRequestId();
-        HashMap hashMap = new HashMap();
-        hashMap.put("adventure_id", adventureId);
-        hashMap.put("status", 1); // 1 for video completed
-        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "users/user_progress/", "post", reqIdVideoCompleted, hashMap);
+       /* HashMap hashMap = new HashMap();
+        hashMap.put("adventure_id", adventureId);*/
+        /*hashMap.put("status", 1); // 1 for video completed*/
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "adventures/"+adventureId+"/progress", "post", reqIdVideoCompleted,new HashMap());
         return reqIdVideoCompleted;
     }
 }
