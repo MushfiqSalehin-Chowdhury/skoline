@@ -228,8 +228,11 @@ public class SignUpActivity extends BaseActivity{
                         }
                         else{
                             Log.i("success","User Created");
+                            Intent intent = new Intent(SignUpActivity.this,OtpActivity.class);
+                            intent.putExtra("phone",countryCode+phoneNumber);
+                            intent.putExtra("uniqueName",uName);
                             Toast.makeText(SignUpActivity.this,getString(R.string.userCreated), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(SignUpActivity.this,OtpActivity.class));
+                            startActivity(intent);
                         }
                     }
                     @Override

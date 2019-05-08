@@ -14,6 +14,7 @@ import java.util.List;
 import id.co.skoline.R;
 import id.co.skoline.databinding.ActivitySearchResultBinding;
 import id.co.skoline.model.response.SearchResponse;
+import id.co.skoline.model.utils.ShareInfo;
 import id.co.skoline.view.adapters.SearchResultAdapter;
 import id.co.skoline.view.adapters.SubjectsAdapter;
 import id.co.skoline.viewControllers.interfaces.SearchListener;
@@ -66,28 +67,22 @@ public class SearchResultActivity extends BaseActivity {
                 });
             }
         });
-
-
     }
 
     private void generateViewSubject(List<SearchResponse> searchResponseList) {
         searchResultAdapter= new SearchResultAdapter(SearchResultActivity.this,searchResponseList);
         searchResultBinding.searchRecyclerView.setAdapter(searchResultAdapter);
         searchResultAdapter.notifyDataSetChanged();
-        /*searchResultAdapter.setOnItemClickListener(new SearchResultAdapter(this){
-            @Override
-            public void onItemClicked(SubjectResponse subjectResponse) {
-                Intent intent = new Intent(SubjectsActivity.this, TopicScreenActivity.class);
-                intent.putExtra("subjectResponse", new Gson().toJson(subjectResponse));
-                intent.putExtra("classId",klassesResponse.getId());
-                intent.putExtra("classIcon", klassesResponse.getIconUrl());
-                intent.putExtra("classTitle",klassesResponse.getName());
-                intent.putExtra("classColor",klassesResponse.getColorCode());
-                startActivity(intent);*/
-            //}
-       // });
+      searchResultAdapter.setOnItemClickListener(new SearchResultAdapter.OnItemClickListener() {
+          @Override
+          public void onItemClicked(SearchResponse searchResponse) {
+              Intent intent = new Intent(SearchResultActivity.this,VideoPlayActivity.class);
+              intent.putExtra("videoUrl", ShareInfo.getInstance().getRootBaseUrl()+searchResponse.getVideoLink());
+              intent.putExtra("videoId",searchResponse.getId());
+              startActivity(intent);
+          }
+        });
     }
-
     public void search(View view) {
     }
 }
