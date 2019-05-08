@@ -4,7 +4,9 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.squareup.picasso.Picasso;
@@ -15,6 +17,7 @@ import id.co.skoline.R;
 import id.co.skoline.databinding.AdapterSampleBinding;
 import id.co.skoline.databinding.AdapterSearchResultBinding;
 import id.co.skoline.model.response.SearchResponse;
+import id.co.skoline.model.response.SubjectResponse;
 import id.co.skoline.model.utils.ShareInfo;
 
 public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapter.ViewHolder>{
@@ -41,6 +44,19 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
        Picasso.with(context).load(ShareInfo.getInstance().getRootBaseUrl()+searchResponseList.get(position).getBanner()).into(holder.adaptersearchResultBinding.topicBanner);
         holder.adaptersearchResultBinding.topicTitle.setText(searchResponseList.get(position).getTitle());
 
+        try{
+            holder.adaptersearchResultBinding.getRoot().setOnClickListener(v -> {
+                /*Intent intent = new Intent(context, TopicScreenActivity.class);
+                intent.putExtra("subId",subjectResponse.getId());
+                intent.putExtra("subIcon",subjectResponse.getIconUrl());
+                intent.putExtra("subTitle",subjectResponse.getName());
+                context.startActivity(intent);*/
+                onItemClickListener.onItemClicked(searchResponseList.get(position));
+            });
+        }catch (Exception e){
+            Log.i("clickError",String.valueOf(e));
+        }
+
     }
 
     @Override
@@ -49,7 +65,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
     }
 
     public interface OnItemClickListener{
-        void onItemClicked(int position);
+        void onItemClicked(SearchResponse searchResponse);
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener){

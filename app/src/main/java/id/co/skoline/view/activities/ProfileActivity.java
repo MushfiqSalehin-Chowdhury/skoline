@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,6 +28,7 @@ import id.co.skoline.R;
 import id.co.skoline.databinding.ActivityProfileBinding;
 import id.co.skoline.model.response.UserResponse;
 import id.co.skoline.model.utils.ShareInfo;
+import id.co.skoline.view.custom.RoundedTransformationBuilder;
 import id.co.skoline.viewControllers.interfaces.ImageGetListener;
 import id.co.skoline.viewControllers.interfaces.PermissionListener;
 import id.co.skoline.viewControllers.interfaces.UploadPhotoListener;
@@ -199,6 +202,8 @@ public class ProfileActivity extends ImageActivity {
             @Override
             public void uploadPhotoListenerSuccess(String message) {
                 showToast(getString(R.string.image_update_successful));
+                finish();
+                startActivity(getIntent());
             }
 
             @Override
@@ -206,7 +211,7 @@ public class ProfileActivity extends ImageActivity {
                 showToast(getString(R.string.couldnt_upload_image));
                 profileBinding.profilePicture.setImageBitmap(null);
                 Picasso.with(ProfileActivity.this)
-                        .load(ShareInfo.getInstance().getRootBaseUrl()+userResponseList.getUser().getAvatar().toString())
+                        .load(ShareInfo.getInstance().getRootBaseUrl()+userResponseList.getUser().getAvatarUrl().toString())
                         .error(R.drawable.fajar)
                         .placeholder(R.drawable.fajar)
                         .into(profileBinding.profilePicture);
@@ -231,12 +236,21 @@ public class ProfileActivity extends ImageActivity {
         profileBinding.userFullname.setText(userResponseList.getUser().getChildName());
         profileBinding.userAge.setText(String.format("%s %s", age, getString(R.string.years)));
 
-        Log.i("profileImage",ShareInfo.getInstance().getRootBaseUrl()+userResponseList.getUser().getAvatar());
+        Log.i("profileImage",ShareInfo.getInstance().getRootBaseUrl()+userResponseList.getUser().getAvatarUrl());
         Log.i("profileImageUser",new Gson().toJson(userResponseList));
 
+        Transformation transformation = new RoundedTransformationBuilder()
+                .borderColor(Color.WHITE)
+                .borderWidthDp(3)
+                .cornerRadiusDp(2)
+                .oval(false)
+                .build();
+
         Picasso.with(this)
-                .load(ShareInfo.getInstance().getRootBaseUrl()+userResponseList.getUser().getAvatar().toString())
+                .load(ShareInfo.getInstance().getRootBaseUrl()+userResponseList.getUser().getAvatarUrl())
                 .error(R.drawable.fajar)
+                .fit()
+                .transform(transformation)
                 .placeholder(R.drawable.fajar)
                 .into(profileBinding.profilePicture);
         /*   topicScreenBinding.adventureDetails.setText(topicItemsResponseList.getTopic().getAdventure().getDescription());*/
