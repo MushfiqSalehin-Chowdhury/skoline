@@ -298,6 +298,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         switchLanguage(BaseActivity.this, language, activityToRedirect);
     }
 
+
+
     public void switchLanguage(Activity activity, String languageCode, Activity activityToRedirect) {
         LanguageHelper.setLanguage(activity, languageCode);
         Log.d("onLanguageChange", "insideSwitchLanguage");

@@ -136,7 +136,6 @@ public class ProfileActivity extends ImageActivity {
             if (item.getItemId() == R.id.help) {
                 startActivity(new Intent(this, HelpActivity.class));
             } else if (item.getItemId() == R.id.switchLanguage) {
-                showToast("changing");
                 setCurrentLanguage();
             } else if (item.getItemId() == R.id.logOut) {
                 ShareInfo.getInstance().logout(this);
@@ -269,9 +268,11 @@ public class ProfileActivity extends ImageActivity {
                 .into(profileBinding.profilePicture);
         /*   topicScreenBinding.adventureDetails.setText(topicItemsResponseList.getTopic().getAdventure().getDescription());*/
 
-        progressAdapter= new ProgressAdapter(ProfileActivity.this,userResponseList.getProgress());
-        profileBinding.progressRecycle.setAdapter(progressAdapter);
-        progressAdapter.notifyDataSetChanged();
+        if(userResponseList.getProgress()!=null){
+            progressAdapter= new ProgressAdapter(ProfileActivity.this,userResponseList.getProgress());
+            profileBinding.progressRecycle.setAdapter(progressAdapter);
+            progressAdapter.notifyDataSetChanged();
+        }
     }
 
     private String getAge(int year, int month, int day) {

@@ -89,6 +89,10 @@
     <string name="profile">Profile</string>
     <string name="activities">Activities</string>
     <string name="progress">Progress</string>
+    <string name="bonusHeadline">Edukasi Umum</string>
+    <string name="bonustitle">Skoline Video </string>
+    <string name="bonusToolbarTitle">Daftar Topik Pelajaran</string>
+    <string name="resendCodeTimer_text">You will get the code within</string>
 
     <string-array name="Day">
         <item>"   "01</item>

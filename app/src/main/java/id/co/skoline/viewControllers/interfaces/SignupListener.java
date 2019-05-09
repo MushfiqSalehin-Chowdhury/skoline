@@ -1,9 +1,8 @@
 package id.co.skoline.viewControllers.interfaces;
 
-import id.co.skoline.model.response.SignupErrorResponse;
-import id.co.skoline.model.response.UserResponse;
+import id.co.skoline.model.response.SignupResponse;
 
 public interface SignupListener extends BaseApiCallListener {
-    void onSuccess(SignupErrorResponse signupErrorResponseList);
+    void onSuccess(SignupResponse signupResponseList);
     void onFailed(String message, int responseCode);
 }

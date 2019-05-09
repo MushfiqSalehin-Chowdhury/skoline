@@ -78,17 +78,18 @@
     <string name="couldnt_find">Tidak dapat menemukan apa pun</string>
     <string name="sumitting_progress">Mengirimkan data</string>
     <string name="progress_submitted">Data terkirim</string>
-    <string name="logout">Logout</string>
-    <string name="change_language">Change language</string>
-    <string name="sending_message">Sending message</string>
     <string name="mathTitle">Mathmatica</string>
-    <string name="switch_to">Switch to</string>
-    <string name="english">English</string>
-    <string name="indonesia">Indonesia</string>
-    <string name="profile">Profile</string>
-    <string name="activities">Activities</string>
+    <string name="switch_to">Ubah ke</string>
+    <string name="english">Bahasa Inggris</string>
+    <string name="indonesia">Bahasa Indonesia</string>
+    <string name="logout">Keluar</string>
+    <string name="change_language">Ubah bahasa</string>
+    <string name="sending_message">Mengirim pesan</string>
+    <string name="profile">Profil</string>s
+    <string name="activities">Aktifitas</string>
     <string name="progress">Progress</string>
-
+    <string name="bonusHeadline">Edukasi Umum</string>
+    <string name="bonustitle">Skoline Video </string>
     <string-array name="Day">
         <item>"   "01</item>
         <item>"   "02</item>
