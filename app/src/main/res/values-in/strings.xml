@@ -85,6 +85,9 @@
     <string name="switch_to">Switch to</string>
     <string name="english">English</string>
     <string name="indonesia">Indonesia</string>
+    <string name="profile">Profile</string>
+    <string name="activities">Activities</string>
+    <string name="progress">Progress</string>
 
     <string-array name="Day">
         <item>"   "01</item>

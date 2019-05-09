@@ -119,7 +119,7 @@ public class ProfileActivity extends ImageActivity {
 
     @Override
     protected void viewRelatedTask() {
-        setToolbar("Profile", true, profileBinding.toolbarBinding);
+        setToolbar(getString(R.string.profile), true, profileBinding.toolbarBinding);
     }
 
     public void showOptions() {
