@@ -73,16 +73,14 @@ public class SearchResultActivity extends BaseActivity {
         searchResultAdapter= new SearchResultAdapter(SearchResultActivity.this,searchResponseList);
         searchResultBinding.searchRecyclerView.setAdapter(searchResultAdapter);
         searchResultAdapter.notifyDataSetChanged();
-      searchResultAdapter.setOnItemClickListener(new SearchResultAdapter.OnItemClickListener() {
-          @Override
-          public void onItemClicked(SearchResponse searchResponse) {
-              Intent intent = new Intent(SearchResultActivity.this,VideoPlayActivity.class);
-              intent.putExtra("videoUrl", ShareInfo.getInstance().getRootBaseUrl()+searchResponse.getVideoLink());
-              intent.putExtra("videoId",searchResponse.getId());
-              startActivity(intent);
-          }
-        });
+      searchResultAdapter.setOnItemClickListener(searchResponse -> {
+          Intent intent = new Intent(SearchResultActivity.this,VideoPlayActivity.class);
+          intent.putExtra("videoUrl", ShareInfo.getInstance().getRootBaseUrl()+searchResponse.getVideoLink());
+          intent.putExtra("videoId",searchResponse.getId());
+          startActivity(intent);
+      });
     }
     public void search(View view) {
     }
+
 }

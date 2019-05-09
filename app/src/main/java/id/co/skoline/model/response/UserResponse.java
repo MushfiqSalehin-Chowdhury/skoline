@@ -3,11 +3,16 @@ package id.co.skoline.model.response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class UserResponse {
 
     @SerializedName("user")
     @Expose
     private User user;
+    @SerializedName("progress")
+    @Expose
+    private List<Progress> progress = null;
 
     public User getUser() {
         return user;
@@ -15,6 +20,14 @@ public class UserResponse {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Progress> getProgress() {
+        return progress;
+    }
+
+    public void setProgress(List<Progress> progress) {
+        this.progress = progress;
     }
 
     public class User {
@@ -106,6 +119,32 @@ public class UserResponse {
 
         public void setAvatarUrl(String avatarUrl) {
             this.avatarUrl = avatarUrl;
+        }
+
+    }
+    public class Progress {
+
+        @SerializedName("subject_name")
+        @Expose
+        private String subjectName;
+        @SerializedName("complete_adventures")
+        @Expose
+        private Integer completeAdventures;
+
+        public String getSubjectName() {
+            return subjectName;
+        }
+
+        public void setSubjectName(String subjectName) {
+            this.subjectName = subjectName;
+        }
+
+        public Integer getCompleteAdventures() {
+            return completeAdventures;
+        }
+
+        public void setCompleteAdventures(Integer completeAdventures) {
+            this.completeAdventures = completeAdventures;
         }
 
     }

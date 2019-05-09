@@ -16,6 +16,17 @@ public class TokenResponse {
     @SerializedName("message")
     @Expose
     private String message;
+    @SerializedName("phone")
+    @Expose
+    private String phone;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public int getStatus() {
         return status;

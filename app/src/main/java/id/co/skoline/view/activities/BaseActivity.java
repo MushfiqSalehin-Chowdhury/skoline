@@ -40,7 +40,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     private static final int reqCode = 580;
     public DisplayMetrics displayMetrics = new DisplayMetrics();
     public ProgressDialog progressDialog;
-
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
     private String language;
@@ -292,18 +291,20 @@ public abstract class BaseActivity extends AppCompatActivity {
         hideKeyboard();
     }
 
-    public void changeLanguage(String language) {
+    public void changeLanguage(String language, Activity activityToRedirect) {
         /*the language is already default*/
         if (language.equals(ShareInfo.getLanguageType(this))) return;
         ShareInfo.setLanguageType(this, language);
-        switchLanguage(BaseActivity.this, language);
+        switchLanguage(BaseActivity.this, language, activityToRedirect);
     }
 
-    public void switchLanguage(Activity activity, String languageCode) {
+
+
+    public void switchLanguage(Activity activity, String languageCode, Activity activityToRedirect) {
         LanguageHelper.setLanguage(activity, languageCode);
         Log.d("onLanguageChange", "insideSwitchLanguage");
         finish();
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, activityToRedirect.getClass()));
     }
 
     public void hideViewIfKeyboardShowing(View contentView, View viewToHide){

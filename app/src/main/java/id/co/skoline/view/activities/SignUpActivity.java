@@ -24,17 +24,11 @@ import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.hbb20.CountryCodePicker;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -43,9 +37,7 @@ import java.util.regex.Pattern;
 
 import id.co.skoline.R;
 import id.co.skoline.databinding.ActivitySignUpBinding;
-import id.co.skoline.model.configuration.ApiHandler;
-import id.co.skoline.model.response.SignupErrorResponse;
-import id.co.skoline.model.response.UserResponse;
+import id.co.skoline.model.response.SignupResponse;
 import id.co.skoline.model.utils.GeocoderHandler;
 import id.co.skoline.model.utils.LocationAddress;
 import id.co.skoline.viewControllers.interfaces.SignupListener;
@@ -222,9 +214,9 @@ public class SignUpActivity extends BaseActivity{
                 authenticationManager.signUp(childName,countryCode+phoneNumber,uName,dob,new SignupListener() {
 
                     @Override
-                    public void onSuccess(SignupErrorResponse signupErrorResponseList) {
-                        if(signupErrorResponseList.getStatus()==422){
-                            showToast(signupErrorResponseList.getMessage());
+                    public void onSuccess(SignupResponse signupResponseList) {
+                        if(signupResponseList.getStatus()==422){
+                            showToast(signupResponseList.getMessage());
                         }
                         else{
                             Log.i("success","User Created");
@@ -248,7 +240,6 @@ public class SignUpActivity extends BaseActivity{
                     public void endLoading(String requestId) {
                     }
                 });
-
             }
             else {
                 signUpBinding.number.setError(getString(R.string.invalidNumber));

@@ -11,10 +11,15 @@
 
     <application
         android:allowBackup="true"
+        android:usesCleartextTraffic="true"
         android:icon="@drawable/logo_skoline"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".view.activities.BonusVideoActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".view.activities.VideoPlayActivity"
             android:screenOrientation="landscape" />
