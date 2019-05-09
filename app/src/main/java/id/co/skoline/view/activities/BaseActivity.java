@@ -281,7 +281,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            runOnUiThread(() -> view.setVisibility(View.GONE));
+            runOnUiThread(() -> view.setVisibility(View.INVISIBLE));
         }).start();
 
     }
