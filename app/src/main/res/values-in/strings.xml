@@ -46,11 +46,11 @@
     <string name="app_version_text">Skoline App Mode Online (version: 1.0.1)</string>
     <string name="bonusVideo">Bonus Video Skoline </string>
     <string name="mainmenu_txt">Pilih Topik Berdasarkan Kelas</string>
-    <string name="helpPage_title">Bantuan</string>
+    <string name="helpPage_title">partanyaan yang sering diajukan</string>
     <string name="faq">Pertanyaan yang sering diajukan "\n" Apa itu Skoline? Skoline adalah aplikasi belajar yang fleksibel dan sesuai dengan kebutuhan anak. "\n" Apakah Skoline sesuai dengan kurikulum pemerintah? Secara keseluruhan, materi pelajaran Sekolah Dasar Skoline sesuai dengan kurikulum pemerintah. Selain itu, kami pun menambahkan materi-materi tambahan yang dirasa penting dan diperlukan bagi siswa."\n" Materi yang saya cari tidak ada di kelas saya. Apakah belum dibuat? Dikarenakan kami tidak mengulang materi yang telah diberikan di kelas sebelumnya, mohon cek materi tersebut di kelas lain. Atau, cukup menggunakan tombol cari pada menu utama."\n" Apakah Skoline masih mengembangkan aplikasinya? Ya, kami masih terus mengembangkan aplikasi dengan menambahkan materi pelajaran, dan memperbanyak permainan. Ini akan dilakukan dengan memberikan update secara berkala. Pastikan kamu terus pada versi aplikasi terbaru kami.</string>
     <string name="contacts">Kontak</string>
     <string name="address">Aplikasi Skoline dibuat oleh : PT Skoline Solusi Indonesia "\n" Jl.Simprug Garden I Blok W No.12 "\n" Kebayoran Lama "\n" Jakarta Selatan</string>
-    <string name="mail">Pesan</string>
+    <string name="mail">pertanyaan yang dan kritik dapat dilakukan melalui kolom dibawah ini :</string>
     <string name="class_list">Pilih Kelas Kamu</string>
     <string name="subject_list">Pilih Mata Pelajaran</string>
     <string name="topic_list">Daftar Topik Pelajaran</string>
@@ -90,6 +90,11 @@
     <string name="progress">Progress</string>
     <string name="bonusHeadline">Edukasi Umum</string>
     <string name="bonustitle">Skoline Video </string>
+    <string name="bonusToolbarTitle">Daftar Topik Pelajaran</string>
+    <string name="resendCodeTimer_text">You will get the code within</string>
+    <string name="sendEmail">Mengirim pesan...</string>
+    <string name="mail_hint">Pesan</string>
+    <string name="send">Kirim</string>
     <string-array name="Day">
         <item>"   "01</item>
         <item>"   "02</item>

@@ -47,11 +47,11 @@
     <string name="app_version_text">Skoline App Mode Online (version: 1.0.1)</string>
     <string name="bonusVideo">Bonus Video Skoline </string>
     <string name="mainmenu_txt">Some Text Here</string>
-    <string name="helpPage_title">Help Page Title</string>
+    <string name="helpPage_title">Part of the frequently asked questions</string>
     <string name="faq">FAQ  goes "\n" here "\n" and "\n" here</string>
     <string name="contacts">Contact</string>
     <string name="address">Address goes "\n" here "\n" and "\n" here</string>
-    <string name="mail">Mail info here</string>
+    <string name="mail">questions and criticisms can be done through the column below</string>
     <string name="class_list">Select Class</string>
     <string name="subject_list">Select Subject</string>
     <string name="topic_list">Select Topic</string>
@@ -93,6 +93,9 @@
     <string name="bonustitle">Skoline Video </string>
     <string name="bonusToolbarTitle">Daftar Topik Pelajaran</string>
     <string name="resendCodeTimer_text">You will get the code within</string>
+    <string name="sendEmail">Sending message...</string>
+    <string name="mail_hint">Message</string>
+    <string name="send">Send</string>
 
     <string-array name="Day">
         <item>"   "01</item>

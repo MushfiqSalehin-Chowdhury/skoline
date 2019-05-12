@@ -15,6 +15,8 @@ import java.util.List;
 
 import id.co.skoline.model.configuration.ApiHandler;
 import id.co.skoline.model.response.BonusVideoResponse;
+import id.co.skoline.model.response.EmailResponse;
+import id.co.skoline.model.response.FaqResponse;
 import id.co.skoline.model.response.KlassesResponse;
 import id.co.skoline.model.response.SearchResponse;
 import id.co.skoline.model.response.SubjectResponse;
@@ -24,6 +26,8 @@ import id.co.skoline.model.response.TopicResponse;
 import id.co.skoline.model.response.UserResponse;
 import id.co.skoline.model.utils.ShareInfo;
 import id.co.skoline.viewControllers.interfaces.BonusVideoListener;
+import id.co.skoline.viewControllers.interfaces.EmailListener;
+import id.co.skoline.viewControllers.interfaces.FaqListener;
 import id.co.skoline.viewControllers.interfaces.SearchListener;
 import id.co.skoline.viewControllers.interfaces.TopicItemsListener;
 import id.co.skoline.viewControllers.interfaces.KlassesListener;
@@ -44,6 +48,8 @@ public class ContentManager {
     SearchListener searchListener;
     VideoCompletedListerner videoCompletedListerner;
     BonusVideoListener bonusVideoListener;
+    FaqListener faqListener;
+    EmailListener emailListener;
     private String reqIdKlasses;
     private String reqIdSubjects;
     private String reqIdTopics;
@@ -51,6 +57,8 @@ public class ContentManager {
     private String reqIdSearch;
     private String reqIdVideoCompleted;
     private String reqIdBonusVideo;
+    private String reqIdFaq;
+    private String reqIdEmail;
 
     public ContentManager(Context context){
         this.context = context;
@@ -78,6 +86,12 @@ public class ContentManager {
                 else if(requestId.equals(reqIdBonusVideo)){
                     bonusVideoListener.startLoading(requestId);
                 }
+                else if(requestId.equals(reqIdFaq)){
+                    faqListener.startLoading(requestId);
+                }
+                else if(requestId.equals(reqIdEmail)){
+                    emailListener.startLoading(requestId);
+                }
             }
 
             @Override
@@ -101,6 +115,12 @@ public class ContentManager {
                 }
                 else if(requestId.equals(reqIdBonusVideo)){
                     bonusVideoListener.endLoading(requestId);
+                }
+                else if(requestId.equals(reqIdFaq)){
+                   faqListener.endLoading(requestId);
+                }
+                else if(requestId.equals(reqIdEmail)){
+                    emailListener.endLoading(requestId);
                 }
             }
             @Override
@@ -162,6 +182,25 @@ public class ContentManager {
                         bonusVideoListener.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
                     }
                 }
+                else if ( requestId.equals(reqIdFaq)){
+                    try {
+                        Type listType = new TypeToken<List<FaqResponse>>() {}.getType();
+                        JSONArray arrayResponse = new JSONArray(responseBody.string());
+                        faqListener.onSuccess(new Gson().fromJson(arrayResponse.toString(), listType));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        faqListener.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
+                    }
+                }
+                else if ( requestId.equals(reqIdEmail)){
+                    try {
+                        JSONObject jsonObject = new JSONObject(responseBody.string());
+                        emailListener.onSuccess(new Gson().fromJson(jsonObject.toString(), EmailResponse.class));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        emailListener.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
+                    }
+                }
             }
             @Override
             public void failResponse(String requestId, int responseCode, String message) {
@@ -184,6 +223,12 @@ public class ContentManager {
                 }
                 else if ( requestId.equals(reqIdBonusVideo)){
                     bonusVideoListener.onFailed(message,responseCode);
+                }
+                else if ( requestId.equals(reqIdFaq)){
+                    faqListener.onFailed(message,responseCode);
+                }
+                else if ( requestId.equals(reqIdEmail)){
+                    emailListener.onFailed(message,responseCode);
                 }
             }
         };
@@ -234,5 +279,21 @@ public class ContentManager {
        // hashMap.put("search_key", search);
         apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "adventures", "get", reqIdBonusVideo, new HashMap());
         return reqIdBonusVideo;
+    }
+    public String getFaq (FaqListener faqListener){
+        this.faqListener = faqListener;
+        this.reqIdFaq = ShareInfo.getInstance().getRequestId();
+        HashMap hashMap = new HashMap();
+        // hashMap.put("search_key", search);
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "faqs", "get", reqIdFaq, new HashMap());
+        return reqIdBonusVideo;
+    }
+    public String sendEmail ( String body,EmailListener emailListener){
+        this.emailListener= emailListener;
+        this.reqIdEmail= ShareInfo.getInstance().getRequestId();
+        HashMap hashMap = new HashMap();
+        hashMap.put("email[body]",body);
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"emails","post",reqIdEmail,hashMap);
+        return reqIdEmail;
     }
 }
