@@ -51,7 +51,6 @@ public class OtpActivity extends BaseActivity {
                 public void onSuccess(OtpResponse otpResponse) {
                     OtpActivity.this.otpResponse=otpResponse;
                  //   Log.i("otp",otpResponse.getToken());
-                    showToast(otpResponse.getOtp().toString());
                     setToken(otpResponse,phone,uniqueName);
 
                 }
@@ -89,8 +88,7 @@ public class OtpActivity extends BaseActivity {
 
             @Override
             public void onFailed(String message, int responseCode) {
-                //showToast(message);
-
+                showToast(message);
             }
 
             @Override
