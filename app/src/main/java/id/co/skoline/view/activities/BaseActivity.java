@@ -5,8 +5,12 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -24,6 +28,9 @@ import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import id.co.skoline.R;
 import id.co.skoline.databinding.ToolbarBinding;
@@ -327,6 +334,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                 viewToHide.setVisibility(View.VISIBLE);
             }
         })), 250);
+    }
+
+    public Drawable getDrawableImage(String imagePath) throws IOException {
+        return Drawable.createFromStream(getAssets().open(imagePath),null);
     }
 
     @Override

@@ -30,9 +30,9 @@
             android:name=".view.activities.SubjectsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.activities.GameActivity"
+            android:name=".view.activities.SplashActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".view.activities.SplashActivity">
+        <activity android:name=".view.activities.GameActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

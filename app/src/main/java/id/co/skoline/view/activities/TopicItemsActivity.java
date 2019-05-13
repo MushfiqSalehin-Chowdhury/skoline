@@ -90,4 +90,8 @@ public class TopicItemsActivity extends BaseActivity {
         intent.putExtra("videoId",topicItemsResponseList.getTopic().getAdventure().getId());
         startActivity(intent);
     }
+
+    public void startGame(View view) {
+        startActivity(new Intent(this,GameActivity.class));
+    }
 }
