@@ -3,12 +3,14 @@ package id.co.skoline.view.activities;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
 import java.util.List;
+import java.util.Timer;
 
 import id.co.skoline.R;
 import id.co.skoline.databinding.ActivityOtpBinding;
@@ -51,8 +53,9 @@ public class OtpActivity extends BaseActivity {
                 public void onSuccess(OtpResponse otpResponse) {
                     OtpActivity.this.otpResponse=otpResponse;
                  //   Log.i("otp",otpResponse.getToken());
-                    setToken(otpResponse,phone,uniqueName);
 
+                    showToast(otpResponse.getOtp().toString());
+                    verifyToken(otpResponse,phone,uniqueName);
                 }
 
                 @Override
@@ -72,15 +75,35 @@ public class OtpActivity extends BaseActivity {
             });
 
         });
+
+        otpBinding.resendCodeButton.setOnClickListener(v -> {
+
+
+            new CountDownTimer(30000,1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    otpBinding.resendCodeButton.setEnabled(false);
+                    otpBinding.resendCodeButton.setTextColor(getResources().getColor(R.color.Gray));
+                    otpBinding.resendOtpTimer.setText(getString(R.string.resendCodeTimer_text) +" "+ String.valueOf(millisUntilFinished/1000) +"s");
+                    otpBinding.resendOtpTimer.setVisibility(View.VISIBLE);
+                }
+                @Override
+                public void onFinish() {
+                    otpBinding.resendCodeButton.setEnabled(true);
+                    otpBinding.resendCodeButton.setTextColor(Color.WHITE);
+                    otpBinding.resendOtpTimer.setVisibility(View.INVISIBLE);
+                }
+            }.start();
+        });
     }
-    private void setToken (OtpResponse otpResponse,String phone,String uniqueName){
+    private void verifyToken (OtpResponse otpResponse,String phone,String uniqueName){
        //ShareInfo.getInstance().setAuthenticationToken(this,otpResponse.getToken());
 
         authenticationManager = new AuthenticationManager(this);
         authenticationManager.checkOtp(phone, uniqueName, otpResponse.getOtp(), new VerifyOtpListener() {
             @Override
             public void onSuccess(VerifyOtpResponse verifyOtpResponse) {
-                ShareInfo.getInstance().setAuthenticationToken(OtpActivity.this,verifyOtpResponse.getToken());
+                ShareInfo.getInstance().setAuthenticationToken(OtpActivity.this, verifyOtpResponse.getToken());
                 Log.i("token",verifyOtpResponse.getToken());
                 goToHome();
                 OtpActivity.this.finish();
@@ -101,8 +124,6 @@ public class OtpActivity extends BaseActivity {
 
             }
         });
-
-
     }
 
     public void backToSignUp(View view) {

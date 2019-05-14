@@ -1,7 +1,6 @@
 package id.co.skoline.viewControllers.managers;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -12,14 +11,12 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.lang.reflect.Type;
-import java.util.BitSet;
 import java.util.HashMap;
 import java.util.List;
 
 import id.co.skoline.model.configuration.ApiHandler;
 import id.co.skoline.model.response.OtpResponse;
-import id.co.skoline.model.response.SignupErrorResponse;
-import id.co.skoline.model.response.SubjectResponse;
+import id.co.skoline.model.response.SignupResponse;
 import id.co.skoline.model.response.SubscriptionResponse;
 import id.co.skoline.model.response.TokenResponse;
 import id.co.skoline.model.response.UserResponse;
@@ -35,10 +32,8 @@ import id.co.skoline.viewControllers.interfaces.UploadPhotoListener;
 import id.co.skoline.viewControllers.interfaces.UserListerner;
 import id.co.skoline.viewControllers.interfaces.VerifyOtpListener;
 import okhttp3.MediaType;
-import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import retrofit2.http.PartMap;
 
 import static id.co.skoline.model.configuration.ResponseCode.INVALID_JSON_RESPONSE;
 
@@ -136,7 +131,7 @@ public class AuthenticationManager {
                 } else if ( requestId.equals(reqIdSignUp)){
                     try {
                         JSONObject jsonObject = new JSONObject(responseBody.string());
-                        signupListener.onSuccess(new Gson().fromJson(jsonObject.toString(), SignupErrorResponse.class));
+                        signupListener.onSuccess(new Gson().fromJson(jsonObject.toString(), SignupResponse.class));
                     } catch (Exception e) {
                         e.printStackTrace();
                         signupListener.onFailed("Invalid JSON Response", INVALID_JSON_RESPONSE);
@@ -277,6 +272,7 @@ public class AuthenticationManager {
         apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"users/fetch_otp","get",reqIdOtp,hashMap);
         return  reqIdOtp;
     }
+
     public String checkOtp (String phone,String uniqueName,String otp,VerifyOtpListener verifyOtpListener){
         this.verifyOtpListener=verifyOtpListener;
         this.reqIdVerifyOtp = ShareInfo.getInstance().getRequestId();
@@ -287,6 +283,7 @@ public class AuthenticationManager {
         apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(),"users/verify_otp","post",reqIdVerifyOtp,hashMap);
         return  reqIdVerifyOtp;
     }
+
     public String confirmSubscription(String subscription_id, ConfirmSubscriptionListener confirmSubscriptionListener){
         this.confirmSubscriptionListener = confirmSubscriptionListener;
         this.reqIdConfirmSubscription = ShareInfo.getInstance().getRequestId();

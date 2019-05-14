@@ -3,7 +3,7 @@ package id.co.skoline.model.response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class SignupErrorResponse {
+public class SignupResponse {
 
     @SerializedName("status")
     @Expose

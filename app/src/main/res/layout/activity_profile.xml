@@ -14,7 +14,7 @@
                 android:id="@+id/toolbarBinding"
                 layout="@layout/toolbar"/>
 
-            <ScrollView
+            <android.support.v4.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fillViewport="true">
@@ -44,15 +44,14 @@
 
                                 <ImageView
                                     android:id="@+id/profilePicture"
-                                    android:layout_width="90dp"
+                                    android:layout_width="85dp"
                                     android:layout_height="90dp"
-                                    android:src="@drawable/fajar"
-                                    android:background="@color/colorWhite"/>
+                                    android:src="@drawable/fajar"/>
 
                                 <ImageView
                                     android:id="@+id/changeProfilePicture"
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
                                     android:src="@android:drawable/ic_menu_camera"
                                     android:layout_gravity="bottom"/>
 
@@ -85,10 +84,7 @@
                                     app:textStyle="Normal"
                                     android:textColor="@color/colorWhite"
                                     android:layout_gravity="center"/>
-
                             </LinearLayout>
-
-
                         </LinearLayout>
 
                         <ImageView
@@ -115,7 +111,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="Activities"
+                            android:text="@string/activities"
                             android:padding="10dp"
                             app:textStyle="Bold"
                             android:textSize="20sp"
@@ -132,7 +128,7 @@
                     <LinearLayout
                         android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:paddingLeft="25dp"
                         android:paddingRight="25dp">
@@ -140,231 +136,20 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="Progress"
+                            android:text="@string/progress"
                             app:textStyle="Bold"
                             android:padding="10dp"
                             android:textSize="20sp"
                             android:gravity="center"
                             android:background="@drawable/box_shape" />
-
-                        <LinearLayout
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/progressRecycle"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginBottom="15dp"
-                            android:background="@drawable/box_shape"
-                            android:orientation="vertical"
-                            android:padding="15dp">
-
-                            <id.co.skoline.view.custom.CustomTextView
-                                android:id="@+id/mathTitle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="20dp"
-                                android:text="Mathmatika"
-                                android:textColor="@color/colorAccent"
-                                app:textStyle="Bold"
-                                android:textSize="15sp"/>
-
-                            <FrameLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp">
-
-                                <ProgressBar
-                                    android:id="@+id/mathProgress"
-                                    style="@android:style/Widget.ProgressBar.Horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="30dp"
-                                    android:progressDrawable="@drawable/math_progress" />
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <TextView
-                                        android:id="@+id/mathProgress_percent"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginLeft="40dp"
-                                        android:textColor="@color/colorWhite"
-                                        android:textSize="15sp" />
-                                </LinearLayout>
-                            </FrameLayout>
-
-                            <id.co.skoline.view.custom.CustomTextView
-                                android:id="@+id/englishTitle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="20dp"
-                                android:text="English"
-                                android:textColor="@color/colorPrimaryDark2"
-                                app:textStyle="Bold"
-                                android:textSize="15sp"/>
-
-                            <FrameLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp">
-
-                                <ProgressBar
-                                    android:id="@+id/englishProgress"
-                                    style="@android:style/Widget.ProgressBar.Horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="30dp"
-                                    android:progressDrawable="@drawable/english_progress" />
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <TextView
-                                        android:id="@+id/englishProgress_Percent"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginLeft="40dp"
-                                        android:textColor="@color/colorWhite"
-                                        android:textSize="15sp" />
-                                </LinearLayout>
-                            </FrameLayout>
-
-                            <id.co.skoline.view.custom.CustomTextView
-                                android:id="@+id/indonesiaTitle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="20dp"
-                                android:text="Indonesia"
-                                app:textStyle="Bold"
-                                android:textColor="@color/colorPrimaryDark"
-                                android:textSize="15sp"/>
-
-                            <FrameLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp">
-
-                                <ProgressBar
-                                    android:id="@+id/indonesiaProgress"
-                                    style="@android:style/Widget.ProgressBar.Horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="30dp"
-                                    android:progressDrawable="@drawable/indonesia_progress"
-                                    android:text="djsj"/>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <TextView
-                                        android:id="@+id/indonesiaProgress_Percent"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginLeft="40dp"
-                                        android:textColor="@color/colorWhite"
-                                        android:textSize="15sp" />
-                                </LinearLayout>
-                            </FrameLayout>
-                            <id.co.skoline.view.custom.CustomTextView
-                                android:id="@+id/ilmuTitle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="20dp"
-                                android:text="ilmu"
-                                android:textSize="15sp"
-                                app:textStyle="Bold"
-                                android:textColor="@color/PurpleDark" />
-                            <FrameLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp">
-
-                                <ProgressBar
-                                    android:id="@+id/ilmuProgress"
-                                    style="@android:style/Widget.ProgressBar.Horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="30dp"
-                                    android:progressDrawable="@drawable/ilmu_progress" />
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-                                    <TextView
-                                        android:id="@+id/ilmuProgress_percent"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginLeft="40dp"
-                                        android:textColor="@color/colorWhite"
-                                        android:textSize="15sp" />
-                                </LinearLayout>
-                            </FrameLayout>
-                            <id.co.skoline.view.custom.CustomTextView
-                                android:id="@+id/socialTitle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="20dp"
-                                android:text="Social"
-                                app:textStyle="Bold"
-                                android:textColor="@color/GreenDark"
-                                android:textSize="15sp"/>
-                            <FrameLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp">
-                                <ProgressBar
-                                    android:id="@+id/socialProgress"
-                                    style="@android:style/Widget.ProgressBar.Horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="30dp"
-                                    android:progressDrawable="@drawable/social_progress" />
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-                                    <TextView
-                                        android:id="@+id/socialProgress_Percent"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginLeft="40dp"
-                                        android:textSize="15sp" />
-                                </LinearLayout>
-                            </FrameLayout>
-                            <id.co.skoline.view.custom.CustomTextView
-                                android:id="@+id/pendidicanTitle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="20dp"
-                                android:text="Pendidican"
-                                app:textStyle="Bold"
-                                android:textSize="15sp"
-                                android:textColor="@color/colorOrangeDark" />
-                            <FrameLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp">
-                                <ProgressBar
-                                    android:id="@+id/pendidicanProgress"
-                                    style="@android:style/Widget.ProgressBar.Horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="30dp"
-                                    android:progressDrawable="@drawable/pandidikan_progress" />
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-                                    <TextView
-                                        android:id="@+id/pendidicanProgress_Percent"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginLeft="40dp"
-                                        android:textSize="15sp" />
-                                </LinearLayout>
-                            </FrameLayout>
-                        </LinearLayout>
+                            android:layout_height="match_parent">
+                        </android.support.v7.widget.RecyclerView>
                     </LinearLayout>
+
                 </LinearLayout>
-            </ScrollView>
+            </android.support.v4.widget.NestedScrollView>
         </LinearLayout>
 </layout>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/allMenuBackgroung"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbarBinding"
+            layout="@layout/toolbar"></include>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <LinearLayout
+                android:id="@+id/klass"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="horizontal"
+                android:background="@drawable/orange_gradient_bg">
+                <ImageView
+                    android:id="@+id/bonusBanner"
+                    android:layout_width="150dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/bonus"/>
+                <id.co.skoline.view.custom.CustomTextView
+                    android:id="@+id/bonusTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="25sp"
+                    android:text="@string/bonustitle"
+                    android:textColor="@color/colorWhite"
+                    app:textStyle="Bold"
+                    android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:orientation="horizontal"
+                    android:background="@drawable/box_shape"
+                    android:padding="5dp">
+                    <ImageView
+                        android:id="@+id/bonusIcon"
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorWhite"
+                        android:src="@drawable/gift"/>
+                    <id.co.skoline.view.custom.CustomTextView
+                        android:id="@+id/bonusHeadline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="18sp"
+                        app:textStyle="Bold"
+                        android:text="@string/bonusHeadline"
+                        android:textColor="@color/colorOrangeDark"
+                        android:layout_marginLeft="10dp"/>
+                </LinearLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/bonusRecycle"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

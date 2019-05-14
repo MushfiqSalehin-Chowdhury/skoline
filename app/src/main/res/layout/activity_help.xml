@@ -30,16 +30,20 @@
                     android:text="@string/helpPage_title"
                     android:textSize="20sp"
                     android:gravity="center"
-                    android:background="@drawable/box_shape" />
-                <id.co.skoline.view.custom.CustomTextView
-                    android:layout_marginTop="20dp"
+                    android:background="@drawable/box_shape"
+                    android:padding="10dp"
+                    app:textStyle="Bold"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/faqRecycle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textSize="20sp"
-                    android:gravity="center"
+                    android:layout_marginTop="12dp"
                     android:background="@drawable/box_shape"
-                    android:text="@string/faq"/>
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:paddingBottom="15dp">
+                </android.support.v7.widget.RecyclerView>
                 <id.co.skoline.view.custom.CustomTextView
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
@@ -47,17 +51,20 @@
                     android:layout_gravity="center"
                     android:text="@string/contacts"
                     android:textSize="20sp"
-                    android:gravity="center"
-                    android:background="@drawable/box_shape" />
+                    android:background="@drawable/box_shape"
+                    app:textStyle="Bold"
+                    android:padding="15dp"/>
                 <id.co.skoline.view.custom.CustomTextView
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@string/address"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:gravity="center"
-                    android:background="@drawable/box_shape" />
+                    android:background="@drawable/box_shape"
+                    app:textStyle="Bold"
+                    android:padding="15dp"/>
 
                 <id.co.skoline.view.custom.CustomTextView
                     android:layout_marginTop="20dp"
@@ -73,7 +80,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:hint="Message"
+                    android:hint="@string/mail_hint"
                     android:textSize="15sp"
                     android:padding="10dp"
                     android:background="@drawable/box_shape"
@@ -82,7 +89,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="send"
+                    android:text="@string/send"
                     android:layout_gravity="right"
                     android:onClick="sendMail"
                     />

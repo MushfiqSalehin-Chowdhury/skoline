@@ -82,6 +82,54 @@
                             android:text="something"
                             android:layout_marginTop="10dp"
                             />
+                </LinearLayout> <LinearLayout
+                android:layout_marginTop="15dp"
+                android:id="@+id/gameHeadline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/box_shape"
+                >
+                <ImageView
+                    android:id="@+id/starIcon2"
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/gamestar"/>
+                <id.co.skoline.view.custom.CustomTextView
+                    android:id="@+id/topicGameHeadline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/colorWhite"
+                    app:textStyle="Bold"/>
+            </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/box_shape"
+                    android:orientation="vertical"
+                    android:paddingTop="10dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:paddingBottom="10dp"
+                    android:layout_marginTop="15dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/gameBanner"
+                        android:layout_width="match_parent"
+                        android:layout_height="225dp"
+                        android:onClick="startGame"
+                        />
+                    <id.co.skoline.view.custom.CustomTextView
+                        android:id="@+id/gameTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="something"
+                        android:textSize="15sp"
+                        app:textStyle="Bold"/>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

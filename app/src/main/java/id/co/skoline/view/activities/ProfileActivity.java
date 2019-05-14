@@ -4,8 +4,12 @@ import android.Manifest;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.PopupMenu;
@@ -13,6 +17,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,6 +31,8 @@ import id.co.skoline.R;
 import id.co.skoline.databinding.ActivityProfileBinding;
 import id.co.skoline.model.response.UserResponse;
 import id.co.skoline.model.utils.ShareInfo;
+import id.co.skoline.view.adapters.ProgressAdapter;
+import id.co.skoline.view.custom.RoundedTransformationBuilder;
 import id.co.skoline.viewControllers.interfaces.ImageGetListener;
 import id.co.skoline.viewControllers.interfaces.PermissionListener;
 import id.co.skoline.viewControllers.interfaces.UploadPhotoListener;
@@ -33,6 +40,9 @@ import id.co.skoline.viewControllers.interfaces.UserListerner;
 import id.co.skoline.viewControllers.managers.AuthenticationManager;
 import lecho.lib.hellocharts.model.PieChartData;
 import lecho.lib.hellocharts.model.SliceValue;
+
+import static id.co.skoline.model.utils.ShareInfo.ENGLISH;
+import static id.co.skoline.model.utils.ShareInfo.INDONESIA;
 
 public class ProfileActivity extends ImageActivity {
 
@@ -42,6 +52,8 @@ public class ProfileActivity extends ImageActivity {
     private String[] dob;
     String imageUrl;
     private String imagePath = "";
+    ProgressAdapter progressAdapter;
+    List<UserResponse.Progress> progressList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,21 +69,6 @@ public class ProfileActivity extends ImageActivity {
         PieChartData pieChartData = new PieChartData(pieData);
         pieChartData.setHasLabels(true).setValueLabelTextSize(14);
         profileBinding.chart.setPieChartData(pieChartData);
-        profileBinding.englishTitle.setText("English" + "(0/0 video)");
-        profileBinding.englishProgress.setProgress(30);
-        profileBinding.englishProgressPercent.setText("30%");
-        profileBinding.mathProgress.setProgress(50);
-        profileBinding.mathProgressPercent.setText("50%");
-        profileBinding.socialProgress.setProgress(50);
-        profileBinding.socialProgressPercent.setText("10%");
-        profileBinding.pendidicanProgress.setProgress(0);
-        profileBinding.pendidicanProgressPercent.setText("0%");
-        profileBinding.ilmuProgress.setProgress(40);
-        profileBinding.ilmuProgressPercent.setText("40%");
-        profileBinding.indonesiaProgress.setProgress(80);
-        profileBinding.indonesiaProgressPercent.setText("80%");
-
-
         authenticationManager = new AuthenticationManager(this);
         authenticationManager.getUsers(new UserListerner() {
             @Override
@@ -114,29 +111,48 @@ public class ProfileActivity extends ImageActivity {
                 showToast("Permission denied");
             }
         }));
+        RecyclerView.LayoutManager mlayoutManager = new LinearLayoutManager(ProfileActivity.this);
+        profileBinding.progressRecycle.setLayoutManager(mlayoutManager);
+        profileBinding.progressRecycle.setItemAnimator(new DefaultItemAnimator());
 
     }
 
     @Override
     protected void viewRelatedTask() {
-        setToolbar("Profile", true, profileBinding.toolbarBinding);
+        setToolbar(getString(R.string.profile), true, profileBinding.toolbarBinding);
     }
 
     public void showOptions() {
         PopupMenu popup = new PopupMenu(ProfileActivity.this, profileBinding.menuOption);
         popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());
 
-        popup.setOnMenuItemClickListener(item -> {
+        if(ShareInfo.getLanguageType(this).equals(INDONESIA)){
+            popup.getMenu().getItem(1).setTitle(getString(R.string.switch_to) +" "+getString(R.string.english));
+        } else {
+            popup.getMenu().getItem(1).setTitle(getString(R.string.switch_to) +" "+getString(R.string.indonesia));
+        }
 
-            if (item.getTitle().equals("Help")) {
+        popup.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.help) {
                 startActivity(new Intent(this, HelpActivity.class));
-            } else if (item.getTitle().equals("Logout")) {
+            } else if (item.getItemId() == R.id.switchLanguage) {
+                setCurrentLanguage();
+            } else if (item.getItemId() == R.id.logOut) {
                 ShareInfo.getInstance().logout(this);
                 finish();
             }
             return true;
         });
         popup.show();//showing popup menu
+    }
+
+    private void setCurrentLanguage() {
+        if(ShareInfo.getLanguageType(this).equals(INDONESIA)){
+            changeLanguage(ENGLISH, ProfileActivity.this);
+        } else {
+            changeLanguage(INDONESIA, ProfileActivity.this);
+        }
+
     }
 
     public void showImagePickerOptions() {
@@ -199,6 +215,8 @@ public class ProfileActivity extends ImageActivity {
             @Override
             public void uploadPhotoListenerSuccess(String message) {
                 showToast(getString(R.string.image_update_successful));
+                finish();
+                startActivity(getIntent());
             }
 
             @Override
@@ -234,12 +252,27 @@ public class ProfileActivity extends ImageActivity {
         Log.i("profileImage",ShareInfo.getInstance().getRootBaseUrl()+userResponseList.getUser().getAvatarUrl());
         Log.i("profileImageUser",new Gson().toJson(userResponseList));
 
-        Picasso.with(this)
-                .load(ShareInfo.getInstance().getRootBaseUrl()+userResponseList.getUser().getAvatarUrl().toString())
+        Transformation transformation = new RoundedTransformationBuilder()
+                .borderColor(Color.WHITE)
+                .borderWidthDp(3)
+                .cornerRadiusDp(2)
+                .oval(false)
+                .build();
+
+        Picasso.with(this).load(ShareInfo.getInstance().getRootBaseUrl()+userResponseList.getUser().getAvatarUrl())
+
                 .error(R.drawable.fajar)
+                .fit()
+                .transform(transformation)
                 .placeholder(R.drawable.fajar)
                 .into(profileBinding.profilePicture);
         /*   topicScreenBinding.adventureDetails.setText(topicItemsResponseList.getTopic().getAdventure().getDescription());*/
+
+        if(userResponseList.getProgress()!=null){
+            progressAdapter= new ProgressAdapter(ProfileActivity.this,userResponseList.getProgress());
+            profileBinding.progressRecycle.setAdapter(progressAdapter);
+            progressAdapter.notifyDataSetChanged();
+        }
     }
 
     private String getAge(int year, int month, int day) {

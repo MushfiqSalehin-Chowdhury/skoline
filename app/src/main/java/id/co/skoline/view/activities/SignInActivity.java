@@ -82,11 +82,17 @@ public class SignInActivity extends BaseActivity {
             authenticationManager = new AuthenticationManager(this);
             authenticationManager.signIn(uName, dob, new SignInListener() {
                 @Override
-                public void onSuccess(TokenResponse tokenResponseList) {
-                    if(tokenResponseList.getStatus()==200){
-                        setToken(tokenResponseList);
-                    } else if(tokenResponseList.getStatus()==404) {
-                        showToast(tokenResponseList.getMessage());
+                public void onSuccess(TokenResponse tokenResponse) {
+                    if(tokenResponse.getStatus()==200){
+                        setToken(tokenResponse);
+                    } else if(tokenResponse.getStatus()==404) {
+                        showToast(tokenResponse.getMessage());
+                    } else if(tokenResponse.getStatus()==403) {
+                        showToast(tokenResponse.getMessage());
+                        Intent intent = new Intent(SignInActivity.this, OtpActivity.class);
+                        intent.putExtra("phone", tokenResponse.getPhone());
+                        intent.putExtra("uniqueName",uName);
+                        startActivity(intent);
                     }
                 }
                 @Override

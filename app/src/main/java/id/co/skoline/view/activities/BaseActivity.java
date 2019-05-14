@@ -5,8 +5,12 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -25,6 +29,9 @@ import android.widget.Toast;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 import id.co.skoline.R;
 import id.co.skoline.databinding.ToolbarBinding;
 import id.co.skoline.model.configuration.LanguageHelper;
@@ -40,7 +47,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     private static final int reqCode = 580;
     public DisplayMetrics displayMetrics = new DisplayMetrics();
     public ProgressDialog progressDialog;
-
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
     private String language;
@@ -281,7 +287,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            runOnUiThread(() -> view.setVisibility(View.GONE));
+            runOnUiThread(() -> view.setVisibility(View.INVISIBLE));
         }).start();
 
     }
@@ -292,18 +298,20 @@ public abstract class BaseActivity extends AppCompatActivity {
         hideKeyboard();
     }
 
-    public void changeLanguage(String language) {
+    public void changeLanguage(String language, Activity activityToRedirect) {
         /*the language is already default*/
         if (language.equals(ShareInfo.getLanguageType(this))) return;
         ShareInfo.setLanguageType(this, language);
-        switchLanguage(BaseActivity.this, language);
+        switchLanguage(BaseActivity.this, language, activityToRedirect);
     }
 
-    public void switchLanguage(Activity activity, String languageCode) {
+
+
+    public void switchLanguage(Activity activity, String languageCode, Activity activityToRedirect) {
         LanguageHelper.setLanguage(activity, languageCode);
         Log.d("onLanguageChange", "insideSwitchLanguage");
         finish();
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, activityToRedirect.getClass()));
     }
 
     public void hideViewIfKeyboardShowing(View contentView, View viewToHide){
@@ -326,6 +334,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                 viewToHide.setVisibility(View.VISIBLE);
             }
         })), 250);
+    }
+
+    public Drawable getDrawableImage(String imagePath) throws IOException {
+        return Drawable.createFromStream(getAssets().open(imagePath),null);
     }
 
     @Override

@@ -27,7 +27,7 @@ import id.co.skoline.viewControllers.managers.ContentManager;
 
 public class TopicItemsActivity extends BaseActivity {
 
-   ActivityTopicItemsBinding topicItemsBinding;
+    ActivityTopicItemsBinding topicItemsBinding;
     ContentManager contentManager;
     TopicItemsResponse topicItemsResponseList;
     TopicResponse topicResponse;
@@ -89,5 +89,9 @@ public class TopicItemsActivity extends BaseActivity {
         intent.putExtra("videoUrl",ShareInfo.getInstance().getRootBaseUrl()+topicItemsResponseList.getTopic().getAdventure().getVideoLink());
         intent.putExtra("videoId",topicItemsResponseList.getTopic().getAdventure().getId());
         startActivity(intent);
+    }
+
+    public void startGame(View view) {
+        startActivity(new Intent(this,GameActivity.class));
     }
 }
