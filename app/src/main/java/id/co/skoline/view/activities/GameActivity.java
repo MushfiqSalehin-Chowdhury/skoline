@@ -24,7 +24,7 @@ import id.co.skoline.R;
 import id.co.skoline.databinding.ActivityGameBinding;
 import id.co.skoline.viewControllers.managers.GameManager;
 
-public class GameActivity extends BaseActivity {
+public class    GameActivity extends BaseActivity {
 
     ActivityGameBinding gameBinding;
     Activity activityToRedirect;
@@ -73,24 +73,24 @@ public class GameActivity extends BaseActivity {
         try {
             gameBinding.gameBackground.setBackground(getDrawableImage("gameAssets/gameBackground.jpg"));
             Random random= new Random();
-            gameBinding.option1.setBackground(getDrawableImage("gameAssets/"+singleDigitList.get(0)+".png"));
-            gameBinding.option2.setBackground(getDrawableImage("gameAssets/"+singleDigitList.get(1)+".png"));
-            gameBinding.option3.setBackground(getDrawableImage("gameAssets/"+singleDigitList.get(2)+".png"));
-            gameBinding.option4.setBackground(getDrawableImage("gameAssets/"+singleDigitList.get(3)+".png"));
+            gameBinding.option1Img.setBackground(getDrawableImage("gameAssets/"+singleDigitList.get(0)+".png"));
+            gameBinding.option2Img.setBackground(getDrawableImage("gameAssets/"+singleDigitList.get(1)+".png"));
+            gameBinding.option3Img.setBackground(getDrawableImage("gameAssets/"+singleDigitList.get(2)+".png"));
+            gameBinding.option4Img.setBackground(getDrawableImage("gameAssets/"+singleDigitList.get(3)+".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        gameBinding.option1.setOnClickListener(v -> {
+        gameBinding.option1Img.setOnClickListener(v -> {
           if(randomResultSingleDigit==singleDigitList.get(0)){
               try {
-                  gameBinding.option1.setBackground(getDrawableImage("gameAssets/correct.png"));
+                  gameBinding.option1ResultImg.setBackground(getDrawableImage("gameAssets/correct.png"));
               } catch (IOException e) {
                   e.printStackTrace();
               }
           }
           else {
               try {
-                  gameBinding.option1Img.setImageDrawable(getDrawableImage("gameAssets/wrong.png"));
+                  gameBinding.option1ResultImg.setImageDrawable(getDrawableImage("gameAssets/wrong.png"));
                   hideView(gameBinding.option1Img, Techniques.SlideOutRight);
               } catch (IOException e) {
                   e.printStackTrace();
@@ -100,49 +100,49 @@ public class GameActivity extends BaseActivity {
         gameBinding.option2Img.setOnClickListener(v -> {
             if(randomResultSingleDigit==singleDigitList.get(1)){
                 try {
-                    gameBinding.option2Img.setImageDrawable(getDrawableImage("gameAssets/correct.png"));
+                    gameBinding.option2ResultImg.setBackground(getDrawableImage("gameAssets/correct.png"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
             else {
                 try {
-                    gameBinding.option2Img.setImageDrawable(getDrawableImage("gameAssets/wrong.png"));
-                    hideView(gameBinding.option2, Techniques.SlideOutRight);
+                    gameBinding.option2ResultImg.setImageDrawable(getDrawableImage("gameAssets/wrong.png"));
+                    hideView(gameBinding.option2Img, Techniques.SlideOutRight);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         });
-        gameBinding.option3.setOnClickListener(v -> {
+        gameBinding.option3Img.setOnClickListener(v -> {
             if(randomResultSingleDigit==singleDigitList.get(2)){
                 try {
-                    gameBinding.option3Img.setImageDrawable(getDrawableImage("gameAssets/correct.png"));
+                    gameBinding.option3ResultImg.setBackground(getDrawableImage("gameAssets/correct.png"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
             else {
                 try {
-                    gameBinding.option3Img.setImageDrawable(getDrawableImage("gameAssets/wrong.png"));
-                    hideView(gameBinding.option3, Techniques.SlideOutRight);
+                    gameBinding.option3ResultImg.setImageDrawable(getDrawableImage("gameAssets/wrong.png"));
+                    hideView(gameBinding.option3Img, Techniques.SlideOutRight);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         });
-        gameBinding.option4.setOnClickListener(v -> {
+        gameBinding.option4Img.setOnClickListener(v -> {
             if(randomResultSingleDigit==singleDigitList.get(3)){
                 try {
-                    gameBinding.option4Img.setImageDrawable(getDrawableImage("gameAssets/correct.png"));
+                    gameBinding.option4ResultImg.setBackground(getDrawableImage("gameAssets/correct.png"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
             else {
                 try {
-                    gameBinding.option4Img.setImageDrawable(getDrawableImage("gameAssets/wrong.png"));
-                    hideView(gameBinding.option4, Techniques.SlideOutRight);
+                    gameBinding.option4ResultImg.setImageDrawable(getDrawableImage("gameAssets/wrong.png"));
+                    hideView(gameBinding.option4Img, Techniques.SlideOutRight);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

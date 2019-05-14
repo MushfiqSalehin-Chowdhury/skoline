@@ -40,7 +40,7 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <LinearLayout
+                        <FrameLayout
                             android:visibility="invisible"
                             android:id="@+id/option_1"
                             android:layout_width="0dp"
@@ -52,10 +52,14 @@
                                 android:id="@+id/option_1_img"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"/>
+                            <ImageView
+                                android:id="@+id/option_1_resultImg"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
 
-                        </LinearLayout>
+                        </FrameLayout>
 
-                        <LinearLayout
+                        <FrameLayout
                             android:visibility="invisible"
                             android:id="@+id/option_2"
                             android:layout_width="0dp"
@@ -66,9 +70,13 @@
                             <ImageView
                                 android:id="@+id/option_2_img"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent" />
+                                android:layout_height="match_parent"/>
+                            <ImageView
+                                android:id="@+id/option_2_resultImg"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
 
-                        </LinearLayout>
+                        </FrameLayout>
 
                     </LinearLayout>
 
@@ -78,7 +86,7 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <LinearLayout
+                        <FrameLayout
                             android:visibility="invisible"
                             android:id="@+id/option_3"
                             android:layout_width="0dp"
@@ -89,11 +97,15 @@
                             <ImageView
                                 android:id="@+id/option_3_img"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent" />
+                                android:layout_height="match_parent"/>
+                            <ImageView
+                                android:id="@+id/option_3_resultImg"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
 
-                        </LinearLayout>
+                        </FrameLayout>
 
-                        <LinearLayout
+                        <FrameLayout
                             android:visibility="invisible"
                             android:id="@+id/option_4"
                             android:layout_width="0dp"
@@ -105,8 +117,12 @@
                                 android:id="@+id/option_4_img"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"/>
+                            <ImageView
+                                android:id="@+id/option_4_resultImg"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
 
-                        </LinearLayout>
+                        </FrameLayout>
 
                     </LinearLayout>
 

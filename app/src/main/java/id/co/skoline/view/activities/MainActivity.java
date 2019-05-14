@@ -124,8 +124,8 @@ public class MainActivity extends BaseActivity {
         });
 
         mainBinding.bonusImg.setOnClickListener(v -> {
-            if (klassesResponse!=null){
-            }
+            Intent intent = new Intent(this,BonusVideoActivity.class);
+            startActivity(intent);
         });
     }
 

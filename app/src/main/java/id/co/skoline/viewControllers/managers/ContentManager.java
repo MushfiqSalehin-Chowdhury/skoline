@@ -276,8 +276,7 @@ public class ContentManager {
         this.bonusVideoListener = bonusVideoListener;
         this.reqIdBonusVideo = ShareInfo.getInstance().getRequestId();
         HashMap hashMap = new HashMap();
-       // hashMap.put("search_key", search);
-        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "adventures", "get", reqIdBonusVideo, new HashMap());
+        apiHandler.httpRequest(ShareInfo.getInstance().getBaseUrl(), "bonus_videos", "get", reqIdBonusVideo, new HashMap());
         return reqIdBonusVideo;
     }
     public String getFaq (FaqListener faqListener){
